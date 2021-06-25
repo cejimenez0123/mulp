@@ -9,17 +9,18 @@ import UIKit
 
 
 class PageTableViewCell: UITableViewCell{
-   var pic: UIImageView = UIImageView(image: UIImage(named: "TheNerves")
-)
-    
-    init(pict:UIImageView,style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.pic = pict
+  
+    @IBOutlet weak var pic: UIImageView!
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        
+        
         
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addSubview(self.pic)
-        
-        NSLayoutConstraint.activate([self.pic.topAnchor.constraint(equalTo: self.topAnchor),self.bottomAnchor.constraint(equalTo: self.bottomAnchor),self.pic.rightAnchor.constraint(equalTo: self.rightAnchor),self.pic.leftAnchor.constraint(equalTo: self.leftAnchor)])
+//        self.imageView!.image = pict
+//        self.imageView!.translatesAutoresizingMaskIntoConstraints = false
+//
+//        NSLayoutConstraint.activate([self.imageView!.topAnchor.constraint(equalTo: self.topAnchor),self.bottomAnchor.constraint(equalTo: self.bottomAnchor),self.imageView!.rightAnchor.constraint(equalTo: self.rightAnchor),self.imageView!.leftAnchor.constraint(equalTo: self.leftAnchor)])
     }
     required init?(coder: NSCoder) {
         super.init(coder:  coder)

@@ -10,10 +10,10 @@ import UIKit
 
 class Page {
     var id:String = ""
-    var canvas: UIImage
+    var picture: UIImage
     init(id: String,canvas:UIImage) {
         self.id = id
-        self.canvas = canvas
+        self.picture = canvas
         
     }
     
