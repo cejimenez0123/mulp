@@ -14,6 +14,14 @@ class PageCell:UITableViewCell{
 class MainViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let imagePicker = UIImagePickerController()
     var pages = [Page]()
+    init(pages: [Page]){
+        self.pages = pages
+        self.pages.insert(Page(id: "1", canvas: UIImage(named: "TheNerves" )!), at: 0)
+       
+        super.init( style: UITableView.Style.plain)
+        
+       
+    }
     @IBAction func uploadPhoto(_ sender: Any) {
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
@@ -24,14 +32,18 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
         super.init(coder: aDecoder)
         
     }
-    init(pages: [Page]){
-        self.pages = pages
-        self.pages.insert(Page(id: "1", canvas: UIImage(named: "TheNerves" )!), at: 0)
-       
-        super.init( style: UITableView.Style.plain)
-        
-       
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            let page = Page(id: UUID().uuidString, canvas: image)
+            pages.insert(page, at: 0)
+            }
+
+            self.imagePicker.dismiss(animated: true, completion: nil)
     }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            dismiss(animated: true)
+        }
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
