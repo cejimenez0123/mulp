@@ -30,10 +30,17 @@
                             <outlet property="delegate" destination="eO9-is-1EL" id="YYv-fq-ahg"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="yA0-9s-MKO"/>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" id="lJd-YS-7BO"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lJd-YS-7BO">
+                        <leftBarButtonItems>
+                            <barButtonItem id="RvB-j0-OnC"/>
+                            <barButtonItem title="Image Upload" id="yA0-9s-MKO">
+                                <connections>
+                                    <action selector="uploadPhoto:" destination="eO9-is-1EL" id="hAO-Oz-Odn"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fHp-KD-MlL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

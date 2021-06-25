@@ -17,6 +17,7 @@
 		35FA6E7A258D0D240086AE62 /* mulpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA6E79258D0D240086AE62 /* mulpTests.swift */; };
 		35FA6E85258D0D240086AE62 /* mulpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA6E84258D0D240086AE62 /* mulpUITests.swift */; };
 		62390BDF2680EEE9008DD0B5 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BDE2680EEE9008DD0B5 /* Page.swift */; };
+		62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE22680FFF6008DD0B5 /* PageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		35FA6E84258D0D240086AE62 /* mulpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mulpUITests.swift; sourceTree = "<group>"; };
 		35FA6E86258D0D240086AE62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62390BDE2680EEE9008DD0B5 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		62390BE22680FFF6008DD0B5 /* PageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +105,11 @@
 		35FA6E5E258D0D210086AE62 /* mulp */ = {
 			isa = PBXGroup;
 			children = (
+				62390BE12680FFDD008DD0B5 /* Controller */,
+				62390BE02680FFC7008DD0B5 /* ModelView */,
 				62390BDD2680EEC9008DD0B5 /* Model */,
 				35FA6E5F258D0D210086AE62 /* AppDelegate.swift */,
 				35FA6E61258D0D210086AE62 /* SceneDelegate.swift */,
-				35FA6E63258D0D210086AE62 /* ViewController.swift */,
 				35FA6E65258D0D210086AE62 /* Main.storyboard */,
 				35FA6E6B258D0D240086AE62 /* Assets.xcassets */,
 				35FA6E6D258D0D240086AE62 /* LaunchScreen.storyboard */,
@@ -140,6 +143,22 @@
 				62390BDE2680EEE9008DD0B5 /* Page.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		62390BE02680FFC7008DD0B5 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				62390BE22680FFF6008DD0B5 /* PageTableViewCell.swift */,
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
+		62390BE12680FFDD008DD0B5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35FA6E63258D0D210086AE62 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +295,7 @@
 				35FA6E60258D0D210086AE62 /* AppDelegate.swift in Sources */,
 				35FA6E62258D0D210086AE62 /* SceneDelegate.swift in Sources */,
 				35FA6E6A258D0D210086AE62 /* mulp.xcdatamodeld in Sources */,
+				62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */,
 				62390BDF2680EEE9008DD0B5 /* Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
