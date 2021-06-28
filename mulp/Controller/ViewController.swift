@@ -21,9 +21,12 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
        
       
     }
+    override func viewDidLoad() {
+        self.tableView.register(PageTableViewCell.self, forCellReuseIdentifier: "PageTableViewCell")
+    }
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
-        self.tableView.rowHeight = 500
+        self.tableView.rowHeight = 100
     }
     @IBAction func uploadPhoto(_ sender: Any) {
         let imagePicker = UIImagePickerController()
@@ -41,9 +44,9 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         let page = Page(id: UUID().uuidString, canvas: image)
         pages.insert(page, at: 0)
-        tableView.reloadData()
+        
             picker.dismiss(animated: true, completion: nil)
-    
+        tableView.reloadData()
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -57,6 +60,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
         let pageCell = tableView.dequeueReusableCell(withIdentifier: "PageTableViewCell",for: indexPath) as! PageTableViewCell
        
         pageCell.pic.image = pages[indexPath.row].picture
+        
 
         self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
         
@@ -64,14 +68,12 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
         
         return pageCell
     }
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//
-//        return 400
-//    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let image = pages[indexPath.row]
+        
+        let crop = image.picture.widthRatio()
+        return tableView.frame.width / crop
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return pages.count
@@ -81,8 +83,8 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
 }
 extension UIImage{
     
-    func widthRatio() -> Float {
-        return  Float(self.size.height / self.size.width)
+    func widthRatio() -> CGFloat {
+        return  CGFloat(self.size.width / self.size.height)
         
     }
 }
