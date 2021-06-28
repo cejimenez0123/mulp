@@ -72,7 +72,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
         let image = pages[indexPath.row]
         
         let crop = image.picture.widthRatio()
-        return tableView.frame.width / crop
+        return tableView.frame.width / crop + 60
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
