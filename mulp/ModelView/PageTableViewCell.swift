@@ -38,12 +38,18 @@ class PageTableViewCell: UITableViewCell{
             approvalBtns.backgroundColor = .green
         actionBox.addSubview(approvalBtns)
         NSLayoutConstraint.activate([
-                                     approvalBtns.widthAnchor.constraint(equalTo: actionBox.widthAnchor, multiplier: 0.36),
-                                     approvalBtns.heightAnchor.constraint(equalTo: actionBox.heightAnchor),
-            approvalBtns.centerYAnchor.constraint(equalTo: actionBox.centerYAnchor),approvalBtns.centerXAnchor.constraint(equalToSystemSpacingAfter: actionBox.centerXAnchor, multiplier: 1)])
-        
-        
-
+            approvalBtns.leftAnchor.constraint(equalTo: actionBox.leftAnchor),approvalBtns.rightAnchor.constraint(equalTo: approvalBtns.leftAnchor,constant: 120),approvalBtns.topAnchor.constraint(equalTo: actionBox.topAnchor),approvalBtns.bottomAnchor.constraint(equalTo: actionBox.bottomAnchor)])
+        approvalBtns.addSubview(yeahBtn)
+        approvalBtns.addSubview(nahBtn)
+        NSLayoutConstraint.activate([yeahBtn.leftAnchor.constraint(equalTo: approvalBtns.leftAnchor),yeahBtn.rightAnchor.constraint(equalTo: approvalBtns.leftAnchor,constant: 60),yeahBtn.topAnchor.constraint(equalTo: approvalBtns.topAnchor), yeahBtn.bottomAnchor.constraint(equalTo: approvalBtns.bottomAnchor)])
+        NSLayoutConstraint.activate([nahBtn.leftAnchor.constraint(equalTo: yeahBtn.rightAnchor),nahBtn.rightAnchor.constraint(equalTo: approvalBtns.rightAnchor),nahBtn.topAnchor.constraint(equalTo: approvalBtns.topAnchor),nahBtn.bottomAnchor.constraint(equalTo: approvalBtns.bottomAnchor)])
+//        var commentBtn = UIButton()
+//        commentBtn.setTitle("Comment", for: .normal)
+//        
+//        
+//                                        approvalBtns.widthAnchor.constraint(equalTo: actionBox.widthAnchor, multiplier: 0.36),
+//                                        approvalBtns.heightAnchor.constraint(equalTo: actionBox.heightAnchor),
+//                                           approvalBtns.leftAnchor.constraint(equalTo: ),approvalBtns.centerXAnchor.constraint(equalTo:actionBox.leftAnchor,constant: 80)]
     }
     required init?(coder: NSCoder) {
         super.init(coder:  coder)
