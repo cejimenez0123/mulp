@@ -26,7 +26,10 @@ class PageTableViewCell: UITableViewCell{
             actionBox.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             actionBox.leftAnchor.constraint(equalTo:self.leftAnchor),
             actionBox.rightAnchor.constraint(equalTo: self.rightAnchor)])
-        
+        let commentBtn = UIButton()
+        commentBtn.setTitle("Comment", for: .normal)
+        commentBtn.backgroundColor = .black
+        commentBtn.translatesAutoresizingMaskIntoConstraints = false
         let approvalBtns = UIView()
             approvalBtns.translatesAutoresizingMaskIntoConstraints = false
         let yeahBtn = UIButton()
@@ -35,29 +38,33 @@ class PageTableViewCell: UITableViewCell{
             nahBtn.translatesAutoresizingMaskIntoConstraints = false
             yeahBtn.setTitle("Yeah", for: .normal)
             nahBtn.setTitle("Nah",for: .normal)
-            approvalBtns.backgroundColor = .green
+        yeahBtn.backgroundColor = .black
+        nahBtn.backgroundColor = .black
+        actionBox.addSubview(commentBtn)
         actionBox.addSubview(approvalBtns)
         NSLayoutConstraint.activate([
-            approvalBtns.leftAnchor.constraint(equalTo: actionBox.leftAnchor),approvalBtns.rightAnchor.constraint(equalTo: approvalBtns.leftAnchor,constant: 100),approvalBtns.topAnchor.constraint(equalTo: actionBox.topAnchor),approvalBtns.bottomAnchor.constraint(equalTo: actionBox.bottomAnchor)])
+        approvalBtns.leftAnchor.constraint(equalTo: actionBox.leftAnchor),approvalBtns.rightAnchor.constraint(equalTo: commentBtn.leftAnchor,constant: -1),approvalBtns.topAnchor.constraint(equalTo: actionBox.topAnchor),approvalBtns.bottomAnchor.constraint(equalTo: actionBox.bottomAnchor)])
         approvalBtns.addSubview(yeahBtn)
         approvalBtns.addSubview(nahBtn)
-        NSLayoutConstraint.activate([yeahBtn.leftAnchor.constraint(equalTo: approvalBtns.leftAnchor),yeahBtn.rightAnchor.constraint(equalTo: approvalBtns.leftAnchor,constant: 60),yeahBtn.topAnchor.constraint(equalTo: approvalBtns.topAnchor), yeahBtn.bottomAnchor.constraint(equalTo: approvalBtns.bottomAnchor)])
-        NSLayoutConstraint.activate([nahBtn.leftAnchor.constraint(equalTo: yeahBtn.rightAnchor),nahBtn.rightAnchor.constraint(equalTo: approvalBtns.rightAnchor),nahBtn.topAnchor.constraint(equalTo: approvalBtns.topAnchor),nahBtn.bottomAnchor.constraint(equalTo: approvalBtns.bottomAnchor)])
-        let commentBtn = UIButton()
-        commentBtn.setTitle("Comment", for: .normal)
-        commentBtn.backgroundColor = .black
-        commentBtn.translatesAutoresizingMaskIntoConstraints = false
-        actionBox.addSubview(commentBtn)
-        NSLayoutConstraint.activate([commentBtn.widthAnchor.constraint(equalTo: actionBox.widthAnchor, multiplier: 0.30),commentBtn.heightAnchor.constraint(equalTo: actionBox.heightAnchor),commentBtn.centerYAnchor.constraint(equalTo: commentBtn.centerYAnchor),commentBtn.centerXAnchor.constraint(equalTo: actionBox.centerXAnchor)])
+        NSLayoutConstraint.activate([yeahBtn.leftAnchor.constraint(equalTo: approvalBtns.leftAnchor),yeahBtn.rightAnchor.constraint(equalTo: approvalBtns.leftAnchor,constant: 50),yeahBtn.topAnchor.constraint(equalTo: approvalBtns.topAnchor), yeahBtn.bottomAnchor.constraint(equalTo: approvalBtns.bottomAnchor)])
+        NSLayoutConstraint.activate([nahBtn.leftAnchor.constraint(equalTo: yeahBtn.rightAnchor,constant: 1),nahBtn.rightAnchor.constraint(equalTo: approvalBtns.rightAnchor),nahBtn.topAnchor.constraint(equalTo: approvalBtns.topAnchor),nahBtn.bottomAnchor.constraint(equalTo: approvalBtns.bottomAnchor)])
+       
+        
+        NSLayoutConstraint.activate([commentBtn.widthAnchor.constraint(equalTo: actionBox.widthAnchor, multiplier: 0.30),commentBtn.heightAnchor.constraint(equalTo: actionBox.heightAnchor),commentBtn.centerYAnchor.constraint(equalTo: commentBtn.centerYAnchor),commentBtn.centerXAnchor.constraint(equalTo: actionBox.centerXAnchor,constant: -20)])
         let shareBtn = UIButton()
         shareBtn.setTitle("Share", for: .normal)
         shareBtn.backgroundColor = .black
         shareBtn.translatesAutoresizingMaskIntoConstraints=false
         actionBox.addSubview(shareBtn)
-        NSLayoutConstraint.activate([shareBtn.topAnchor.constraint(equalTo: actionBox.topAnchor),shareBtn.bottomAnchor.constraint(equalTo: actionBox.bottomAnchor),shareBtn.leftAnchor.constraint(equalTo: commentBtn.rightAnchor,constant: 2),shareBtn.rightAnchor.constraint(equalTo: commentBtn.rightAnchor, constant: 100)])
-//                                        approvalBtns.widthAnchor.constraint(equalTo: actionBox.widthAnchor, multiplier: 0.36),
-//                                        approvalBtns.heightAnchor.constraint(equalTo: actionBox.heightAnchor),
-//                                           approvalBtns.leftAnchor.constraint(equalTo: ),approvalBtns.centerXAnchor.constraint(equalTo:actionBox.leftAnchor,constant: 80)]
+        let addBtn = UIButton()
+        addBtn.setTitle("+", for: .normal)
+        addBtn.translatesAutoresizingMaskIntoConstraints = false
+        addBtn.backgroundColor = .black
+        
+        actionBox.addSubview(addBtn)
+        NSLayoutConstraint.activate([shareBtn.topAnchor.constraint(equalTo: actionBox.topAnchor),shareBtn.bottomAnchor.constraint(equalTo: actionBox.bottomAnchor),shareBtn.leftAnchor.constraint(equalTo: addBtn.rightAnchor,constant: 1),shareBtn.rightAnchor.constraint(equalTo: actionBox.rightAnchor)])
+        
+        NSLayoutConstraint.activate([addBtn.leftAnchor.constraint(equalTo: commentBtn.rightAnchor,constant: 1),addBtn.rightAnchor.constraint(equalTo: addBtn.leftAnchor,constant: 50),addBtn.topAnchor.constraint(equalTo: actionBox.topAnchor),addBtn.bottomAnchor.constraint(equalTo: actionBox.bottomAnchor)])
     }
     required init?(coder: NSCoder) {
         super.init(coder:  coder)
