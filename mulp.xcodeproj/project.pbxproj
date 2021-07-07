@@ -19,6 +19,8 @@
 		62390BDF2680EEE9008DD0B5 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BDE2680EEE9008DD0B5 /* Page.swift */; };
 		62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE22680FFF6008DD0B5 /* PageTableViewCell.swift */; };
 		62390BE5268602F3008DD0B5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE4268602F3008DD0B5 /* User.swift */; };
+		62390BE7269494A3008DD0B5 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE6269494A2008DD0B5 /* GlobalVars.swift */; };
+		62390BE926949803008DD0B5 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE826949803008DD0B5 /* LogInController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		62390BDE2680EEE9008DD0B5 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		62390BE22680FFF6008DD0B5 /* PageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTableViewCell.swift; sourceTree = "<group>"; };
 		62390BE4268602F3008DD0B5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		62390BE6269494A2008DD0B5 /* GlobalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
+		62390BE826949803008DD0B5 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				35FA6E63258D0D210086AE62 /* ViewController.swift */,
+				62390BE6269494A2008DD0B5 /* GlobalVars.swift */,
+				62390BE826949803008DD0B5 /* LogInController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -298,8 +304,10 @@
 				35FA6E60258D0D210086AE62 /* AppDelegate.swift in Sources */,
 				35FA6E62258D0D210086AE62 /* SceneDelegate.swift in Sources */,
 				35FA6E6A258D0D210086AE62 /* mulp.xcdatamodeld in Sources */,
+				62390BE926949803008DD0B5 /* LogInController.swift in Sources */,
 				62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */,
 				62390BDF2680EEE9008DD0B5 /* Page.swift in Sources */,
+				62390BE7269494A3008DD0B5 /* GlobalVars.swift in Sources */,
 				62390BE5268602F3008DD0B5 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

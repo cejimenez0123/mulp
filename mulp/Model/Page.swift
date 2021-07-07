@@ -10,11 +10,14 @@ import UIKit
 
 class Page {
     var id:String = ""
-    var picture: UIImage
-    init(id: String,canvas:UIImage) {
+    var pic:UIImage
+    var approvalScore = 0
+    
+    init(id: String,pic:UIImage) {
         self.id = id
-        self.picture = canvas
+        self.pic = pic
         
     }
+    
     
 }

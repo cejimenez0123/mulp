@@ -13,7 +13,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     var pages = [Page]()
     init(pages: [Page]){
         self.pages = pages
-        self.pages.append(Page(id: "1", canvas: UIImage(named: "TheNerves" )!))
+        self.pages.append(Page(id: "1", pic: UIImage(named: "TheNerves" )!))
         
         super.init( style: UITableView.Style.plain)
         
@@ -42,7 +42,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        let page = Page(id: UUID().uuidString, canvas: image)
+        let page = Page(id: UUID().uuidString, pic: image)
         pages.insert(page, at: 0)
         
             picker.dismiss(animated: true, completion: nil)
@@ -58,8 +58,8 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let pageCell = tableView.dequeueReusableCell(withIdentifier: "PageTableViewCell",for: indexPath) as! PageTableViewCell
-       
-        pageCell.pic.image = pages[indexPath.row].picture
+       let page = pages[indexPath.row]
+        pageCell.page = page
         
 
         self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
@@ -71,7 +71,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let image = pages[indexPath.row]
         
-        let crop = image.picture.widthRatio()
+        let crop = image.pic.widthRatio()
         return tableView.frame.width / crop + 55
     }
     

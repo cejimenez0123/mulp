@@ -9,13 +9,20 @@ import UIKit
 
 
 class PageTableViewCell: UITableViewCell{
-  
-    var pic = UIImageView()
+    var page:Page = Page(id:"0", pic: UIImage(named: "TheNerves")!)
+    var pic: UIImageView = UIImageView()
+    var approval = 0
     var actionBox = UIView()
+    let yeahBtn = UIButton()
+    let nahBtn = UIButton()
+   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+   
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    yeahBtn.addTarget(self, action: #selector(approveBtnClick), for: .touchUpInside)
+    
+        pic = UIImageView(image: page.pic)
         self.addSubview(pic)
         self.addSubview(actionBox)
         pic.translatesAutoresizingMaskIntoConstraints=false
@@ -32,9 +39,9 @@ class PageTableViewCell: UITableViewCell{
         commentBtn.translatesAutoresizingMaskIntoConstraints = false
         let approvalBtns = UIView()
             approvalBtns.translatesAutoresizingMaskIntoConstraints = false
-        let yeahBtn = UIButton()
+        
             yeahBtn.translatesAutoresizingMaskIntoConstraints = false
-        let nahBtn = UIButton()
+        
             nahBtn.translatesAutoresizingMaskIntoConstraints = false
             yeahBtn.setTitle("Yeah", for: .normal)
             nahBtn.setTitle("Nah",for: .normal)
@@ -66,7 +73,59 @@ class PageTableViewCell: UITableViewCell{
         
         NSLayoutConstraint.activate([addBtn.leftAnchor.constraint(equalTo: commentBtn.rightAnchor,constant: 1),addBtn.rightAnchor.constraint(equalTo: addBtn.leftAnchor,constant: 50),addBtn.topAnchor.constraint(equalTo: actionBox.topAnchor),addBtn.bottomAnchor.constraint(equalTo: actionBox.bottomAnchor)])
     }
+    
+  
+    
     required init?(coder: NSCoder) {
-        super.init(coder:  coder)
+        fatalError("init(coder:) has not been implemented")
+    }
+    @objc func approveBtnClick(_ sender: UIButton, score:Int){
+        if sender == yeahBtn{
+            if globalVars.userLoggedIn{
+                //            let url = URL(string: "http://localhost:3000/likes")
+                //            var request = URLRequest(url: url!)
+                //            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                //            request.httpMethod = "POST"
+                //            let parameters: [String: Any] = [
+                //                "id": 13,
+                //                "name": "Jack & Jill"
+                //            ]
+                //            request.httpBody = parameters.percentEncoded()
+                //
+                //            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                //                guard let data = data,
+                //                    let response = response as? HTTPURLResponse,
+                //                    error == nil else {                                              // check for fundamental networking error
+                //                    print("error", error ?? "Unknown error")
+                //                    return
+                //                }
+                //
+                //                guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
+                //                    print("statusCode should be 2xx, but is \(response.statusCode)")
+                //                    print("response = \(response)")
+                //                    return
+                //                }
+                //
+                //                let responseString = String(data: data, encoding: .utf8)
+                //                print("responseString = \(responseString)")
+                //            }
+                //
+                //            task.resume()
+            }else{
+               let alert = UIAlertController(title: "Sign Up", message: "If not already, please log in or sign up to vote", preferredStyle: .alert)
+                
+                let action = UIAlertAction(title: "Log In", style: .default, handler:{(_ action: UIAlertAction) -> Void in
+                    /** What we write here???????? **/
+                    print("you pressed Yes, please button")
+                    
+                    // call method whatever u need
+                })
+                alert.addAction(action)
+            }
+            yeahBtn.backgroundColor = .green
+            approval = 1
+            page.approvalScore += score
+
+        }
     }
 }

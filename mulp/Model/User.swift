@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-
+class GlobalVars{
+    var userLoggedIn = false}
+let globalVars = GlobalVars()
 class User {
     let id:String
     var email:String=""
