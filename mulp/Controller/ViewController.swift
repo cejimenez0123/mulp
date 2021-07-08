@@ -58,14 +58,10 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let pageCell = tableView.dequeueReusableCell(withIdentifier: "PageTableViewCell",for: indexPath) as! PageTableViewCell
-       let page = pages[indexPath.row]
-        pageCell.page = page
-        
-
-        self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
-        
-        
-        
+            
+            
+        pageCell.picture = pages[indexPath.row].pic
+        pageCell.parentController = self
         return pageCell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
