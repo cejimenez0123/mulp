@@ -16,8 +16,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
         self.pages.append(Page(id: "1", pic: UIImage(named: "TheNerves" )!))
         
         super.init( style: UITableView.Style.plain)
-        
-    
+  
        
       
     }

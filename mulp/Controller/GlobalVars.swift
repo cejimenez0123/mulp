@@ -6,10 +6,11 @@
 //
 
 import Foundation
-//import UIKit
+import UIKit
 //
-//struct GlobalVars {
-//    
-//    
-//    <#fields#>
-//}
+
+class GlobalVars{
+    var userLoggedIn = false
+    
+}
+let globalVars = GlobalVars()
