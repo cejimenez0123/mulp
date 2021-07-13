@@ -100,52 +100,49 @@ class PageTableViewCell: UITableViewCell{
         print("HELLO WAH WAH")
         if sender == yeahBtn{
             if globalVars.userLoggedIn{
-                //            let url = URL(string: "http://localhost:3000/likes")
-                //            var request = URLRequest(url: url!)
-                //            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-                //            request.httpMethod = "POST"
-                //            let parameters: [String: Any] = [
-                //                "id": 13,
-                //                "name": "Jack & Jill"
-                //            ]
-                //            request.httpBody = parameters.percentEncoded()
-                //
-                //            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                //                guard let data = data,
-                //                    let response = response as? HTTPURLResponse,
-                //                    error == nil else {                                              // check for fundamental networking error
-                //                    print("error", error ?? "Unknown error")
-                //                    return
-                //                }
-                //
-                //                guard (200 ... 299) ~= response.statusCode else {                    // check for http errors
-                //                    print("statusCode should be 2xx, but is \(response.statusCode)")
-                //                    print("response = \(response)")
-                //                    return
-                //                }
-                //
-                //                let responseString = String(data: data, encoding: .utf8)
-                //                print("responseString = \(responseString)")
-                //            }
-                //
-                //            task.resume()
+                yeahBtn.backgroundColor = .green
+                approval = 1
             }else{
                let alert = UIAlertController(title: "Sign Up", message: "If not already, please log in or sign up to vote", preferredStyle: .alert)
 
                 let logInAction = UIAlertAction(title: "Log In", style: .default, handler:{(_ action: UIAlertAction) -> Void in
-
-                    let signUpController = UIStoryboard(name: "MainController", bundle: nil).instantiateViewController(withIdentifier: "SignUpController") as! SignUpController
-                    self.parentController?.present(signUpController, animated: true, completion: nil)
+               
+                    
                     // call method whatever u need
                 })
 
+                let signUpAction = UIAlertAction(title: "Sign Up", style: .default,handler:{ UIAlertAction->Void in
+                    
+//                    let signUpController = SignUpController()
+//                  
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let suController = storyBoard.instantiateViewController(withIdentifier: "SignUpController") as! SignUpController
+                    self.parentController?.navigationController?.show(suController, sender: self)
+                        
+                        
 
+                    
+//                    self.parentController?.present(signUpController, animated: true, completion: nil)
+                })
+                
+                
+                alert.addAction(signUpAction)
                 alert.addAction(logInAction)
-            }
-            yeahBtn.backgroundColor = .green
-            approval = 1
-
-
-        }
+                self.parentController?.present(alert, animated: true, completion: nil)
+}
+    }
     }
 }
+//extension UIView {
+//    var parentViewController: UIViewController? {
+//        var parentResponder: UIResponder? = self
+//        while parentResponder != nil {
+//            parentResponder = parentResponder!.next
+//            if parentResponder is UIViewController {
+//                return parentResponder as? UIViewController
+//            }
+//        }
+//        return nil
+//    }
+//}
+ 

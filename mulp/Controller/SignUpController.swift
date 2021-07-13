@@ -15,7 +15,19 @@ class SignUpController: UIViewController{
     let nameField = UITextField()
     let emailField = UITextField()
     let signUpBtn = UIButton()
- 
+    let dismissBtn = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissAction))
+    init(){
+
+        super.init(nibName: nil, bundle: nil)
+        
+       
+        
+    }
+
+    
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameField.placeholder = "Username"
@@ -28,16 +40,14 @@ class SignUpController: UIViewController{
         signUpBtn.setTitle("Sign UP", for: .normal)
         self.view.addSubview(usernameField)
 //        self.view.addSubview(passwordField)
-//        self.view.addSubview(emailField)
+        self.view.addSubview(emailField)
 //        self.view.addSubview(nameField)
         
-        NSLayoutConstraint.activate([usernameField.widthAnchor.constraint(equalTo: self.view.widthAnchor),usernameField.heightAnchor.constraint(equalToConstant:30),usernameField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),usernameField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 100)])
-        
+        NSLayoutConstraint.activate([usernameField.widthAnchor.constraint(equalTo: self.view.widthAnchor),usernameField.heightAnchor.constraint(equalToConstant:30),usernameField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),usernameField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -70)])
+        NSLayoutConstraint.activate([emailField.widthAnchor.constraint(equalTo: self.view.widthAnchor),emailField.heightAnchor.constraint(equalToConstant: 30),emailField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),emailField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
     }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc func dismissAction(_ sender: Any?){
         
-        
+        dismiss(animated: true, completion: nil)
     }
-    
 }
