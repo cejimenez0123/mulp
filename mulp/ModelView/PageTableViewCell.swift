@@ -84,8 +84,8 @@ class PageTableViewCell: UITableViewCell{
         NSLayoutConstraint.activate([addBtn.leftAnchor.constraint(equalTo: commentBtn.rightAnchor,constant: 1),addBtn.rightAnchor.constraint(equalTo: addBtn.leftAnchor,constant: 50),addBtn.topAnchor.constraint(equalTo: actionBox.topAnchor),addBtn.bottomAnchor.constraint(equalTo: actionBox.bottomAnchor)])
 
     
-    self.yeahBtn.addTarget(self, action: #selector(yeahBtnClick(_:)), for: .touchUpInside)
-    self.nahBtn.addTarget(self, action: #selector(nahBtnClick(_:)), for: .touchUpInside)
+    self.yeahBtn.addTarget(self, action: #selector(approvalBtnClick(_:)), for: .touchUpInside)
+    self.nahBtn.addTarget(self, action: #selector(approvalBtnClick(_:)), for: .touchUpInside)
    }
     
   
@@ -93,45 +93,43 @@ class PageTableViewCell: UITableViewCell{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    @objc func nahBtnClick(_ sender: UIButton){
-        print("SIWA")
-    }
-    @objc func yeahBtnClick(_ sender: UIButton){
+ 
+    @objc func approvalBtnClick(_ sender: UIButton){
         print("HELLO WAH WAH")
-        if sender == yeahBtn{
-            if globalVars.userLoggedIn{
-                yeahBtn.backgroundColor = .green
-                approval = 1
+        if globalVars.userLoggedIn{
+        switch sender {
+        case yeahBtn:
+            yeahBtn.backgroundColor = .green
+            approval = 1
+        case  nahBtn:
+            nahBtn.backgroundColor = .yellow
+            approval = -1
+        default:
+            approval = 0
+                }
+       
+           
             }else{
                let alert = UIAlertController(title: "Sign Up", message: "If not already, please log in or sign up to vote", preferredStyle: .alert)
 
                 let logInAction = UIAlertAction(title: "Log In", style: .default, handler:{(_ action: UIAlertAction) -> Void in
-               
-                    
-                    // call method whatever u need
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let liController = storyBoard.instantiateViewController(identifier: "LogInController") as! LogInController
+                    self.parentController?.navigationController?.show(liController, sender: self)
                 })
 
                 let signUpAction = UIAlertAction(title: "Sign Up", style: .default,handler:{ UIAlertAction->Void in
-                    
-//                    let signUpController = SignUpController()
-//                  
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let suController = storyBoard.instantiateViewController(withIdentifier: "SignUpController") as! SignUpController
                     self.parentController?.navigationController?.show(suController, sender: self)
-                        
-                        
 
-                    
-//                    self.parentController?.present(signUpController, animated: true, completion: nil)
                 })
-                
-                
                 alert.addAction(signUpAction)
                 alert.addAction(logInAction)
                 self.parentController?.present(alert, animated: true, completion: nil)
 }
     }
-    }
+    
 }
 //extension UIView {
 //    var parentViewController: UIViewController? {

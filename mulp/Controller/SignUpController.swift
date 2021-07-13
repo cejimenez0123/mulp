@@ -32,19 +32,25 @@ class SignUpController: UIViewController{
         super.viewDidLoad()
         usernameField.placeholder = "Username"
         passwordField.placeholder = "Password"
+        emailField.placeholder = "Email"
         usernameField.translatesAutoresizingMaskIntoConstraints = false
         passwordField.translatesAutoresizingMaskIntoConstraints = false
         nameField.translatesAutoresizingMaskIntoConstraints = false
         emailField.translatesAutoresizingMaskIntoConstraints = false
         signUpBtn.translatesAutoresizingMaskIntoConstraints = false
-        signUpBtn.setTitle("Sign UP", for: .normal)
+        signUpBtn.backgroundColor = .systemBlue
+        signUpBtn.setTitle("Sign Up", for: .normal)
+        
         self.view.addSubview(usernameField)
-//        self.view.addSubview(passwordField)
+        self.view.addSubview(passwordField)
         self.view.addSubview(emailField)
+        self.view.addSubview(signUpBtn)
 //        self.view.addSubview(nameField)
         
-        NSLayoutConstraint.activate([usernameField.widthAnchor.constraint(equalTo: self.view.widthAnchor),usernameField.heightAnchor.constraint(equalToConstant:30),usernameField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),usernameField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -70)])
-        NSLayoutConstraint.activate([emailField.widthAnchor.constraint(equalTo: self.view.widthAnchor),emailField.heightAnchor.constraint(equalToConstant: 30),emailField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),emailField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)])
+        NSLayoutConstraint.activate([usernameField.widthAnchor.constraint(equalTo: self.view.widthAnchor),usernameField.heightAnchor.constraint(equalToConstant:30),usernameField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),usernameField.centerYAnchor.constraint(equalTo: emailField.centerYAnchor, constant: -60)])
+        NSLayoutConstraint.activate([emailField.widthAnchor.constraint(equalTo: self.view.widthAnchor),emailField.heightAnchor.constraint(equalToConstant: 30),emailField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),emailField.centerYAnchor.constraint(equalTo: self.passwordField.centerYAnchor,constant: -60)])
+        NSLayoutConstraint.activate([passwordField.widthAnchor.constraint(equalTo: self.view.widthAnchor),passwordField.heightAnchor.constraint(equalToConstant: 30),passwordField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),passwordField.centerYAnchor.constraint(equalTo: signUpBtn.centerYAnchor, constant: -60)])
+        NSLayoutConstraint.activate([signUpBtn.widthAnchor.constraint(equalToConstant: 100),signUpBtn.heightAnchor.constraint(equalToConstant: 40), signUpBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),signUpBtn.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: 70)])
     }
     @objc func dismissAction(_ sender: Any?){
         
