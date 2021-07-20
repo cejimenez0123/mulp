@@ -22,6 +22,7 @@
 		62390BE7269494A3008DD0B5 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE6269494A2008DD0B5 /* GlobalVars.swift */; };
 		62390BE926949803008DD0B5 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE826949803008DD0B5 /* LogInController.swift */; };
 		62390BEB2695C630008DD0B5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BEA2695C630008DD0B5 /* SignUpController.swift */; };
+		6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297A38226A5F81B00E06960 /* ProfileController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		62390BE6269494A2008DD0B5 /* GlobalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 		62390BE826949803008DD0B5 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		62390BEA2695C630008DD0B5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		6297A38226A5F81B00E06960 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				62390BE6269494A2008DD0B5 /* GlobalVars.swift */,
 				62390BE826949803008DD0B5 /* LogInController.swift */,
 				62390BEA2695C630008DD0B5 /* SignUpController.swift */,
+				6297A38226A5F81B00E06960 /* ProfileController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				62390BE926949803008DD0B5 /* LogInController.swift in Sources */,
 				62390BEB2695C630008DD0B5 /* SignUpController.swift in Sources */,
 				62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */,
+				6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */,
 				62390BDF2680EEE9008DD0B5 /* Page.swift in Sources */,
 				62390BE7269494A3008DD0B5 /* GlobalVars.swift in Sources */,
 				62390BE5268602F3008DD0B5 /* User.swift in Sources */,

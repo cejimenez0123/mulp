@@ -28,6 +28,47 @@ class LogInController: UIViewController{
         NSLayoutConstraint.activate([logInBtn.widthAnchor.constraint(equalToConstant: 100),logInBtn.heightAnchor.constraint(equalToConstant: 40), logInBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),logInBtn.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: 70)])
         
     }
+    @objc func logOn(){
+        guard let url = URL(string: "\(globalVars.path)/logon") else {return}
+        var request = URLRequest(url: url)
+        let session = URLSession.shared
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpMethod = "POST"
+        let parameters: [String: Any] = [
+            "username": usernameField.text ?? "0",
+            "password": passwordField.text ?? ""
+        ]
+        do {
+               request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+           } catch let error {
+               print(error.localizedDescription)
+           }
+
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+
+                guard error == nil else {
+                    return
+                }
+
+                guard let data = data else {
+                    return
+                }
+                do {
+                    //create json object from data
+                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                        print(json)
+                        // handle json...
+                        
+                        
+                        print(json)
+                    }
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            })
+            task.resume()
+    }
     required init(){
         super.init(nibName: nil, bundle: nil)
     }
