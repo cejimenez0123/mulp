@@ -7,10 +7,11 @@
 
 import Foundation
 import UIKit
-
+import SwiftyJSON
 
 class SignUpController: UIViewController{
     let usernameField = UITextField()
+    var user = ""
     let passwordField = UITextField()
     let nameField = UITextField()
     let emailField = UITextField()
@@ -27,6 +28,7 @@ class SignUpController: UIViewController{
     
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
+    
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,52 +55,52 @@ class SignUpController: UIViewController{
         NSLayoutConstraint.activate([signUpBtn.widthAnchor.constraint(equalToConstant: 100),signUpBtn.heightAnchor.constraint(equalToConstant: 40), signUpBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),signUpBtn.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: 70)])
     }
     @objc func signOn(_sender: Any?){
+        
+        
         guard let url = URL(string: "\(globalVars.path)/users") else {return}
         var request = URLRequest(url: url)
-        let session = URLSession.shared
+       
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = "POST"
-        let parameters: [String: Any] = [
+        let parameters:NSDictionary = [
             "id": "\(UUID())",
-            "username": usernameField.text ?? "0",
-            "email": emailField.text ?? "",
-            "password": passwordField.text ?? ""
+            "username": self.usernameField.text!,
+            "email": self.emailField.text!,
+            "password": self.passwordField.text!
         ]
-        do {
-               request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
-           } catch let error {
-               print(error.localizedDescription)
-           }
-
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-
-                guard error == nil else {
-                    return
-                }
-
-                guard let data = data else {
-                    return
-                }
-                do {
-                    //create json object from data
-                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                        print(json)
-                        // handle json...
-                        
-                        
-                        print(json)
-                    }
-                } catch let error {
-                    print(error.localizedDescription)
-                }
-            })
-            task.resume()
-        }
+        let jsonData = try? JSONSerialization.data(withJSONObject:parameters)
+      
+            request.timeoutInterval = 10
+        request.httpBody = jsonData
+        print("!")
+        URLSession.shared.dataTask(with: request) {(data,response,error) -> Void in
+                print("@")
+            if let data = data, error == nil {
+                   
+            let json = JSON(data)
+            if error != nil{ print(json.error?.rawValue ?? "No Error")}
+                
+                print(json["data"]["attributes"])
+                let username = json["data"]["attributes"]["username"].stringValue
+                    self.user = username
+            } else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            
+        }.resume()
         
-    
+        let profileCont = self.storyboard?.instantiateViewController(identifier: "ProfileController") as! ProfileController
+        let navController = UINavigationController(rootViewController: profileCont)
+        present(navController, animated: true, completion: nil)
+        }
     @objc func dismissAction(_ sender: Any?){
         
         dismiss(animated: true, completion: nil)
     }
+        func completionHandler(truthy:Bool,info:Any)->Void{
+            print(info)
+        }
+    
 }

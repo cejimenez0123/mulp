@@ -1,0 +1,6 @@
+framework module Pods_mulp_mulpUITests {
+  umbrella header "Pods-mulp-mulpUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -12,6 +12,8 @@ import UIKit
 class GlobalVars{
     var userLoggedIn = false
     var path="http://127.0.0.1:3000"
+    var currentUser:User = User(id: "0", email: "0@0.com", username: "0")
+    
 }
 let globalVars = GlobalVars()
 

@@ -9,18 +9,27 @@ import UIKit
 
 class ProfileController:UIViewController{
     
-    
+//
     @IBOutlet weak var LitSegmentedControl: UISegmentedControl!
-    
+//
+    @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var ProfilePic: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+//        ProfilePic.layer.cornerRadius = ProfilePic.layer.borderWidth / 5
+//        NSLayoutConstraint.activate([ProfilePic.widthAnchor.constraint(equalToConstant:  100),ProfilePic.heightAnchor.constraint(equalToConstant: 100), ProfilePic.centerXAnchor.constraint(equalTo: self.view.centerXAnchor), ProfilePic.centerYAnchor.constraint(equalTo: self.view.topAnchor,constant: 100)])
+        
+    
+    }
+   
+    required init?(coder aDecoder: NSCoder) {
+       
+       super.init(coder: aDecoder)
     
     }
     
-    @IBAction func LitIndexChanged(_ sender: Any) {
-        UISegmentedControl) {
-                switch segmentedControl.selectedSegmentIndex
+    @IBAction func LitIndexChanged(_ sender:UISegmentedControl) {
+                switch sender.selectedSegmentIndex
                 {
                 case 0:
                     NSLog("Popular selected")
@@ -32,12 +41,5 @@ class ProfileController:UIViewController{
                     break;
                 }
             }
-    }
+    
 }
-//protocol SegmentedControlDelegate:AnyObject{
-//    func didIndexChanged(at index: Int)
-//}
-//protocol TableViewDidScrollDelegate:class {
-//    func TableViewDidScroll(for x: CGFloat)
-//    
-//}
