@@ -13,6 +13,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     var pages = [Page]()
     init(pages: [Page]){
         self.pages = pages
+        
         self.pages.append(Page(id: "1", pic: UIImage(named: "TheNerves" )!))
         
         super.init( style: UITableView.Style.plain)
@@ -22,6 +23,8 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     }
     override func viewDidLoad() {
         self.tableView.register(PageTableViewCell.self, forCellReuseIdentifier: "PageTableViewCell")
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -41,6 +44,8 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        
+         URL(
         let page = Page(id: UUID().uuidString, pic: image)
         pages.insert(page, at: 0)
         

@@ -10,7 +10,7 @@ import UIKit
 
 
 class User {
-    let id:String
+    var id:String = ""
     var email:String=""
     var username:String=""
     init(id:String,email:String,username:String) {

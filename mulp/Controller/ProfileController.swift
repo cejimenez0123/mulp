@@ -10,6 +10,7 @@ import UIKit
 class ProfileController:UIViewController{
     
 //
+    
     @IBOutlet weak var LitSegmentedControl: UISegmentedControl!
 //
     @IBOutlet weak var NameLabel: UILabel!
@@ -21,6 +22,7 @@ class ProfileController:UIViewController{
         
     
     }
+
    
     required init?(coder aDecoder: NSCoder) {
        

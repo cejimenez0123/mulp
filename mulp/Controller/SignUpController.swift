@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class SignUpController: UIViewController{
     let usernameField = UITextField()
-    var user = ""
+    var user = User(id: "0",email: "", username: "")
     let passwordField = UITextField()
     let nameField = UITextField()
     let emailField = UITextField()
@@ -80,10 +80,12 @@ class SignUpController: UIViewController{
                    
             let json = JSON(data)
             if error != nil{ print(json.error?.rawValue ?? "No Error")}
-                
+                let att = json["data"]["attributes"]["username"]
                 print(json["data"]["attributes"])
-                let username = json["data"]["attributes"]["username"].stringValue
-                    self.user = username
+                
+                self.user.username = att["username"].stringValue
+                self.user.email = att["email"].stringValue
+                self.user.id = att["id"].stringValue
             } else {
                 print(error?.localizedDescription ?? "No data")
                 return
@@ -91,9 +93,12 @@ class SignUpController: UIViewController{
             
         }.resume()
         
-        let profileCont = self.storyboard?.instantiateViewController(identifier: "ProfileController") as! ProfileController
-        let navController = UINavigationController(rootViewController: profileCont)
-        present(navController, animated: true, completion: nil)
+//        let profileCont = self.storyboard?.instantiateViewController(identifier: "ProfileController") as! ProfileController
+        globalVars.currentUser.email = self.user.email
+        globalVars.currentUser.username = self.user.username
+        globalVars.currentUser.id = self.user.id
+        print("Currentuser",globalVars.currentUser.username)
+        self.navigationController?.popToRootViewController(animated: true)
         }
     @objc func dismissAction(_ sender: Any?){
         
