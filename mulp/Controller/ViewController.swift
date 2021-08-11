@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 
 class MainViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -43,10 +43,10 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-       let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        guard let image = info[.originalImage] as? UIImage else { return }
         
-         URL(
-        let page = Page(id: UUID().uuidString, pic: image)
+        let path = router.uploadImage(fileName: "Image", image: image)
+        let page = router.uploadPage(path: path, userId: UUID().uuidString, bookId: "0")
         pages.insert(page, at: 0)
         
             picker.dismiss(animated: true, completion: nil)
@@ -89,4 +89,79 @@ extension UIImage{
     }
 }
 
+//extension UIViewController{
+//    private func createBody(with parameters: [String: String]?,file:UIImage filePathKey: String, urls: [URL], boundary: String) throws -> Data {
+//        )
+//
+//
+//
+//        }
+//
+//        body.append("--\(boundary)--\r\n")
+//        return body
+//    }
+//}
 
+extension UIViewController{
+    
+    func uploadPage(image:UIImage)->Page{
+       
+        var page:Page = Page(id: "0", pic: UIImage(named: "TheNerves")!)
+        guard let url = URL(string: "\(globalVars.path)/pages") else {return page; }
+        var request = URLRequest(url: url)
+        let boundary = UUID().uuidString
+        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+//            request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpMethod = "POST"
+//        let jpegData = image.jpegData(compressionQuality: 1)
+        let parameter:NSDictionary = [
+            "image": image.pngData()!
+           
+        ]
+      
+        request.httpBody = try? NSKeyedArchiver.archivedData(withRootObject: parameter, requiringSecureCoding: true)
+        print("!")
+        URLSession.shared.dataTask(with: request) {(data,response,error) -> Void in
+            if let data = data, error == nil {
+                   
+            let json = JSON(data)
+        
+                let url = URL(string:"http://www.apple.com/euro/ios/ios8/a/generic/images/og.png")
+                    if let imgData = try? Data(contentsOf: url!)
+                    {
+                        let image: UIImage = UIImage(data: imgData) ?? UIImage(named: "TheNerves")!
+                        page = Page(id: json["id"].stringValue, pic: image)
+                    }
+                
+            if error != nil{ print(json.error?.rawValue ?? "No Error")}
+             
+            } else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            
+            
+        }.resume()
+        return page
+    }
+    
+}
+extension UIImage {
+    var jpeg: Data? { jpegData(compressionQuality: 1) }  // QUALITY min = 0 / max = 1
+    var png: Data? { pngData() }
+}
+extension UIImageView{
+    func load(url: URL) {
+        
+        DispatchQueue.global().async {
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.image = image
+//                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
