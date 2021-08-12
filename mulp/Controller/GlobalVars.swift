@@ -63,8 +63,9 @@ class Router {
                         
         return path
     }
-    func uploadPage(path:String, userId:String,bookId:String )->Page{
-        let page = Page(id: "0", pic: UIImage(named: "TheNerves")!)
+    func uploadPage(image:UIImage, userId:String,bookId:String )->Page{
+       let path =  self.uploadImage(fileName: "Image",image: image)
+        let page = Page(id: "0", pic:UIImage(named: "TheNerves"),path: path)
         guard let url = URL(string: "\(globalVars.path)/pages") else {
             return page
         }

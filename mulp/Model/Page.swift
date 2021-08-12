@@ -10,7 +10,7 @@ import UIKit
 
 class Page {
     var id:String = ""
-    var pic:UIImage = UIImage(named: "TheNerves")!
+   
     var path:String = "" {didSet{
         DispatchQueue.global().async { [self] in
             let url = URL(string: path)
@@ -20,10 +20,17 @@ class Page {
                     }
             }}}}
     var approvalScore = 0
-    
-    init(id: String,pic:UIImage) {
+    var pic:UIImage = UIImage(named: "TheNerves")!
+    var userId:String=""
+    init(id: String,pic:UIImage?,path:String?) {
         self.id = id
-        self.pic = pic
+        if path != nil {
+            self.path = path!
+        }
+        if pic != nil {
+            self.pic = pic!
+        }
+        
         
     }
         func like(){
