@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1240"
+   LastUpgradeVersion = "1250"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5317CD48C584AF7C4EABBD2FD00A4DAE"
-               BuildableName = "Pods-mulp-mulpUITests.framework"
+               BuildableName = "Pods_mulp_mulpUITests.framework"
                BlueprintName = "Pods-mulp-mulpUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

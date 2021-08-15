@@ -6,15 +6,17 @@
 //
 
 import UIKit
-import SwiftyJSON
+import Combine
 
 class MainViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var pages = [Page]()
     init(pages: [Page]){
         self.pages = pages
+     let  page = Page(id: "1", path: "")
+        page.pic = UIImage(named:"TheNerves")!
+        self.pages.append(page)
         
-        self.pages.append(Page(id: "1", pic:UIImage(named:"TheNerves"), path: ""))
         
         super.init( style: UITableView.Style.plain)
   
@@ -42,18 +44,6 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
         
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[.originalImage] as? UIImage
-        
-        
-        
-        let page = router.uploadPage(image: image!, userId: globalVars.currentUser.id, bookId: "0")
-        
-            self.pages.insert(page, at: 0)
-        
-            picker.dismiss(animated: true, completion: nil)
-        tableView.reloadData()
-    }
     
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -91,6 +81,25 @@ extension UIImage{
         
     }
 }
+extension MainViewController{
+   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+       let image = info[.originalImage] as? UIImage
+    
+    router.uploadImage(fileName: "Image", image: image, handler: { status,path  in
+        
+        router.uploadPage(userId: globalVars.currentUser.id, bookId: "0", path: path, handler: {status,page in
+            self.pages.insert(page, at: 0)
+        })
+    })
+
+    
+    
+   
+           picker.dismiss(animated: true, completion: nil)
+       tableView.reloadData()
+
+
+   }
 
 //extension UIViewController{
 //    private func createBody(with parameters: [String: String]?,file:UIImage filePathKey: String, urls: [URL], boundary: String) throws -> Data {
@@ -105,49 +114,6 @@ extension UIImage{
 //    }
 //}
 
-extension UIViewController{
-    
-//    func uploadPage(image:UIImage)-> Page{
-//
-//        var page:Page = Page(id: "0", path:"0")
-//        guard let url = URL(string: "\(globalVars.path)/pages") else {return page; }
-//        var request = URLRequest(url: url)
-//        let boundary = UUID().uuidString
-//        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-////            request.addValue("application/json", forHTTPHeaderField: "Accept")
-//        request.httpMethod = "POST"
-////        let jpegData = image.jpegData(compressionQuality: 1)
-//        let parameter:NSDictionary = [
-//            "image": image.pngData()!
-//
-//        ]
-//
-//        request.httpBody = try? NSKeyedArchiver.archivedData(withRootObject: parameter, requiringSecureCoding: true)
-//        print("!")
-//        URLSession.shared.dataTask(with: request) {(data,response,error) -> Void in
-//            if let data = data, error == nil {
-//
-//            let json = JSON(data)
-//
-//                let url = URL(string:"http://www.apple.com/euro/ios/ios8/a/generic/images/og.png")
-//                    if let imgData = try? Data(contentsOf: url!)
-//                    {
-//                        let image: UIImage = UIImage(data: imgData) ?? UIImage(named: "TheNerves")!
-//                        page = Page(id: json["id"].stringValue, pic: image)
-//                    }
-//
-//            if error != nil{ print(json.error?.rawValue ?? "No Error")}
-//
-//            } else {
-//                print(error?.localizedDescription ?? "No data")
-//                return
-//            }
-//
-//
-//        }.resume()
-//        return page
-//    }
-    
 }
 extension UIImage {
     var jpeg: Data? { jpegData(compressionQuality: 1) }  // QUALITY min = 0 / max = 1

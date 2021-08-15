@@ -22,15 +22,12 @@ class Page {
     var approvalScore = 0
     var pic:UIImage = UIImage(named: "TheNerves")!
     var userId:String=""
-    init(id: String,pic:UIImage?,path:String?) {
+    init(id: String,path:String?) {
         self.id = id
         if path != nil {
             self.path = path!
         }
-        if pic != nil {
-            self.pic = pic!
-        }
-        
+    
         
     }
         func like(){

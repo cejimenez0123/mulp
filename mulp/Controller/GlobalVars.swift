@@ -9,7 +9,12 @@ import Foundation
 import UIKit
 import SwiftyJSON
 //
-
+import Combine
+enum StatusCode {
+    case startup
+    case busy
+    case complete
+}
 class GlobalVars{
     var userLoggedIn = false
     var path="http://127.0.0.1:3000"
@@ -20,12 +25,15 @@ let globalVars = GlobalVars()
 
 
 class Router {
-    func uploadImage(fileName:String,image: UIImage)->String{
+    func uploadImage(fileName:String,image: UIImage?,handler:@escaping ((StatusCode,String)->())){
+        var path = String()
         
-        
+      
+        if let image = image {
+                  
         let boundary = UUID().uuidString
-        var path = "NO PATH"
-        guard let url = URL(string: "\(globalVars.path)/image/upload") else {return  path}
+    
+        guard let url = URL(string: "\(globalVars.path)/image/upload") else {return }
 
             let session = URLSession.shared
         let paramName = "file"
@@ -34,18 +42,13 @@ class Router {
             urlRequest.httpMethod = "POST"
             urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
             var data = Data()
-        guard let imageData = image.pngData() else {return "NO DATA"}
+        guard let imageData = image.pngData() else { return  }
             // Add the image data to the raw http request data
             data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
             data.append("Content-Disposition: form-data; name=\"\(paramName)\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
             data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
         data.append("\(imageData)\r\n--\(boundary)--\r\n".data(using: .utf8)!)
-
-//        data.append("name=\"userId\";".data(using: .utf8)!)
-//        data.append("\(user.id)".data(using: .utf8)!)
-//        data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-    
-                    // Send a POST request to the URL, with the data we created earlier
+               
             session.uploadTask(with: urlRequest, from: data, completionHandler: { data, response, error in
                 if error == nil {
                     print(error ?? "NO ERROR")
@@ -54,23 +57,30 @@ class Router {
                 let json = JSON(data)
                                 
                 let url = json["link"].stringValue
-          
+            
                 path = url
-                        }
-                ).resume()
-                        
-                        
-                        
-        return path
+                handler(StatusCode.complete,path)
+            }).resume()
+            
+        
+                  
+        
+        }
+       
     }
-    func uploadPage(image:UIImage, userId:String,bookId:String ) async -> Page{
-       let path =  self.uploadImage(fileName: "Image",image: image)
-        let page = Page(id: "0", pic:UIImage(named: "TheNerves"),path: path)
+    func uploadPage(userId:String,bookId:String, path:String, handler: @escaping (StatusCode,Page)->()){
+        
+        
+        
+//        let path =  await self.uploadImage(fileName: "Image",image: image)
+     
+        let page = Page(id: "0",path: path)
         guard let url = URL(string: "\(globalVars.path)/pages") else {
-            return page
+            return
         }
         let session = URLSession.shared
-        
+//        session.dataTaskPublisher(for: url)
+            
          var request = URLRequest(url: url)
         let param:NSDictionary = ["data": path, "userId": userId,"bookId":bookId]
         request.httpMethod = "POST"
@@ -90,12 +100,15 @@ class Router {
             
             page.id = json["data"]["attributes"]["id"].stringValue
             page.path = json["data"]["attributes"]["data"].stringValue
+            handler(StatusCode.complete,page)
     }
      
+        
     
+      
+        }
     
-        return page
-    }
+
 }
 let router = Router()
 //extension Dictionary {
