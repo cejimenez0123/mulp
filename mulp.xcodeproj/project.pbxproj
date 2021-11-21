@@ -22,8 +22,8 @@
 		62390BE7269494A3008DD0B5 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE6269494A2008DD0B5 /* GlobalVars.swift */; };
 		62390BE926949803008DD0B5 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE826949803008DD0B5 /* LogInController.swift */; };
 		62390BEB2695C630008DD0B5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BEA2695C630008DD0B5 /* SignUpController.swift */; };
-		627194C6B013A097F1B90192 /* Pods_mulp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFDCF60A3567DDAC228767 /* Pods_mulp.framework */; };
 		6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297A38226A5F81B00E06960 /* ProfileController.swift */; };
+		62F31492273064F800B73E0F /* Pods_mulp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFDCF60A3567DDAC228767 /* Pods_mulp.framework */; };
 		9D6EC51F6274C865712036DF /* Pods_mulpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24146190B03457159E254375 /* Pods_mulpTests.framework */; };
 		F0BC1FC387D4D6DCDA56621E /* Pods_mulp_mulpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4F1124F0B79870464E70E6 /* Pods_mulp_mulpUITests.framework */; };
 /* End PBXBuildFile section */
@@ -46,8 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		079E9B91CE70C71C559442D4 /* Pods-mulpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulpTests.release.xcconfig"; path = "Target Support Files/Pods-mulpTests/Pods-mulpTests.release.xcconfig"; sourceTree = "<group>"; };
+		09F0F88B4524B82C15DAFB49 /* Pods-mulp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp.release.xcconfig"; path = "Target Support Files/Pods-mulp/Pods-mulp.release.xcconfig"; sourceTree = "<group>"; };
 		0A4F1124F0B79870464E70E6 /* Pods_mulp_mulpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mulp_mulpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1FC9F087FD69F26BF8417B31 /* Pods-mulpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulpTests.debug.xcconfig"; path = "Target Support Files/Pods-mulpTests/Pods-mulpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		24146190B03457159E254375 /* Pods_mulpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mulpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FA6E5C258D0D210086AE62 /* mulp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mulp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FA6E5F258D0D210086AE62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,8 +65,7 @@
 		35FA6E80258D0D240086AE62 /* mulpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mulpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FA6E84258D0D240086AE62 /* mulpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mulpUITests.swift; sourceTree = "<group>"; };
 		35FA6E86258D0D240086AE62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5405DEABC89BE237B3DD75FC /* Pods-mulpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulpTests.release.xcconfig"; path = "Target Support Files/Pods-mulpTests/Pods-mulpTests.release.xcconfig"; sourceTree = "<group>"; };
-		559DE5F12FE8936843BEE3CE /* Pods-mulp-mulpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp-mulpUITests.release.xcconfig"; path = "Target Support Files/Pods-mulp-mulpUITests/Pods-mulp-mulpUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4EA8F1D5902725962C82EA2D /* Pods-mulpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulpTests.debug.xcconfig"; path = "Target Support Files/Pods-mulpTests/Pods-mulpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		62390BDE2680EEE9008DD0B5 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		62390BE22680FFF6008DD0B5 /* PageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTableViewCell.swift; sourceTree = "<group>"; };
 		62390BE4268602F3008DD0B5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -73,10 +73,10 @@
 		62390BE826949803008DD0B5 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		62390BEA2695C630008DD0B5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		6297A38226A5F81B00E06960 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		8D1A99130C5876F5C03EAB60 /* Pods-mulp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp.release.xcconfig"; path = "Target Support Files/Pods-mulp/Pods-mulp.release.xcconfig"; sourceTree = "<group>"; };
+		8123DF63B473547EF4684CA1 /* Pods-mulp-mulpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp-mulpUITests.release.xcconfig"; path = "Target Support Files/Pods-mulp-mulpUITests/Pods-mulp-mulpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CFBFDCF60A3567DDAC228767 /* Pods_mulp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mulp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8D5B06FABBAAF87FE2F445B /* Pods-mulp-mulpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp-mulpUITests.debug.xcconfig"; path = "Target Support Files/Pods-mulp-mulpUITests/Pods-mulp-mulpUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		DAA9EEE62426A1801BA93E40 /* Pods-mulp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp.debug.xcconfig"; path = "Target Support Files/Pods-mulp/Pods-mulp.debug.xcconfig"; sourceTree = "<group>"; };
+		F04262E194C66E2E3A97729F /* Pods-mulp-mulpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp-mulpUITests.debug.xcconfig"; path = "Target Support Files/Pods-mulp-mulpUITests/Pods-mulp-mulpUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F045A174FE014DD8129410D3 /* Pods-mulp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp.debug.xcconfig"; path = "Target Support Files/Pods-mulp/Pods-mulp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				627194C6B013A097F1B90192 /* Pods_mulp.framework in Frameworks */,
+				62F31492273064F800B73E0F /* Pods_mulp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,8 +114,8 @@
 				35FA6E78258D0D240086AE62 /* mulpTests */,
 				35FA6E83258D0D240086AE62 /* mulpUITests */,
 				35FA6E5D258D0D210086AE62 /* Products */,
-				6BE8B464ECA83D23DC7A9B16 /* Pods */,
 				88EACD59E8D4FA5C0CF7753D /* Frameworks */,
+				F2D4D898493A2EE3F4B4F081 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,19 +193,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		6BE8B464ECA83D23DC7A9B16 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DAA9EEE62426A1801BA93E40 /* Pods-mulp.debug.xcconfig */,
-				8D1A99130C5876F5C03EAB60 /* Pods-mulp.release.xcconfig */,
-				D8D5B06FABBAAF87FE2F445B /* Pods-mulp-mulpUITests.debug.xcconfig */,
-				559DE5F12FE8936843BEE3CE /* Pods-mulp-mulpUITests.release.xcconfig */,
-				1FC9F087FD69F26BF8417B31 /* Pods-mulpTests.debug.xcconfig */,
-				5405DEABC89BE237B3DD75FC /* Pods-mulpTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		88EACD59E8D4FA5C0CF7753D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +201,19 @@
 				24146190B03457159E254375 /* Pods_mulpTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2D4D898493A2EE3F4B4F081 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F045A174FE014DD8129410D3 /* Pods-mulp.debug.xcconfig */,
+				09F0F88B4524B82C15DAFB49 /* Pods-mulp.release.xcconfig */,
+				F04262E194C66E2E3A97729F /* Pods-mulp-mulpUITests.debug.xcconfig */,
+				8123DF63B473547EF4684CA1 /* Pods-mulp-mulpUITests.release.xcconfig */,
+				4EA8F1D5902725962C82EA2D /* Pods-mulpTests.debug.xcconfig */,
+				079E9B91CE70C71C559442D4 /* Pods-mulpTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -522,7 +522,9 @@
 		35FA6E87258D0D240086AE62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -570,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -578,13 +580,16 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = "";
 			};
 			name = Debug;
 		};
 		35FA6E88258D0D240086AE62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -626,26 +631,30 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -validate-tbd-against-ir=none";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		35FA6E8A258D0D240086AE62 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAA9EEE62426A1801BA93E40 /* Pods-mulp.debug.xcconfig */;
+			baseConfigurationReference = F045A174FE014DD8129410D3 /* Pods-mulp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AF7PH7C9M6;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = mulp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,13 +670,15 @@
 		};
 		35FA6E8B258D0D240086AE62 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D1A99130C5876F5C03EAB60 /* Pods-mulp.release.xcconfig */;
+			baseConfigurationReference = 09F0F88B4524B82C15DAFB49 /* Pods-mulp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AF7PH7C9M6;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = mulp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -683,18 +694,20 @@
 		};
 		35FA6E8D258D0D250086AE62 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FC9F087FD69F26BF8417B31 /* Pods-mulpTests.debug.xcconfig */;
+			baseConfigurationReference = 4EA8F1D5902725962C82EA2D /* Pods-mulpTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AF7PH7C9M6;
 				INFOPLIST_FILE = mulpTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = starter.mulpTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -705,18 +718,20 @@
 		};
 		35FA6E8E258D0D250086AE62 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5405DEABC89BE237B3DD75FC /* Pods-mulpTests.release.xcconfig */;
+			baseConfigurationReference = 079E9B91CE70C71C559442D4 /* Pods-mulpTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AF7PH7C9M6;
 				INFOPLIST_FILE = mulpTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = starter.mulpTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -727,7 +742,7 @@
 		};
 		35FA6E90258D0D250086AE62 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8D5B06FABBAAF87FE2F445B /* Pods-mulp-mulpUITests.debug.xcconfig */;
+			baseConfigurationReference = F04262E194C66E2E3A97729F /* Pods-mulp-mulpUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AF7PH7C9M6;
@@ -747,7 +762,7 @@
 		};
 		35FA6E91258D0D250086AE62 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 559DE5F12FE8936843BEE3CE /* Pods-mulp-mulpUITests.release.xcconfig */;
+			baseConfigurationReference = 8123DF63B473547EF4684CA1 /* Pods-mulp-mulpUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AF7PH7C9M6;

@@ -13,8 +13,10 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     var pages = [Page]()
     init(pages: [Page]){
         self.pages = pages
-     let  page = Page(id: "1", path: "")
+     let  page = Page(id: "1", path: "https://mulp.s3.amazonaws.com/mulp/image/image/34/RackMultipart20211107-94842-3wx0jk.jpg")
         page.pic = UIImage(named:"TheNerves")!
+        
+        
         self.pages.append(page)
         
         
@@ -56,8 +58,9 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let pageCell = tableView.dequeueReusableCell(withIdentifier: "PageTableViewCell",for: indexPath) as! PageTableViewCell
             
-            
-        pageCell.picture = pages[indexPath.row].pic
+       let page  = pages[indexPath.row]
+        
+        pageCell.pic.downloaded(from: page.path)
         pageCell.parentController = self
         return pageCell
     }
@@ -86,10 +89,10 @@ extension MainViewController{
        let image = info[.originalImage] as? UIImage
     
     router.uploadImage(fileName: "Image", image: image, handler: { status,path  in
+        router.uploadPage(userId: globalVars.currentUser.id, bookId: "0", status:"published", path: path, handler: {status,page in
+                self.pages.insert(page,at:0)
+            })
         
-        router.uploadPage(userId: globalVars.currentUser.id, bookId: "0", path: path, handler: {status,page in
-            self.pages.insert(page, at: 0)
-        })
     })
 
     

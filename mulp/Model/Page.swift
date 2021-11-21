@@ -11,22 +11,14 @@ import UIKit
 class Page {
     var id:String = ""
    
-    var path:String = "" {didSet{
-        DispatchQueue.global().async { [self] in
-            let url = URL(string: path)
-            if let data = try? Data(contentsOf: url!) {
-                if let image = UIImage(data: data){
-                        pic = image
-                    }
-            }}}}
+    var path:String = "" 
     var approvalScore = 0
     var pic:UIImage = UIImage(named: "TheNerves")!
     var userId:String=""
-    init(id: String,path:String?) {
+    var user = User(id:"",email:"", username:"" )
+    init(id: String,path:String) {
         self.id = id
-        if path != nil {
-            self.path = path!
-        }
+        self.path = path
     
         
     }
@@ -38,4 +30,27 @@ class Page {
         }
     
     
+}
+extension UIImageView {
+    func downloaded(from urlstr: String, contentMode mode: ContentMode = .scaleAspectFit) {
+        let url = URL(string: urlstr)!
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            
+            
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+//    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+//        guard let url = URL(string: link) else { return }
+//        downloaded(from: url, contentMode: mode)
+//    }
 }

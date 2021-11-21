@@ -33,8 +33,10 @@ class PageTableViewCell: UITableViewCell{
     pic.translatesAutoresizingMaskIntoConstraints=false
         self.addSubview(pic)
     self.contentView.addSubview(actionBox)
+       
         
         NSLayoutConstraint.activate([pic.topAnchor.constraint(equalTo: self.topAnchor),pic.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -55),pic.leftAnchor.constraint(equalTo: self.leftAnchor),pic.rightAnchor.constraint(equalTo: self.rightAnchor)])
+       
         NSLayoutConstraint.activate([actionBox.topAnchor.constraint(equalTo: pic.bottomAnchor),
             actionBox.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             actionBox.leftAnchor.constraint(equalTo:self.leftAnchor),

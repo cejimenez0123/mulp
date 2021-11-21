@@ -18,7 +18,7 @@ enum StatusCode {
 class GlobalVars{
     var userLoggedIn = false
     var path="http://127.0.0.1:3000"
-    var currentUser:User = User(id: "0", email: "0@0.com", username: "0")
+    var currentUser:User = User(id: "fd4c8346-6050-4da6-b445-2995657032bd", email: "0@0.com", username: "0")
     
 }
 let globalVars = GlobalVars()
@@ -26,7 +26,7 @@ let globalVars = GlobalVars()
 
 class Router {
     func uploadImage(fileName:String,image: UIImage?,handler:@escaping ((StatusCode,String)->())){
-        var path = String()
+
         
       
         if let image = image {
@@ -38,28 +38,45 @@ class Router {
             let session = URLSession.shared
         let paramName = "file"
             // Set the URLRequest to POST and to the specified URL
-            var urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = "POST"
-            urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-            var data = Data()
-        guard let imageData = image.pngData() else { return  }
-            // Add the image data to the raw http request data
-            data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-            data.append("Content-Disposition: form-data; name=\"\(paramName)\"; filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
-            data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-        data.append("\(imageData)\r\n--\(boundary)--\r\n".data(using: .utf8)!)
-               
-            session.uploadTask(with: urlRequest, from: data, completionHandler: { data, response, error in
+//            var urlRequest = URLRequest(url: url)
+//            urlRequest.httpMethod = "POST"
+//            urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+//            var data = Data()
+            let jpegRep = image.jpegData(compressionQuality: 1)
+//            let base64Image = jpegRep!.base64EncodedData()
+            if jpegRep == nil {return}
+//            let boundary = UUID().uuidString
+            let param = ["username": globalVars.currentUser.username]
+//            let url = URL(string: "\(globalVars.path)/image/upload")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey:jpegRep!, boundary: boundary, imgKey: "Attempt") as Data
+           
+           
+           
+////            guard let imageData = image.jpegData(compressionQuality: 1) else { return }
+//            // Add the image data to the raw http request data
+//            data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
+//            data.append("Content-Disposition: multipart/form-data; name=\"\(paramName)\";filename=\"\(fileName)\"\r\n".data(using: .utf8)!)
+////            data.append("Content")
+//            data.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+//            data.append("\(base64Image)".data(using: .utf8)!)
+//                data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+//
+            session.dataTask(with: request, completionHandler: { data, response, error in
                 if error == nil {
                     print(error ?? "NO ERROR")
                 }
                 guard let data = data else { return }
                 let json = JSON(data)
-                                
-                let url = json["link"].stringValue
             
-                path = url
-                handler(StatusCode.complete,path)
+                   
+                    let path = json["link"].stringValue
+                           handler(StatusCode.complete,path)
+                
+                
+               
             }).resume()
             
         
@@ -68,21 +85,71 @@ class Router {
         }
        
     }
-    func uploadPage(userId:String,bookId:String, path:String, handler: @escaping (StatusCode,Page)->()){
+    func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: Data, boundary: String, imgKey: String) -> Data {
+        var body = Data()
+
+            if parameters != nil {
+                for (key, value) in parameters! {
+                    body.append("--\(boundary)\r\n".data(using: .utf8)!)
+                    body.append( "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".data(using: .utf8)!)
+                    body.append( "\(value)\r\n".data(using: .utf8)!)
+                }
+            }
+
+            let filename = "\(imgKey).jpg"
+            let mimetype = "image/jpg"
+
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: \(mimetype)\r\n\r\n".data(using: .utf8)!)
+            body.append(imageDataKey as Data)
+        body.append("\r\n".data(using: .utf8)!)
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+
+            return body
+        }
+//    func createRequest(userid: String,password: String, email: String) throws -> URLRequest {
+////
+//        let parameters = [
+//            "user_id"  : userid,
+//          ]  // build your dictionary however appropriate
+//
+//
+//        let boundary = UUID().uuidString
+//
+//        let url = URL(string: "\(globalVars.path)/image/upload")!
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+//
+////
+////        request.httpBody = try createBody(with: parameters, filePathKey: "file", urls: [fileURL], boundary: boundary)
+////
+//        return request
+//    }
+    func getAllPages(hander:@escaping (StatusCode, [Page])->()){
+        guard let url = URL(string: "\(globalVars.path)/pages") else { return }
+       let request = URLRequest(url: url)
+        let session = URLSession.shared
+        
+        session.dataTask(with: request){(pages,resp,err) in
+            
+            
+            
+            
+        }
         
         
-        
-//        let path =  await self.uploadImage(fileName: "Image",image: image)
-     
+    }
+    
+    func uploadPage(userId:String,bookId:String, status:String,path:String, handler: @escaping (StatusCode,Page)->()){
         let page = Page(id: "0",path: path)
         guard let url = URL(string: "\(globalVars.path)/pages") else {
             return
         }
         let session = URLSession.shared
-//        session.dataTaskPublisher(for: url)
-            
          var request = URLRequest(url: url)
-        let param:NSDictionary = ["data": path, "userId": userId,"bookId":bookId]
+        let param:NSDictionary = ["data": path, "userId": userId,"bookId":bookId,"status":status]
         request.httpMethod = "POST"
         let body = try! JSONSerialization.data(withJSONObject:param, options: .prettyPrinted)
         request.httpBody = body
@@ -96,29 +163,23 @@ class Router {
             }
             guard let data = data else {return}
            let json = JSON(data)
+           let atr = json["data"]["attributes"]
             
-            
-            page.id = json["data"]["attributes"]["id"].stringValue
-            page.path = json["data"]["attributes"]["data"].stringValue
+            page.id = json["data"]["id"].stringValue
+            page.path = atr["data"].stringValue
+            let user =  User(id:atr["user"]["id"].stringValue,email: atr["user"]["email"].stringValue, username: atr["user"]["username"].stringValue)
+            user.name = atr["user"]["name"].stringValue
+            page.userId = user.id
+            page.user = user
             handler(StatusCode.complete,page)
-    }
+        }.resume()
      
         
-    
+        
       
         }
     
 
 }
 let router = Router()
-//extension Dictionary {
-//    func percentEncoded() -> Data? {
-//        return map { key, value in
-//            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-//            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-//            return escapedKey + "=" + escapedValue
-//        }
-//        .joined(separator: "&")
-//        .data(using: .utf8)
-//    }
-//}
+
