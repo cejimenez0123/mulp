@@ -127,17 +127,34 @@ class Router {
 ////
 //        return request
 //    }
-    func getAllPages(hander:@escaping (StatusCode, [Page])->()){
+    func getAllPages(handler:@escaping (StatusCode, [Any])->()){
         guard let url = URL(string: "\(globalVars.path)/pages") else { return }
        let request = URLRequest(url: url)
         let session = URLSession.shared
         
-        session.dataTask(with: request){(pages,resp,err) in
+        session.dataTask(with: request){(data,resp,err) in
             
             
+            if err != nil {
+                print(err! as Error)
+            }else {
+                let json = JSON(data!)
+                let  ps = json["data"].arrayValue
+                
+                    if ps.count > 0 {
+                        let pages =   ps.map { pdata -> Page in
+                            let attr = pdata["attributes"]
+                            
+                            let id = attr["id"].stringValue
+                            let path = attr["data"].stringValue
+                            
+                            return Page(id: id, path: path)
+            }
             
+            handler(StatusCode.complete, pages )
+        }}
             
-        }
+        }.resume()
         
         
     }

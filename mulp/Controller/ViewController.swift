@@ -18,7 +18,11 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
         
         
         self.pages.append(page)
-        
+     
+            
+            
+           
+            
         
         super.init( style: UITableView.Style.plain)
   
@@ -27,8 +31,14 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     }
     override func viewDidLoad() {
         self.tableView.register(PageTableViewCell.self, forCellReuseIdentifier: "PageTableViewCell")
-        
-        
+      
+        router.getAllPages(handler:{ status,pages in
+            
+            
+            print(pages)
+           
+            
+        })
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
