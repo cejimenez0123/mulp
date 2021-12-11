@@ -12,33 +12,23 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     
     var pages = [Page]()
     init(pages: [Page]){
-        self.pages = pages
-     let  page = Page(id: "1", path: "https://mulp.s3.amazonaws.com/mulp/image/image/34/RackMultipart20211107-94842-3wx0jk.jpg")
-        page.pic = UIImage(named:"TheNerves")!
-        
-        
-        self.pages.append(page)
-     
-            
-            
-           
-            
-        
         super.init( style: UITableView.Style.plain)
-  
-       
+        
+        self.pages  = pages
+           
+      
       
     }
     override func viewDidLoad() {
-        self.tableView.register(PageTableViewCell.self, forCellReuseIdentifier: "PageTableViewCell")
-      
-        router.getAllPages(handler:{ status,pages in
+        self.tableView.register(PageTableViewCell.self, forCellReuseIdentifier: "Page/Users/cejim/Development/mulp/mulp/Controller/LogInController.swiftTableViewCell")
+        router.getAllPages(handler:{ [self] status,ps in
+          
             
             
-            print(pages)
+            self.pages.append(contentsOf: ps)
            
-            
         })
+        tableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -53,7 +43,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
-        
+      
     }
 
     

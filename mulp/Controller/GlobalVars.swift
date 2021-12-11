@@ -127,7 +127,7 @@ class Router {
 ////
 //        return request
 //    }
-    func getAllPages(handler:@escaping (StatusCode, [Any])->()){
+    func getAllPages(handler:@escaping (StatusCode, [Page])->()){
         guard let url = URL(string: "\(globalVars.path)/pages") else { return }
        let request = URLRequest(url: url)
         let session = URLSession.shared
