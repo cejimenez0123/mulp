@@ -26,9 +26,11 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
             
             
             self.pages.append(contentsOf: ps)
-           
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         })
-        tableView.reloadData()
+     
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -67,8 +69,11 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let image = pages[indexPath.row]
         
-        let crop = image.pic.widthRatio()
-        return tableView.frame.width / crop + 55
+//        let crop = image.pic.widthRatio()
+//        tableView.frame.width / crop + 55
+       let x = image.pic.heightRatio()
+        return tableView.frame.width /  x + 55
+       
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,6 +87,9 @@ extension UIImage{
     func widthRatio() -> CGFloat {
         return  CGFloat(self.size.width / self.size.height)
         
+    }
+    func heightRatio()-> CGFloat{
+        return CGFloat(self.size.height / self.size.width)
     }
 }
 extension MainViewController{
