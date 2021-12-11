@@ -34,6 +34,7 @@ class PageTableViewCell: UITableViewCell{
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+//        fatalError("init(coder:) has not been implemented")
         actionBox.translatesAutoresizingMaskIntoConstraints = false
         pic.translatesAutoresizingMaskIntoConstraints=false
             self.addSubview(pic)

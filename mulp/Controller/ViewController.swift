@@ -68,13 +68,19 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let image = pages[indexPath.row]
-        
-//        let crop = image.pic.widthRatio()
-//        tableView.frame.width / crop + 55
-       let x = image.pic.heightRatio()
-        return tableView.frame.width /  x + 55
-       
+//        tableView.frame.width
+        let crop = image.pic.heightRatio()
+        return tableView.frame.width / crop
     }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//  let image = pages[indexPath.row]
+////        let crop = image.pic.widthRatio()
+////        tableView.frame.width / crop + 55
+//       let x = image.pic.heightRatio()
+//        return tableView.frame.width /  x + 55
+//
+//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return pages.count

@@ -32,7 +32,7 @@ class Page {
     
 }
 extension UIImageView {
-    func downloaded(from urlstr: String, contentMode mode: ContentMode = .scaleAspectFit) {
+    func downloaded(from urlstr: String, contentMode mode: ContentMode = .scaleAspectFill) {
         let url = URL(string: urlstr)!
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
