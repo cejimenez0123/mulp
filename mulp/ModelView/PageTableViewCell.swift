@@ -94,10 +94,16 @@ class PageTableViewCell: UITableViewCell{
         
         self.yeahBtn.addTarget(self, action: #selector(approvalBtnClick(_:)), for: .touchUpInside)
         self.nahBtn.addTarget(self, action: #selector(approvalBtnClick(_:)), for: .touchUpInside)
+        commentBtn.addTarget(self, action: #selector(commentsSegue(_:)), for: .touchUpInside)
     }
     
   
- 
+    @objc func commentsSegue(_ sender: UIButton){
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
+let commentController =  storyboard.instantiateViewController(withIdentifier: "CommentController")
+        self.parentController?.navigationController?.pushViewController(commentController, animated: true)
+    }
  
     @objc func approvalBtnClick(_ sender: UIButton){
         print("HELLO WAH WAH")
