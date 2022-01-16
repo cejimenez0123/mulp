@@ -12,8 +12,13 @@ class CommentController: UIViewController {
     var page:Page = Page(id: "0", path: "https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg", type: "image")
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        CommentSection.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(CommentSection)
         // Do any additional setup after loading the view.
+        CommentSection.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive=true
+        CommentSection.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        CommentSection.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
         if (self.page.type == "image"){
             
                 let imageView = UIImageView()
@@ -21,6 +26,8 @@ class CommentController: UIViewController {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(imageView)
             NSLayoutConstraint.activate([imageView.topAnchor.constraint(equalTo: self.view.topAnchor),imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor),imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor),imageView.bottomAnchor.constraint(equalTo: CommentSection.topAnchor)])
+            
+            CommentSection.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
         }
     }
         
