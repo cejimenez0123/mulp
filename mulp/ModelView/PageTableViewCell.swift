@@ -10,6 +10,7 @@ import UIKit
 
 class PageTableViewCell: UITableViewCell{
     var pageId = ""
+    var page:Page = Page(id: "0", path: "https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg", type: "image")
     var pic = UIImageView()
     var picture = UIImage(named: "TheNerves"){
         didSet{
@@ -21,32 +22,32 @@ class PageTableViewCell: UITableViewCell{
     var actionBox = UIView()
     let yeahBtn = UIButton()
     let nahBtn = UIButton()
-    
+   
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
    
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
+        
+        
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-    
-   
-   
-   }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    }
+ 
+   required init?(coder: NSCoder){
+        super.init(coder:coder)
 //        fatalError("init(coder:) has not been implemented")
         actionBox.translatesAutoresizingMaskIntoConstraints = false
-        pic.translatesAutoresizingMaskIntoConstraints=false
-            self.addSubview(pic)
-        self.contentView.addSubview(actionBox)
+       pic.downloaded(from: page.path)
+       pic.translatesAutoresizingMaskIntoConstraints = false
+       self.contentView.addSubview(pic)
+       self.contentView.addSubview(actionBox)
+        
            
-            
-            NSLayoutConstraint.activate([pic.topAnchor.constraint(equalTo: self.topAnchor),pic.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -55),pic.leftAnchor.constraint(equalTo: self.leftAnchor),pic.rightAnchor.constraint(equalTo: self.rightAnchor)])
-           
-            NSLayoutConstraint.activate([actionBox.topAnchor.constraint(equalTo: pic.bottomAnchor),
-                actionBox.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-                actionBox.leftAnchor.constraint(equalTo:self.leftAnchor),
-                actionBox.rightAnchor.constraint(equalTo: self.rightAnchor)])
+   
+        
+       NSLayoutConstraint.activate([pic.topAnchor.constraint(equalTo: self.topAnchor),pic.bottomAnchor.constraint(equalTo: actionBox.topAnchor),pic.leftAnchor.constraint(equalTo: self.leftAnchor),pic.rightAnchor.constraint(equalTo: self.rightAnchor)])
+       NSLayoutConstraint.activate([actionBox.heightAnchor.constraint(equalToConstant:50),
+                                    actionBox.widthAnchor.constraint(equalTo: self.widthAnchor),
+                                    actionBox.centerYAnchor.constraint(equalTo: self.bottomAnchor, constant: -25),
+                                    actionBox.centerXAnchor.constraint(equalTo: self.centerXAnchor)])
             let commentBtn = UIButton()
             commentBtn.setTitle("Comment", for: .normal)
             commentBtn.backgroundColor = .black
@@ -97,12 +98,19 @@ class PageTableViewCell: UITableViewCell{
         commentBtn.addTarget(self, action: #selector(commentsSegue(_:)), for: .touchUpInside)
     }
     
+
+    
+
+    
   
     @objc func commentsSegue(_ sender: UIButton){
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
-let commentController =  storyboard.instantiateViewController(withIdentifier: "CommentController")
-        self.parentController?.navigationController?.pushViewController(commentController, animated: true)
+        let commentController =  storyboard.instantiateViewController(withIdentifier: "CommentController") as! CommentController
+        commentController.page = self.page
+        
+       
+        self.parentController?.navigationController?.present(commentController, animated: true)
     }
  
     @objc func approvalBtnClick(_ sender: UIButton){

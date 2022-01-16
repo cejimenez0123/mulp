@@ -15,11 +15,12 @@ class Page {
     var approvalScore = 0
     var pic:UIImage = UIImage(named: "TheNerves")!
     var userId:String=""
+    var type:String = ""
     var user = User(id:"",email:"", username:"" )
-    init(id: String,path:String) {
+    init(id: String,path:String,type:String) {
         self.id = id
         self.path = path
-    
+        self.type = type
         
     }
         func like(){
@@ -31,6 +32,31 @@ class Page {
     
     
 }
+
+extension  UIImage {
+    
+   class func downloaded(from urlstr: String, handler:@escaping (StatusCode,UIImage)-> ()){
+       
+         let url = URL(string: urlstr)!
+    
+        URLSession.shared.dataTask(with: url, completionHandler:{
+            data,response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+            else{return}
+            
+            handler(StatusCode.complete, image)
+        } ).resume()
+        
+        }
+    
+}
+ 
+    
+
 extension UIImageView {
     func downloaded(from urlstr: String, contentMode mode: ContentMode = .scaleAspectFill) {
         let url = URL(string: urlstr)!

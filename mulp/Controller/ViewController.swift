@@ -59,9 +59,9 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let pageCell = tableView.dequeueReusableCell(withIdentifier: "PageTableViewCell",for: indexPath) as! PageTableViewCell
-            
-       let page  = pages[indexPath.row]
         
+       let page  = pages[indexPath.row]
+        pageCell.page = page
         pageCell.pic.downloaded(from: page.path)
         pageCell.parentController = self
         return pageCell
@@ -102,9 +102,13 @@ extension MainViewController{
    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
        let image = info[.originalImage] as? UIImage
     
-    router.uploadImage(fileName: "Image", image: image, handler: { status,path  in
-        router.uploadPage(userId: globalVars.currentUser.id, bookId: "0", status:"published", path: path, handler: {status,page in
+       router.uploadImage(fileName: "Image", image: image, handler: { status,path  in
+           
+           router.uploadPage(userId: globalVars.currentUser.id, bookId: "0", type:"image", status:"published", path: path, handler: {status,page in
                 self.pages.insert(page,at:0)
+               DispatchQueue.main.async {
+                   self.tableView.reloadData()
+               }
             })
         
     })
@@ -113,7 +117,7 @@ extension MainViewController{
     
    
            picker.dismiss(animated: true, completion: nil)
-       tableView.reloadData()
+       
 
 
    }

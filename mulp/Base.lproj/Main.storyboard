@@ -150,7 +150,7 @@
         <!--Comment Controller-->
         <scene sceneID="cJH-2D-aHr">
             <objects>
-                <viewController storyboardIdentifier="CommentController" id="YbB-9o-MQR" customClass="CommentController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommentController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YbB-9o-MQR" customClass="CommentController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fah-SP-e9b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,18 +160,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="304" translatesAutoresizingMaskIntoConstraints="NO" id="fa9-ui-8FV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fa9-ui-8FV" id="NVA-zG-EMe">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eBx-LE-QHO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="CommentSection" destination="0te-Na-6D8" id="xvl-ls-TJK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D63-UD-8Uj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

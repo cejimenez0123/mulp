@@ -18,7 +18,7 @@ enum StatusCode {
 class GlobalVars{
     var userLoggedIn = false
     var path="http://127.0.0.1:3000"
-    var currentUser:User = User(id: "fd4c8346-6050-4da6-b445-2995657032bd", email: "0@0.com", username: "0")
+    var currentUser:User = User(id: "0", email: "0@0.com", username: "0")
     
 }
 let globalVars = GlobalVars()
@@ -29,20 +29,11 @@ class Router {
 
         
       
-        if let image = image {
-                  
+        if let image = image {                  
         let boundary = UUID().uuidString
-    
         guard let url = URL(string: "\(globalVars.path)/image/upload") else {return }
-
             let session = URLSession.shared
-        let paramName = "file"
-            // Set the URLRequest to POST and to the specified URL
-//            var urlRequest = URLRequest(url: url)
-//            urlRequest.httpMethod = "POST"
-//            urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-//            var data = Data()
-            let jpegRep = image.jpegData(compressionQuality: 1)
+            let jpegRep = image.jpegData(compressionQuality:1)
 //            let base64Image = jpegRep!.base64EncodedData()
             if jpegRep == nil {return}
 //            let boundary = UUID().uuidString
@@ -147,8 +138,8 @@ class Router {
                             
                             let id = attr["id"].stringValue
                             let path = attr["data"].stringValue
-                            
-                            return Page(id: id, path: path)
+                            let type = attr["media"].stringValue
+                            return Page(id: id, path: path,type:type)
             }
             
             handler(StatusCode.complete, pages )
@@ -159,14 +150,14 @@ class Router {
         
     }
     
-    func uploadPage(userId:String,bookId:String, status:String,path:String, handler: @escaping (StatusCode,Page)->()){
-        let page = Page(id: "0",path: path)
+    func uploadPage(userId:String,bookId:String,type:String, status:String,path:String, handler: @escaping (StatusCode,Page)->()){
+        let page = Page(id: "0",path: path,type: type)
         guard let url = URL(string: "\(globalVars.path)/pages") else {
             return
         }
         let session = URLSession.shared
          var request = URLRequest(url: url)
-        let param:NSDictionary = ["data": path, "userId": userId,"bookId":bookId,"status":status]
+        let param:NSDictionary = ["data": path, "userId": userId,"bookId":bookId,"status":status,"type":type]
         request.httpMethod = "POST"
         let body = try! JSONSerialization.data(withJSONObject:param, options: .prettyPrinted)
         request.httpBody = body
