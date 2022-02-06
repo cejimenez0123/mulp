@@ -58,7 +58,44 @@ class Router {
         }.resume()
 
         }
-    
+   
+    func logon(email:String,password: String, handler: @escaping ((StatusCode,User, String)->())){
+           
+        guard let url = URL(string: "\(globalVars.path)/logon") else {return}
+        var request = URLRequest(url: url)
+        let session = URLSession.shared
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpMethod = "POST"
+        let parameters: [String: Any] = [
+            "username": email ,
+            "password": password
+        ]
+        do {
+               request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+           } catch let error {
+               print(error.localizedDescription)
+           }
+
+    session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+
+                guard error == nil else {
+                    handler(StatusCode.complete,User(id: "", email: "", username: ""),error!.localizedDescription)
+                    return
+                }
+
+                guard let data = data else {
+                    return
+                }
+            let json = JSON(data)
+                        
+                        let att = json["data"]["attributes"]
+                        let user = User(id: att["id"].stringValue, email: att["email"].stringValue, username: att["username"].stringValue)
+        handler(StatusCode.complete,user,error?.localizedDescription ?? "")
+                    
+        }
+    ).resume()
+    }
  func signUp(username:String,email:String,password:String, handler: @escaping ((StatusCode,User)->())){
          
          guard let url = URL(string: "\(globalVars.path)/users") else {return}

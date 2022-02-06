@@ -12,15 +12,13 @@ class ProfileController:UIViewController{
 //
     
     @IBOutlet weak var LitSegmentedControl: UISegmentedControl!
-//
+
+    let currentUser = User(id: "0", email: "0", username: "0")
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var ProfilePic: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        ProfilePic.layer.cornerRadius = ProfilePic.layer.borderWidth / 5
-//        NSLayoutConstraint.activate([ProfilePic.widthAnchor.constraint(equalToConstant:  100),ProfilePic.heightAnchor.constraint(equalToConstant: 100), ProfilePic.centerXAnchor.constraint(equalTo: self.view.centerXAnchor), ProfilePic.centerYAnchor.constraint(equalTo: self.view.topAnchor,constant: 100)])
-        
-    
+
     }
 
    

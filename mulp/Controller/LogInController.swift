@@ -38,45 +38,22 @@ class LogInController: UIViewController{
     }
     @IBAction func logInAction(_ sender: Any) {
         
-        guard let url = URL(string: "\(globalVars.path)/logon") else {return}
-        var request = URLRequest(url: url)
-        let session = URLSession.shared
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpMethod = "POST"
-        let parameters: [String: Any] = [
-            "username": emailField.text ?? "0",
-            "password": passwordField.text ?? ""
-        ]
-        do {
-               request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
-           } catch let error {
-               print(error.localizedDescription)
-           }
-
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-
-                guard error == nil else {
-                    return
-                }
-
-                guard let data = data else {
-                    return
-                }
-                do {
-                    //create json object from data
-                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                        print(json)
-                        // handle json...
-                        
-                        
-                        print(json)
+        router.logon(email: emailField.text ?? "0", password: passwordField.text ?? "0", handler: { status, user, err in
+            if (status == StatusCode.complete && err.isEmpty){
+                
+            let profileCont = self.storyboard?.instantiateViewController(withIdentifier: "ProfileContainer") as! ProfileController
+            profileCont.NameLabel.text = user.email
+                self.navigationController?.present(profileCont, animated: true, completion: {})} else {
+                    DispatchQueue.main.async {
+                        var ac = UIAlertController(title: "Error", message: "Incorrect Log In", preferredStyle: .alert)
+                        ac.addAction( UIAlertAction(title: "Ok", style: .default))
+                        self.present(ac, animated: true, completion: {})
                     }
-                } catch let error {
-                    print(error.localizedDescription)
+                   
                 }
-            })
-            task.resume()
+            
+            
+        })
     }
     
     required init(){

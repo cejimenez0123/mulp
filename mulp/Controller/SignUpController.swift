@@ -28,7 +28,7 @@ class SignUpController: UIViewController{
 
         super.init(nibName: nil, bundle: nil)
         
-    
+        
         
     }
 
@@ -70,7 +70,9 @@ class SignUpController: UIViewController{
             
         router.signUp(username: usernameField.text!,email: emailField.text!, password: passwordField.text!, handler: {status, user in
             
-            
+            let profileContainer = self.storyboard?.instantiateViewController(withIdentifier: "ProfileController") as! ProfileController
+            profileContainer.NameLabel.text = user.email
+            self.navigationController?.pushViewController(profileContainer, animated: true)
             
             print(user)
         })}else{
