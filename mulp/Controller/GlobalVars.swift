@@ -58,6 +58,46 @@ class Router {
         }.resume()
 
         }
+    
+ func signUp(username:String,email:String,password:String, handler: @escaping ((StatusCode,User)->())){
+         
+         guard let url = URL(string: "\(globalVars.path)/users") else {return}
+          var request = URLRequest(url: url)
+  //
+          request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+              request.addValue("application/json", forHTTPHeaderField: "Accept")
+          request.httpMethod = "POST"
+          let parameters:NSDictionary = [
+              "id": "\(UUID())",
+              "username": username,
+              "email": email,
+              "password": password
+          ]
+         do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+            } catch let error {
+                print(error.localizedDescription)
+            }
+
+              request.timeoutInterval = 10
+  //
+  //
+          URLSession.shared.dataTask(with: request) {(data,response,error) -> Void in
+  //                print("@")
+              if let data = data, error == nil {
+  //
+              let json = JSON(data)
+              if error != nil{ print(json.error?.rawValue ?? "No Error")}
+                  let att = json["data"]["attributes"]
+                  print(json["data"]["attributes"])
+                  let user =  User(id: att["id"].stringValue, email: att["email"].stringValue, username: att["username"].stringValue)
+                  globalVars.currentUser = user
+                  handler(StatusCode.complete,user )
+                  
+     }
+          }.resume()
+
+     }
     func getAllPages(handler:@escaping (StatusCode, [Page])->()){
         guard let url = URL(string: "\(globalVars.path)/pages") else { return }
        let request = URLRequest(url: url)
@@ -114,19 +154,14 @@ class Router {
                 }
                 guard let data = data else { return }
                 let json = JSON(data)
-            
-                   
                     let path = json["link"].stringValue
                            handler(StatusCode.complete,path)
-                
-                
-               
             }).resume()
-            
-        
-                  
+         
         }
-    }}
+    }
+    
+}
        
     
     func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: Data, boundary: String, imgKey: String) -> Data {
@@ -155,42 +190,3 @@ class Router {
 
 
    
-    func signUp(username:String,email:String,password:String){
-        
-        guard let url = URL(string: "\(globalVars.path)/users") else {return}
-         var request = URLRequest(url: url)
- //
-         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-             request.addValue("application/json", forHTTPHeaderField: "Accept")
-         request.httpMethod = "POST"
-         let parameters:NSDictionary = [
-             "id": "\(UUID())",
-             "username": username,
-             "email": email,
-             "password": password
-         ]
-        do {
-               request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
-           } catch let error {
-               print(error.localizedDescription)
-           }
-
-             request.timeoutInterval = 10
- //
- //
-         URLSession.shared.dataTask(with: request) {(data,response,error) -> Void in
- //                print("@")
-             if let data = data, error == nil {
- //
-             let json = JSON(data)
-             if error != nil{ print(json.error?.rawValue ?? "No Error")}
-                 let att = json["data"]["attributes"]["username"]
-                 print(json["data"]["attributes"])
-                 globalVars.currentUser =  User(id: att["id"].stringValue, email: att["email"].stringValue, username: att["username"].stringValue)
-                 
-    }
-    
-    
-    }
-
-    }

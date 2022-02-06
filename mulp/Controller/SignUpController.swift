@@ -62,52 +62,25 @@ class SignUpController: UIViewController{
 //        NSLayoutConstraint.activate([passwordField.widthAnchor.constraint(equalTo: self.view.widthAnchor),passwordField.heightAnchor.constraint(equalToConstant: 30),passwordField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),passwordField.centerYAnchor.constraint(equalTo: signUpBtn.centerYAnchor, constant: -60)])
 //        NSLayoutConstraint.activate([signUpBtn.widthAnchor.constraint(equalToConstant: 100),signUpBtn.heightAnchor.constraint(equalToConstant: 40), signUpBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),signUpBtn.centerYAnchor.constraint(equalTo: self.view.centerYAnchor,constant: 70)])
     }
-    @objc func signOn(_sender: Any?){
+   
         
+    @IBAction func signUp(_ sender: Any) {
         
-//        guard let url = URL(string: "\(globalVars.path)/users") else {return}
-//        var request = URLRequest(url: url)
-//       
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//            request.addValue("application/json", forHTTPHeaderField: "Accept")
-//        request.httpMethod = "POST"
-//        let parameters:NSDictionary = [
-//            "id": "\(UUID())",
-//            "username": self.usernameField.text!,
-//            "email": self.emailField.text!,
-//            "password": self.passwordField.text!
-//        ]
-//        let jsonData = try? JSONSerialization.data(withJSONObject:parameters)
-//      
-//            request.timeoutInterval = 10
-//        request.httpBody = jsonData
-//        print("!")
-//        URLSession.shared.dataTask(with: request) {(data,response,error) -> Void in
-//                print("@")
-//            if let data = data, error == nil {
-//                   
-//            let json = JSON(data)
-//            if error != nil{ print(json.error?.rawValue ?? "No Error")}
-//                let att = json["data"]["attributes"]["username"]
-//                print(json["data"]["attributes"])
-//                
-//                self.user.username = att["username"].stringValue
-//                self.user.email = att["email"].stringValue
-//                self.user.id = att["id"].stringValue
-//            } else {
-//                print(error?.localizedDescription ?? "No data")
-//                return
-//            }
-//            
-//        }.resume()
-//        
-////        let profileCont = self.storyboard?.instantiateViewController(identifier: "ProfileController") as! ProfileController
-//        globalVars.currentUser.email = self.user.email
-//        globalVars.currentUser.username = self.user.username
-//        globalVars.currentUser.id = self.user.id
-//        print("Currentuser",globalVars.currentUser.username)
-//        self.navigationController?.popToRootViewController(animated: true)
+        if( usernameField.text != "" && emailField.text != "" && passwordField.text! != ""){
+            
+        router.signUp(username: usernameField.text!,email: emailField.text!, password: passwordField.text!, handler: {status, user in
+            
+            
+            
+            print(user)
+        })}else{
+            
+            
+            
+            
         }
+    }
+    
     @objc func dismissAction(_ sender: Any?){
         
         dismiss(animated: true, completion: nil)
