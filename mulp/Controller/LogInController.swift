@@ -37,8 +37,7 @@ class LogInController: UIViewController{
         
     }
     @IBAction func logInAction(_ sender: Any) {
-    }
-    @objc func logOn(){
+        
         guard let url = URL(string: "\(globalVars.path)/logon") else {return}
         var request = URLRequest(url: url)
         let session = URLSession.shared
@@ -46,7 +45,7 @@ class LogInController: UIViewController{
             request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = "POST"
         let parameters: [String: Any] = [
-            "username": usernameField.text ?? "0",
+            "username": emailField.text ?? "0",
             "password": passwordField.text ?? ""
         ]
         do {
@@ -79,6 +78,7 @@ class LogInController: UIViewController{
             })
             task.resume()
     }
+    
     required init(){
         super.init(nibName: nil, bundle: nil)
     }
