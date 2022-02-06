@@ -13,7 +13,6 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     var pages = [Page]()
     init(pages: [Page]){
         super.init( style: UITableView.Style.plain)
-        
         self.pages  = pages
            
       
@@ -48,8 +47,20 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
       
     }
 
-    
 
+    @IBAction func logInSegue(_ sender: Any) {
+        let sccon = self.storyboard?.instantiateViewController(withIdentifier: "SignUpController") as! SignUpController
+           self.navigationController?.present(sccon, animated: true, completion: {
+               return
+           })
+    }
+    @objc func logInSegue(){
+        
+     let logInCon = self.storyboard?.instantiateViewController(withIdentifier: "LogInpController") as! LogInController
+        self.navigationController?.present(logInCon, animated: true, completion: {
+            return
+        })
+    }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             dismiss(animated: true)
         }
