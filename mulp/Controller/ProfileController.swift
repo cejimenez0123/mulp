@@ -16,6 +16,7 @@ class ProfileController:UIViewController{
     let currentUser = User(id: "0", email: "0", username: "0")
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var ProfilePic: UIImageView!
+    @IBOutlet weak var PageTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +26,10 @@ class ProfileController:UIViewController{
     required init?(coder aDecoder: NSCoder) {
        
        super.init(coder: aDecoder)
-    
+        NameLabel.text = currentUser.username
+        ProfilePic.image = UIImage(named: "TheNerves")
+        PageTable.estimatedRowHeight = UITableView.automaticDimension
+        PageTable.rowHeight = 100
     }
     
     @IBAction func LitIndexChanged(_ sender:UISegmentedControl) {

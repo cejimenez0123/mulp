@@ -7,28 +7,23 @@
 
 import UIKit
 
-class CommentController: UIViewController {
-    @IBOutlet weak var CommentSection: UITableView!
-    var page:Page = Page(id: "0", path: "https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg", type: "image")
+class CommentController: UITableViewController {
+  
+    var comments = [Comment]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CommentSection.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(CommentSection)
-        // Do any additional setup after loading the view.
-        CommentSection.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive=true
-        CommentSection.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        CommentSection.rightAnchor.constraint(equalTo:self.view.rightAnchor).isActive = true
-        if (self.page.type == "image"){
-            
-                let imageView = UIImageView()
-            imageView.downloaded(from: self.page.path)
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(imageView)
-            NSLayoutConstraint.activate([imageView.topAnchor.constraint(equalTo: self.view.topAnchor),imageView.leftAnchor.constraint(equalTo: self.view.leftAnchor),imageView.rightAnchor.constraint(equalTo: self.view.rightAnchor),imageView.bottomAnchor.constraint(equalTo: CommentSection.topAnchor)])
-            
-            CommentSection.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
-        }
+        
+    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return comments.count
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let comCell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell",for: indexPath) as! CommentTableViewCell
+       let com = comments[indexPath.row]
+        comCell.comment  = com
+        comCell.user = com.commenter
+        return comCell
     }
         
        

@@ -16,6 +16,7 @@
 		35FA6E6F258D0D240086AE62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FA6E6D258D0D240086AE62 /* LaunchScreen.storyboard */; };
 		35FA6E7A258D0D240086AE62 /* mulpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA6E79258D0D240086AE62 /* mulpTests.swift */; };
 		35FA6E85258D0D240086AE62 /* mulpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FA6E84258D0D240086AE62 /* mulpUITests.swift */; };
+		6227B66027CF925600665B12 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6227B65F27CF925600665B12 /* Comment.swift */; };
 		62390BDF2680EEE9008DD0B5 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BDE2680EEE9008DD0B5 /* Page.swift */; };
 		62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE22680FFF6008DD0B5 /* PageTableViewCell.swift */; };
 		62390BE5268602F3008DD0B5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE4268602F3008DD0B5 /* User.swift */; };
@@ -24,6 +25,7 @@
 		62390BEB2695C630008DD0B5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BEA2695C630008DD0B5 /* SignUpController.swift */; };
 		625694C127666AD0007DDC26 /* PageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625694C027666AD0007DDC26 /* PageViewCell.swift */; };
 		625694C527667F26007DDC26 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625694C427667F26007DDC26 /* CommentController.swift */; };
+		627296F127C19E8400624C96 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627296F027C19E8300624C96 /* CommentTableViewCell.swift */; };
 		6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297A38226A5F81B00E06960 /* ProfileController.swift */; };
 		62F31492273064F800B73E0F /* Pods_mulp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFDCF60A3567DDAC228767 /* Pods_mulp.framework */; };
 		9D6EC51F6274C865712036DF /* Pods_mulpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24146190B03457159E254375 /* Pods_mulpTests.framework */; };
@@ -68,6 +70,7 @@
 		35FA6E84258D0D240086AE62 /* mulpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mulpUITests.swift; sourceTree = "<group>"; };
 		35FA6E86258D0D240086AE62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EA8F1D5902725962C82EA2D /* Pods-mulpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulpTests.debug.xcconfig"; path = "Target Support Files/Pods-mulpTests/Pods-mulpTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6227B65F27CF925600665B12 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		62390BDE2680EEE9008DD0B5 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		62390BE22680FFF6008DD0B5 /* PageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTableViewCell.swift; sourceTree = "<group>"; };
 		62390BE4268602F3008DD0B5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		62390BEA2695C630008DD0B5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		625694C027666AD0007DDC26 /* PageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewCell.swift; sourceTree = "<group>"; };
 		625694C427667F26007DDC26 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		627296F027C19E8300624C96 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		6297A38226A5F81B00E06960 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		8123DF63B473547EF4684CA1 /* Pods-mulp-mulpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp-mulpUITests.release.xcconfig"; path = "Target Support Files/Pods-mulp-mulpUITests/Pods-mulp-mulpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CFBFDCF60A3567DDAC228767 /* Pods_mulp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mulp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +177,7 @@
 			children = (
 				62390BDE2680EEE9008DD0B5 /* Page.swift */,
 				62390BE4268602F3008DD0B5 /* User.swift */,
+				6227B65F27CF925600665B12 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			children = (
 				62390BE22680FFF6008DD0B5 /* PageTableViewCell.swift */,
 				625694C027666AD0007DDC26 /* PageViewCell.swift */,
+				627296F027C19E8300624C96 /* CommentTableViewCell.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -470,7 +476,9 @@
 				62390BEB2695C630008DD0B5 /* SignUpController.swift in Sources */,
 				62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */,
 				6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */,
+				6227B66027CF925600665B12 /* Comment.swift in Sources */,
 				62390BDF2680EEE9008DD0B5 /* Page.swift in Sources */,
+				627296F127C19E8400624C96 /* CommentTableViewCell.swift in Sources */,
 				62390BE7269494A3008DD0B5 /* GlobalVars.swift in Sources */,
 				62390BE5268602F3008DD0B5 /* User.swift in Sources */,
 			);

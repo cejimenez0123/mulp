@@ -39,15 +39,18 @@ class LogInController: UIViewController{
     @IBAction func logInAction(_ sender: Any) {
         
         router.logon(email: emailField.text ?? "0", password: passwordField.text ?? "0", handler: { status, user, err in
+            //
             if (status == StatusCode.complete && err.isEmpty){
                 
-            let profileCont = self.storyboard?.instantiateViewController(withIdentifier: "ProfileContainer") as! ProfileController
-            profileCont.NameLabel.text = user.email
-                self.navigationController?.present(profileCont, animated: true, completion: {})} else {
-                    DispatchQueue.main.async {
-                        var ac = UIAlertController(title: "Error", message: "Incorrect Log In", preferredStyle: .alert)
-                        ac.addAction( UIAlertAction(title: "Ok", style: .default))
-                        self.present(ac, animated: true, completion: {})
+                let profileCont = self.storyboard?.instantiateViewController(withIdentifier: "ProfileContainer") as! ProfileController
+                    profileCont.NameLabel.text = user.email
+                    self.navigationController?.present(profileCont, animated: true, completion: {})
+                
+            }else {
+                        DispatchQueue.main.async {
+                            let ac = UIAlertController(title: "Error", message: "Incorrect Log In", preferredStyle: .alert)
+                            ac.addAction( UIAlertAction(title: "Ok", style: .default))
+                            self.present(ac, animated: true, completion: {})
                     }
                    
                 }
