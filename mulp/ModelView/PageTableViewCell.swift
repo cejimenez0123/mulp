@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+let pageClient = PageClient()
 class PageTableViewCell: UITableViewCell{
     var pageId = ""
     var page:Page = Page(id: "0", path: "https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg", type: "image")
@@ -41,7 +41,7 @@ class PageTableViewCell: UITableViewCell{
        self.contentView.addSubview(actionBox)
         
            
-   
+       
         
        NSLayoutConstraint.activate([pic.topAnchor.constraint(equalTo: self.topAnchor),pic.bottomAnchor.constraint(equalTo: actionBox.topAnchor),pic.leftAnchor.constraint(equalTo: self.leftAnchor),pic.rightAnchor.constraint(equalTo: self.rightAnchor)])
        NSLayoutConstraint.activate([actionBox.heightAnchor.constraint(equalToConstant:50),
@@ -95,22 +95,31 @@ class PageTableViewCell: UITableViewCell{
         
         self.yeahBtn.addTarget(self, action: #selector(approvalBtnClick(_:)), for: .touchUpInside)
         self.nahBtn.addTarget(self, action: #selector(approvalBtnClick(_:)), for: .touchUpInside)
-        commentBtn.addTarget(self, action: #selector(commentsSegue(_:)), for: .touchUpInside)
+        
+       commentBtn.addTarget(self, action: #selector(didPressCommentButton(sender:)), for: .touchUpInside)
     }
     
 
     
 
     
-  
-    @objc func commentsSegue(_ sender: UIButton){
+    @objc func didPressCommentButton(sender: Any?){
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
-        let commentController =  storyboard.instantiateViewController(withIdentifier: "CommentController") as! CommentController
-        commentController.page = self.page
+        let conController =  storyboard.instantiateViewController(withIdentifier: "ContentController") as! ContentController
+        conController.page = self.page
         
        
-        self.parentController?.navigationController?.present(commentController, animated: true)
+        self.parentController?.navigationController?.present(conController, animated: true, completion: {
+            pageClient.getCommentsOfPage(page_id: self.page.id, handler: {comms in
+                DispatchQueue.main.async {
+                    conController.setControllerData(page: self.page,commentsArr: comms)
+                }
+                
+            }
+            )
+            
+            })
     }
  
     @objc func approvalBtnClick(_ sender: UIButton){

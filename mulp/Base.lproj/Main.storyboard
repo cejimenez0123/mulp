@@ -164,6 +164,45 @@
             </objects>
             <point key="canvasLocation" x="264" y="-1205"/>
         </scene>
+        <!--Comment Controller-->
+        <scene sceneID="XWd-9t-Nua">
+            <objects>
+                <tableViewController storyboardIdentifier="CommentController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zt5-b8-4gy" customClass="CommentController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="AGN-6p-hIF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <tabBar key="tableFooterView" contentMode="scaleToFill" id="ph6-pH-jwh">
+                            <rect key="frame" x="0.0" y="110.5" width="414" height="49"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <items>
+                                <tabBarItem title="Comment" id="1aH-NC-SQ0"/>
+                            </items>
+                        </tabBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTableViewCell" id="zVu-ZT-3a9" customClass="CommentTableViewCell" customModule="mulp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zVu-ZT-3a9" id="vpm-Mj-qEy">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Zt5-b8-4gy" id="VL7-mU-kRJ"/>
+                            <outlet property="delegate" destination="Zt5-b8-4gy" id="lLe-72-hWr"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tabBar" destination="ph6-pH-jwh" id="7GF-G6-1ya"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xxx-Pz-lGQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1452" y="-1218"/>
+        </scene>
         <!--Log In Controller-->
         <scene sceneID="bUE-FV-Lju">
             <objects>
@@ -239,62 +278,47 @@
             </objects>
             <point key="canvasLocation" x="-646.37681159420299" y="-575.22321428571422"/>
         </scene>
-        <!--Comment Controller-->
-        <scene sceneID="cJH-2D-aHr">
+        <!--Content Controller-->
+        <scene sceneID="COR-ba-psz">
             <objects>
-                <viewController storyboardIdentifier="CommentController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YbB-9o-MQR" customClass="CommentController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fah-SP-e9b">
+                <viewController storyboardIdentifier="ContentController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OsP-1p-SSv" customClass="ContentController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="psa-nb-xHE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0te-Na-6D8">
-                                <rect key="frame" x="0.0" y="300" width="414" height="596"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TheNerves" translatesAutoresizingMaskIntoConstraints="NO" id="CKC-dd-fzR">
+                                <rect key="frame" x="0.0" y="45" width="414" height="281"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="oLZ-of-KgO">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <prototypes>
-                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTableViewCell" id="n09-M1-X2L" customClass="CommentTableViewCell" customModule="mulp" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n09-M1-X2L" id="EJy-wQ-MpU">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6c-CJ-o7B">
-                                                        <rect key="frame" x="9" y="-2" width="97" height="34"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                </subviews>
-                                            </tableViewCellContentView>
-                                        </tableViewCell>
-                                    </prototypes>
-                                </tableView>
-                            </tableView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="eBx-LE-QHO"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Og-Ac-ml2"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
                     </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="CommentSection" destination="0te-Na-6D8" id="xvl-ls-TJK"/>
+                        <outlet property="ContentView" destination="CKC-dd-fzR" id="LOZ-Be-vkd"/>
+                        <outlet property="contentView" destination="CKC-dd-fzR" id="stX-vg-YcA"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D63-UD-8Uj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LO3-1s-wx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1418.840579710145" y="-1232.1428571428571"/>
+            <point key="canvasLocation" x="-26.086956521739133" y="63.616071428571423"/>
         </scene>
     </scenes>
     <resources>
         <image name="Library" width="452" height="452"/>
+        <image name="TheNerves" width="225" height="225"/>
         <image name="book.fill" catalog="system" width="128" height="95"/>
         <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

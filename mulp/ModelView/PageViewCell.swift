@@ -6,5 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
+class PageViewCell: UIView{
+    
+    
+}
 

@@ -33,27 +33,27 @@ class Page {
     
 }
 
-extension  UIImage {
-    
-   class func downloaded(from urlstr: String, handler:@escaping (StatusCode,UIImage)-> ()){
-       
-         let url = URL(string: urlstr)!
-    
-        URLSession.shared.dataTask(with: url, completionHandler:{
-            data,response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-            else{return}
-            
-            handler(StatusCode.complete, image)
-        } ).resume()
-        
-        }
-    
-}
+//extension  UIImage {
+//    
+//   class func downloaded(from urlstr: String, handler:@escaping (StatusCode,UIImage)-> ()){
+//       
+//         let url = URL(string: urlstr)!
+//    
+//        URLSession.shared.dataTask(with: url, completionHandler:{
+//            data,response, error in
+//            guard
+//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+//                let data = data, error == nil,
+//                let image = UIImage(data: data)
+//            else{return}
+//            
+//            handler(StatusCode.complete, image)
+//        } ).resume()
+//        
+//        }
+//    
+//}
  
     
 
