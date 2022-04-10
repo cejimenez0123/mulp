@@ -7,42 +7,124 @@
 
 import Foundation
 import UIKit
+import IQKeyboardManager
 //
-class CommentController:UITableViewController, UITabBarDelegate{
-    
+
+class CommentController:UITableViewController,  UITextFieldDelegate{
+    let comBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width / 2.0, height: 60))
+    var footerView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 80))
+    let textField = UITextField(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.width, height:70))
+    let commentBoxView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height:90))
     var page  = Page(id: "", path: "", type: "")
+    let commentBtn =  UIButton(frame: CGRect(x: 110 , y: 0, width: UIScreen.main.bounds.width/2, height: 20))
+    let cancelBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width / 2, height: 20))
     var comments = [Comment]() {didSet{
         self.tableView.reloadData()
     }}
-    @IBOutlet weak var tabBar: UITabBar!
-    let pageClient = PageClient()
+    let comClient = CommentClient()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        pageClient.getCommentsOfPage(page_id: page.id, handler: { comm in
+        commentClient.getCommentsOfPage(page_id: page.id, handler: { comm in
 
             DispatchQueue.main.async {
                 self.comments = comm
                 self.tableView.reloadData()
             }
         })
-        tabBar.delegate = self
-        
     
+        self.view.backgroundColor = .black
+
+    
+    }
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+       
+       
+        comBtn.isUserInteractionEnabled = true
+        comBtn.setTitle("Comment", for: .normal)
+        comBtn.setTitleColor(.black, for: .normal)
+        comBtn.backgroundColor = .white
+        comBtn.addTarget(self, action: #selector(showCommentingBox), for: .touchUpInside)
+    
+        footerView.addSubview(comBtn)
+//        if comBtn.isTouchInside {
+//           let textField = UITextField.init(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 70))
+//            footerView.frame.size.height = 100
+//            footerView.addSubview(textField)
+//            return footerView
+//        }else{
 //
-//        let bounds = UIScreen.main.bounds
+       
+            footerView.backgroundColor = UIColor.blue
+            return footerView
+//        }
+    }
+    @objc func showCommentingBox(){
+
+       
+        footerView.frame.size.height = 90
+        
+       let btnView = UIView(frame: CGRect(x: 0, y:0, width: tableView.frame.size.width, height: 20))
+        btnView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+        btnView.addSubview(commentBtn)
+        btnView.addSubview(cancelBtn)
+        cancelBtn.setTitle("Cancel", for: .normal)
+        commentBtn.setTitle("Comment", for: .normal)
+        commentBtn.setTitleColor(.white, for: .normal)
+        cancelBtn.setTitleColor(.white, for: .normal)
+        commentBtn.addTarget(self, action: #selector(postComment), for: .touchUpInside)
+       
+        commentBoxView.addSubview(btnView)
+        textField.isUserInteractionEnabled = true
+        textField.placeholder = "Comment"
+        textField.backgroundColor = .white
+        textField.delegate = self
+        textField.becomeFirstResponder()
+        comBtn.isHidden = true
+        footerView.addSubview(btnView)
+        footerView.addSubview(textField)
+       
         
         
+        
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        print("YOOOO \(self.textField.isHidden)")
+        if commentBtn.isTouchInside || cancelBtn.isTouchInside {
+            
+            return true
+        }else{return false
+            
+            
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    @objc func postComment(){
+        let text = textField.text ?? ""
+       
+        commentBoxView.isHidden = true
+        comBtn.isHidden = false
+        comClient.postComment(text: text, page_id: page.id, user_id: globalVars.currentUser.id, handler: { [self]com in
+            self.comments.append(com)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                
+            }
+        })
+        
+    }
+    override func viewDidLayoutSubviews() {
+    
+                super.viewWillLayoutSubviews()
         
             
-
+    }
     
-    }
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-       let text = UITextField()
-        item.
-    }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let nib = UINib(nibName: "CommentTableViewCell", bundle: Bundle(for: CommentTableViewCell.self))

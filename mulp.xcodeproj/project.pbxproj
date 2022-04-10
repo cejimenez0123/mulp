@@ -25,7 +25,7 @@
 		62390BE926949803008DD0B5 /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BE826949803008DD0B5 /* LogInController.swift */; };
 		62390BEB2695C630008DD0B5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62390BEA2695C630008DD0B5 /* SignUpController.swift */; };
 		624D227D27EF8CD1003879FC /* ModalContentSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D227C27EF8CD1003879FC /* ModalContentSegue.swift */; };
-		624D228227F0B872003879FC /* PageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D228127F0B872003879FC /* PageClient.swift */; };
+		624D228227F0B872003879FC /* CommentClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D228127F0B872003879FC /* CommentClient.swift */; };
 		624D228A27F0F677003879FC /* CommentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D228927F0F677003879FC /* CommentTableView.swift */; };
 		625694C127666AD0007DDC26 /* PageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625694C027666AD0007DDC26 /* PageViewCell.swift */; };
 		627296F127C19E8400624C96 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627296F027C19E8300624C96 /* CommentTableViewCell.swift */; };
@@ -84,7 +84,7 @@
 		62390BE826949803008DD0B5 /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
 		62390BEA2695C630008DD0B5 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		624D227C27EF8CD1003879FC /* ModalContentSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalContentSegue.swift; sourceTree = "<group>"; };
-		624D228127F0B872003879FC /* PageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageClient.swift; sourceTree = "<group>"; };
+		624D228127F0B872003879FC /* CommentClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentClient.swift; sourceTree = "<group>"; };
 		624D228927F0F677003879FC /* CommentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableView.swift; sourceTree = "<group>"; };
 		625694C027666AD0007DDC26 /* PageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewCell.swift; sourceTree = "<group>"; };
 		627296F027C19E8300624C96 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 		624D228027F0B860003879FC /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				624D228127F0B872003879FC /* PageClient.swift */,
+				624D228127F0B872003879FC /* CommentClient.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -499,7 +499,7 @@
 				35FA6E62258D0D210086AE62 /* SceneDelegate.swift in Sources */,
 				35FA6E6A258D0D210086AE62 /* mulp.xcdatamodeld in Sources */,
 				62390BE926949803008DD0B5 /* LogInController.swift in Sources */,
-				624D228227F0B872003879FC /* PageClient.swift in Sources */,
+				624D228227F0B872003879FC /* CommentClient.swift in Sources */,
 				62390BEB2695C630008DD0B5 /* SignUpController.swift in Sources */,
 				62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */,
 				6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */,

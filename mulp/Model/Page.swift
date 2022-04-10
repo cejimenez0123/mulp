@@ -14,9 +14,9 @@ class Page {
     var path:String = "" 
     var approvalScore = 0
     var pic:UIImage = UIImage(named: "TheNerves")!
-    var userId:String=""
+    var user = User(id: "", email: "", username: "")
     var type:String = ""
-    var user = User(id:"",email:"", username:"" )
+    
     init(id: String,path:String,type:String) {
         self.id = id
         self.path = path

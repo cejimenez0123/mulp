@@ -7,7 +7,7 @@
 
 import UIKit
 
-let pageClient = PageClient()
+let commentClient = CommentClient()
 class PageTableViewCell: UITableViewCell{
     var pageId = ""
     var page:Page = Page(id: "0", path: "https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg", type: "image")
@@ -111,7 +111,7 @@ class PageTableViewCell: UITableViewCell{
         
        
         self.parentController?.navigationController?.present(conController, animated: true, completion: {
-            pageClient.getCommentsOfPage(page_id: self.page.id, handler: {comms in
+            commentClient.getCommentsOfPage(page_id: self.page.id, handler: {comms in
                 DispatchQueue.main.async {
                     conController.setControllerData(page: self.page,commentsArr: comms)
                 }

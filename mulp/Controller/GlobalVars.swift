@@ -18,7 +18,7 @@ enum StatusCode {
 class GlobalVars{
     var userLoggedIn = false
     var path="http://127.0.0.1:3000"
-    var currentUser:User = User(id: "0", email: "0@0.com", username: "0")
+    var currentUser:User = User(id: "048c2f7f6e45", email: "reta.vonrueden@goyette-kassulke.biz", username: "werner")
     
 }
 let globalVars = GlobalVars()
@@ -52,7 +52,7 @@ class Router {
             page.path = atr["data"].stringValue
             let user =  User(id:atr["user"]["id"].stringValue,email: atr["user"]["email"].stringValue, username: atr["user"]["username"].stringValue)
             user.name = atr["user"]["name"].stringValue
-            page.userId = user.id
+            page.user.id = user.id
             page.user = user
             handler(StatusCode.complete,page)
         }.resume()
@@ -152,11 +152,14 @@ class Router {
                     if ps.count > 0 {
                         let pages =   ps.map { pdata -> Page in
                             let attr = pdata["attributes"]
+                            let user = User(id: attr["user"]["id"].stringValue, email: attr["user"]["email"].stringValue, username: attr["user"]["username"].stringValue)
                             
                             let id = attr["id"].stringValue
                             let path = attr["data"].stringValue
                             let type = attr["media"].stringValue
-                            return Page(id: id, path: path,type:type)
+                            let page = Page(id: id, path: path,type:type)
+                            page.user = user
+                            return page
             }
             
             handler(StatusCode.complete, pages )

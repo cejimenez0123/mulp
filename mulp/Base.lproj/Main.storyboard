@@ -172,14 +172,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <tabBar key="tableFooterView" contentMode="scaleToFill" id="ph6-pH-jwh">
-                            <rect key="frame" x="0.0" y="110.5" width="414" height="49"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <items>
-                                <tabBarItem title="Comment" id="1aH-NC-SQ0"/>
-                            </items>
-                        </tabBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommentTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTableViewCell" id="zVu-ZT-3a9" customClass="CommentTableViewCell" customModule="mulp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -195,9 +187,7 @@
                             <outlet property="delegate" destination="Zt5-b8-4gy" id="lLe-72-hWr"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="tabBar" destination="ph6-pH-jwh" id="7GF-G6-1ya"/>
-                    </connections>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xxx-Pz-lGQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

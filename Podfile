@@ -7,6 +7,7 @@ target 'mulp' do
 
   # Pods for mulp
     pod 'SwiftyJSON', '~> 4.0'
+	pod 'IQKeyboardManager'
   target 'mulpTests' do
     inherit! :search_paths
     # Pods for testing

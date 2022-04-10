@@ -10,7 +10,7 @@ import UIKit
 //
 //UITableViewDataSource, UITableViewDelegate
 class ContentController: UIViewController {
-    let pageClient = PageClient()
+    let commentClient = CommentClient()
     
     @IBOutlet weak var contentView: UIImageView!
     var page = Page(id: "", path: "", type: "")
