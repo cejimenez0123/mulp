@@ -31,17 +31,19 @@ class CommentTableViewCell: UITableViewCell{
         self.contentView.addSubview(commentView)
         self.contentView.addSubview(usernameView)
   
-        
+
         commentView.text = comment.text
         commentView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         commentView.textContainer.lineFragmentPadding = 0
         usernameView.text = comment.user.username
     
             }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
        
   
-        
+       
+
     }
 }

@@ -36,7 +36,10 @@ class ContentController: UIViewController {
         self.addChild(commController)
         let aH =  UIScreen.main.bounds.height - contentView.frame.height
         self.view.addSubview(commController.view)
-        
+        commController.view.topAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        commController.view.heightAnchor.constraint(greaterThanOrEqualToConstant: aH).isActive = true
+        commController.view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        commController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         commController.view.frame = CGRect(x: 0, y: contentView.frame.maxY, width: UIScreen.main.bounds.width, height: aH)
         commController.didMove(toParent: self.navigationController)
         

@@ -106,20 +106,20 @@ class PageTableViewCell: UITableViewCell{
     @objc func didPressCommentButton(sender: Any?){
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
-        let conController =  storyboard.instantiateViewController(withIdentifier: "ContentController") as! ContentController
-        conController.page = self.page
-        
-       
-        self.parentController?.navigationController?.present(conController, animated: true, completion: {
+//        let conController =  storyboard.instantiateViewController(withIdentifier: "ContentController") as! ContentController
+//        conController.page = self.page
+        let commController = storyboard.instantiateViewController(withIdentifier: "CommentController") as! CommentController
+        commController.page = page
+        self.parentController?.navigationController?.pushViewController(commController, animated: true)
             commentClient.getCommentsOfPage(page_id: self.page.id, handler: {comms in
                 DispatchQueue.main.async {
-                    conController.setControllerData(page: self.page,commentsArr: comms)
+                    commController.comments = comms
                 }
                 
             }
             )
             
-            })
+            
     }
  
     @objc func approvalBtnClick(_ sender: UIButton){
