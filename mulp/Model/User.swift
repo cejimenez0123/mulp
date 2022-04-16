@@ -14,10 +14,11 @@ class User {
     var name: String = ""
     var email:String=""
     var username:String=""
-    init(id:String,email:String,username:String) {
+    init(id:String,email:String,username:String,name:String) {
         self.id = id
         self.email = email
         self.username = username
+        self.name = name
       
     }
 }

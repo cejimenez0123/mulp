@@ -80,7 +80,7 @@ class CommentClient{
                     let com = Comment()
                     com.id = attr["id"].stringValue
                    let userj = attr["attributes"]["user"]
-                    let user = User(id: userj["id"].stringValue, email: userj["email"].stringValue, username: userj["username"].stringValue)
+                    let user = User(id: userj["id"].stringValue, email: userj["email"].stringValue, username: userj["username"].stringValue,name: userj["name"].stringValue)
                     com.user = user
                     com.text = attr["attributes"]["text"].stringValue
                     handler(com)

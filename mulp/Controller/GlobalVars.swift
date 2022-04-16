@@ -18,7 +18,7 @@ enum StatusCode {
 class GlobalVars{
     var userLoggedIn = false
     var path="http://127.0.0.1:3000"
-    var currentUser:User = User(id: "048c2f7f6e45", email: "reta.vonrueden@goyette-kassulke.biz", username: "werner")
+    var currentUser:User = User(id: "048c2f7f6e45", email: "reta.vonrueden@goyette-kassulke.biz", username: "werner", name:"Blue Beetle")
     
 }
 let globalVars = GlobalVars()
@@ -50,8 +50,7 @@ class Router {
             
             page.id = json["data"]["id"].stringValue
             page.path = atr["data"].stringValue
-            let user =  User(id:atr["user"]["id"].stringValue,email: atr["user"]["email"].stringValue, username: atr["user"]["username"].stringValue)
-            user.name = atr["user"]["name"].stringValue
+            let user =  User(id:atr["user"]["id"].stringValue,email: atr["user"]["email"].stringValue, username: atr["user"]["username"].stringValue, name: atr["user"]["name"].stringValue)
             page.user.id = user.id
             page.user = user
             handler(StatusCode.complete,page)
@@ -80,7 +79,7 @@ class Router {
     session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
 
                 guard error == nil else {
-                    handler(StatusCode.complete,User(id: "", email: "", username: ""),error!.localizedDescription)
+                    handler(StatusCode.complete,User(id: "", email: "", username: "",name:""),error!.localizedDescription)
                     return
                 }
 
@@ -90,7 +89,9 @@ class Router {
             let json = JSON(data)
                         
                         let att = json["data"]["attributes"]
-                        let user = User(id: att["id"].stringValue, email: att["email"].stringValue, username: att["username"].stringValue)
+                        let user = User(id: att["id"].stringValue, email: att["email"].stringValue, username: att["username"].stringValue,
+                                        name: att["name"].stringValue)
+        globalVars.currentUser = user
         handler(StatusCode.complete,user,error?.localizedDescription ?? "")
                     
         }
@@ -127,7 +128,7 @@ class Router {
               if error != nil{ print(json.error?.rawValue ?? "No Error")}
                   let att = json["data"]["attributes"]
                   print(json["data"]["attributes"])
-                  let user =  User(id: att["id"].stringValue, email: att["email"].stringValue, username: att["username"].stringValue)
+                  let user =  User(id: att["id"].stringValue, email: att["email"].stringValue, username: att["username"].stringValue,name: att["name"].stringValue)
                   globalVars.currentUser = user
                   handler(StatusCode.complete,user )
                   
@@ -152,7 +153,7 @@ class Router {
                     if ps.count > 0 {
                         let pages =   ps.map { pdata -> Page in
                             let attr = pdata["attributes"]
-                            let user = User(id: attr["user"]["id"].stringValue, email: attr["user"]["email"].stringValue, username: attr["user"]["username"].stringValue)
+                            let user = User(id: attr["user"]["id"].stringValue, email: attr["user"]["email"].stringValue, username: attr["user"]["username"].stringValue, name: attr["user"]["name"].stringValue)
                             
                             let id = attr["id"].stringValue
                             let path = attr["data"].stringValue

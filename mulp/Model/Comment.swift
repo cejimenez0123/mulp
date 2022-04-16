@@ -7,7 +7,7 @@
 
 class Comment {
     var id = ""
-    var user = User(id: "", email: "", username: "")
+    var user = User(id: "", email: "", username: "",name:"0")
     var comment_id = ""
     var text = ""
 }

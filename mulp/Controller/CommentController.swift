@@ -164,11 +164,7 @@ class CommentController:UITableViewController,  UITextFieldDelegate {
        
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell") as! CommentTableViewCell
-//       let com = comments[indexPath.row]
-//        cell.setCellData(comment: com)
-//        cell.commentView.textContainer.lineFragmentPadding = 0
-//
+
         let cell = self.tableView(self.tableView, cellForRowAt: indexPath) as! CommentTableViewCell
         
         let fixedWidth = self.tableView.frame.size.width - 10

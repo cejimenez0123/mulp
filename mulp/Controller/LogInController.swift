@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class LogInController: UIViewController{
+class LogInController: UIViewController,UITextFieldDelegate{
 //    let usernameField = UITextField()
 //    let passwordField = UITextField()
 //    let emailField = UITextField()
@@ -41,11 +41,18 @@ class LogInController: UIViewController{
         router.logon(email: emailField.text ?? "0", password: passwordField.text ?? "0", handler: { status, user, err in
             //
             if (status == StatusCode.complete && err.isEmpty){
-                
-                let profileCont = self.storyboard?.instantiateViewController(withIdentifier: "ProfileContainer") as! ProfileController
-                    profileCont.NameLabel.text = user.email
-                    self.navigationController?.present(profileCont, animated: true, completion: {})
-                
+                DispatchQueue.main.async {
+        let profileCont = self.storyboard?.instantiateViewController(withIdentifier: "ProfileController") as! ProfileController
+            profileCont.currentUser = user
+                    if let navCont = self.navigationController {
+                        var stack = navCont.viewControllers
+                        stack.remove(at: stack.count - 1)
+                        stack.insert(profileCont, at: stack.count) // add the new one
+                        navCont.setViewControllers(stack, animated: true) 
+                    }
+//        self.navigationController?.performSegue(withIdentifier: "ProfileController", sender: self)
+
+                }
             }else {
                         DispatchQueue.main.async {
                             let ac = UIAlertController(title: "Error", message: "Incorrect Log In", preferredStyle: .alert)

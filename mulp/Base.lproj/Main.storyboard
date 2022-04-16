@@ -50,7 +50,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="LogIn" id="BK1-ws-OHK">
                             <connections>
-                                <segue destination="vNi-eA-szd" kind="presentation" id="Ij5-MA-jUk"/>
+                                <segue destination="vNi-eA-szd" kind="show" id="w7X-lA-iLi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -61,60 +61,37 @@
             <point key="canvasLocation" x="263.768115942029" y="-575.22321428571422"/>
         </scene>
         <!--Profile Controller-->
-        <scene sceneID="Moc-h0-ofq">
+        <scene sceneID="N3R-bh-eEd">
             <objects>
-                <viewController storyboardIdentifier="ProfileController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hkb-OP-eht" customClass="ProfileController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sRy-rU-leY">
+                <viewController storyboardIdentifier="ProfileController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GHc-af-gEx" customClass="ProfileController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gpH-BC-Eth">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtn-LA-SBe">
-                                <rect key="frame" x="137" y="100" width="141" height="84"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sol Emilio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T16-fn-M4H">
+                                <rect key="frame" x="137" y="241" width="140" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="NameLabel" text="Sol Emilio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zi-aZ-ZJ7">
-                                <rect key="frame" x="150" y="192" width="114" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YcG-mH-mvf">
-                                <rect key="frame" x="69" y="266" width="276" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="" image="newspaper.fill" catalog="system"/>
-                                    <segment title="" image="book.fill" catalog="system"/>
-                                    <segment title="" image="Library"/>
-                                </segments>
-                                <connections>
-                                    <action selector="LitIndexChanged:" destination="Hkb-OP-eht" eventType="valueChanged" id="qxY-Fh-VbM"/>
-                                </connections>
-                            </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DSO-DT-kG9">
-                                <rect key="frame" x="0.0" y="305" width="414" height="591"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Y5-GR-nm9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="iio-8R-Fke"/>
+                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dx8-DG-Ma2"/>
                     <connections>
-                        <outlet property="LitSegmentedControl" destination="YcG-mH-mvf" id="rcs-Lj-KzL"/>
-                        <outlet property="NameLabel" destination="5zi-aZ-ZJ7" id="ef0-45-DyK"/>
-                        <outlet property="PageTable" destination="DSO-DT-kG9" id="gh4-Sc-jXs"/>
-                        <outlet property="ProfilePic" destination="wtn-LA-SBe" id="O2m-gf-F1Z"/>
+                        <outlet property="NameLabel" destination="T16-fn-M4H" id="jba-w0-h2a"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mIM-c7-cWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pm9-pa-0BN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950.72463768115949" y="-559.15178571428567"/>
+            <point key="canvasLocation" x="1966.6666666666667" y="-569.19642857142856"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="0b5-36-hX1">
             <objects>
-                <viewController storyboardIdentifier="SignUpController" id="PfU-Li-E1C" customClass="SignUpController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PfU-Li-E1C" customClass="SignUpController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E0E-ll-eTZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94y-w6-KAx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="264" y="-1205"/>
+            <point key="canvasLocation" x="2000" y="-1235"/>
         </scene>
         <!--Comment Controller-->
         <scene sceneID="XWd-9t-Nua">
@@ -195,14 +172,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xxx-Pz-lGQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="-1218"/>
+            <point key="canvasLocation" x="114" y="-1235"/>
         </scene>
         <!--Log In Controller-->
         <scene sceneID="bUE-FV-Lju">
             <objects>
                 <viewController storyboardIdentifier="LogInController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vNi-eA-szd" customClass="LogInController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ooc-5T-dvq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pW-zC-Znf">
@@ -243,6 +220,7 @@
                         <viewLayoutGuide key="safeArea" id="mw1-gK-oEZ"/>
                         <color key="backgroundColor" systemColor="systemGray2Color"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Kyy-4F-sb1"/>
                     <connections>
                         <outlet property="emailField" destination="4pW-zC-Znf" id="CFx-qD-ta4"/>
                         <outlet property="logInBtn" destination="JKX-yn-DhU" id="o32-PM-kP8"/>
@@ -252,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9E-Tb-kGI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1941" y="-363"/>
+            <point key="canvasLocation" x="1212" y="-531"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ofd-So-EwD">
@@ -303,15 +281,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Library" width="452" height="452"/>
         <image name="TheNerves" width="225" height="225"/>
-        <image name="book.fill" catalog="system" width="128" height="95"/>
-        <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

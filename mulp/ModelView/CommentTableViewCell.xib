@@ -25,23 +25,22 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reply" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVh-96-ASc">
-                        <rect key="frame" x="10" y="118" width="43" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8j-wV-LUF">
-                        <rect key="frame" x="20" y="7" width="187" height="17"/>
+                        <rect key="frame" x="10" y="7" width="197" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yd2-T3-4fg">
+                        <rect key="frame" x="0.0" y="119" width="67" height="31"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="N3m-YS-Tcr" secondAttribute="trailing" constant="10" id="89G-nZ-y5j"/>
-                    <constraint firstItem="H8j-wV-LUF" firstAttribute="leading" secondItem="2mV-wq-tUI" secondAttribute="leading" constant="20" symbolic="YES" id="8sq-w0-Gn7"/>
+                    <constraint firstItem="H8j-wV-LUF" firstAttribute="leading" secondItem="2mV-wq-tUI" secondAttribute="leading" constant="10" id="8sq-w0-Gn7"/>
                     <constraint firstItem="N3m-YS-Tcr" firstAttribute="leading" secondItem="2mV-wq-tUI" secondAttribute="leading" constant="10" id="LEA-cM-3ZL"/>
                     <constraint firstAttribute="bottom" secondItem="N3m-YS-Tcr" secondAttribute="bottom" constant="10" id="RpE-F2-F6s"/>
                     <constraint firstAttribute="trailing" secondItem="H8j-wV-LUF" secondAttribute="trailing" constant="207" id="Uvn-qO-pmS"/>
@@ -51,6 +50,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentView" destination="N3m-YS-Tcr" id="RQP-oh-bcB"/>
+                <outlet property="replyButton" destination="Yd2-T3-4fg" id="liu-2l-jJ4"/>
                 <outlet property="usernameView" destination="H8j-wV-LUF" id="7fo-QL-z8L"/>
             </connections>
             <point key="canvasLocation" x="244.92753623188409" y="75"/>

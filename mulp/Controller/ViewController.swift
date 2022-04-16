@@ -57,9 +57,8 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     @objc func logInSegue(){
         
      let logInCon = self.storyboard?.instantiateViewController(withIdentifier: "LogInController") as! LogInController
-        self.navigationController?.present(logInCon, animated: true, completion: {
-            return
-        })
+        self.navigationController?.pushViewController(logInCon, animated: true)
+        
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             dismiss(animated: true)

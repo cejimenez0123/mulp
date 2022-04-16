@@ -14,17 +14,22 @@ class CommentTableViewCell: UITableViewCell{
     @IBOutlet weak var usernameView: UILabel!
     
     @IBOutlet weak var commentView: UITextView!
+    @IBOutlet weak var replyButton: UIButton!
     var commentId = ""
-    var user = User(id:"",email:"",username:"")
+    var user = User(id:"",email:"",username:"",name:"")
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
    
         
-        
+    
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        replyButton.addTarget(self, action: #selector(replyToComment), for: .touchUpInside)
         commentView.isScrollEnabled = false
     }
-    
+    @objc func replyToComment(){
+        
+        
+    }
     func setCellData(comment: Comment){
        user = comment.user
         commentId = comment.id
