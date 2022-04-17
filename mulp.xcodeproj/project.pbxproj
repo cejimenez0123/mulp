@@ -29,6 +29,12 @@
 		624D228A27F0F677003879FC /* CommentTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624D228927F0F677003879FC /* CommentTableView.swift */; };
 		625694C127666AD0007DDC26 /* PageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625694C027666AD0007DDC26 /* PageViewCell.swift */; };
 		627296F127C19E8400624C96 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627296F027C19E8300624C96 /* CommentTableViewCell.swift */; };
+		6277625F280C50D9001F1078 /* UserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6277625E280C50D9001F1078 /* UserClient.swift */; };
+		62776261280C51C2001F1078 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62776260280C51C2001F1078 /* CollectionViewCell.swift */; };
+		62776263280C51D3001F1078 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62776262280C51D3001F1078 /* CollectionViewCell.xib */; };
+		62776265280C576E001F1078 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62776264280C576E001F1078 /* Book.swift */; };
+		62776267280C58F4001F1078 /* MakerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62776266280C58F4001F1078 /* MakerController.swift */; };
+		6277626A280C5C53001F1078 /* BookMakerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62776269280C5C53001F1078 /* BookMakerController.swift */; };
 		6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297A38226A5F81B00E06960 /* ProfileController.swift */; };
 		62D343AC27F8D00F003CD06F /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D343AB27F8D00F003CD06F /* CommentController.swift */; };
 		62D343B027FA40CF003CD06F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D343AF27FA40CF003CD06F /* CommentTableViewCell.xib */; };
@@ -88,6 +94,12 @@
 		624D228927F0F677003879FC /* CommentTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableView.swift; sourceTree = "<group>"; };
 		625694C027666AD0007DDC26 /* PageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewCell.swift; sourceTree = "<group>"; };
 		627296F027C19E8300624C96 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		6277625E280C50D9001F1078 /* UserClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClient.swift; sourceTree = "<group>"; };
+		62776260280C51C2001F1078 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		62776262280C51D3001F1078 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		62776264280C576E001F1078 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		62776266280C58F4001F1078 /* MakerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerController.swift; sourceTree = "<group>"; };
+		62776269280C5C53001F1078 /* BookMakerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMakerController.swift; sourceTree = "<group>"; };
 		6297A38226A5F81B00E06960 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		62D343AB27F8D00F003CD06F /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		62D343AF27FA40CF003CD06F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -150,6 +162,7 @@
 		35FA6E5E258D0D210086AE62 /* mulp */ = {
 			isa = PBXGroup;
 			children = (
+				62776268280C5A2D001F1078 /* CustomSegue */,
 				624D228027F0B860003879FC /* Clients */,
 				62390BE12680FFDD008DD0B5 /* Controller */,
 				62390BE02680FFC7008DD0B5 /* ModelView */,
@@ -190,6 +203,7 @@
 				62390BDE2680EEE9008DD0B5 /* Page.swift */,
 				62390BE4268602F3008DD0B5 /* User.swift */,
 				6227B65F27CF925600665B12 /* Comment.swift */,
+				62776264280C576E001F1078 /* Book.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,6 +216,8 @@
 				627296F027C19E8300624C96 /* CommentTableViewCell.swift */,
 				624D228927F0F677003879FC /* CommentTableView.swift */,
 				62D343AF27FA40CF003CD06F /* CommentTableViewCell.xib */,
+				62776260280C51C2001F1078 /* CollectionViewCell.swift */,
+				62776262280C51D3001F1078 /* CollectionViewCell.xib */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -216,6 +232,8 @@
 				6297A38226A5F81B00E06960 /* ProfileController.swift */,
 				6227B66127CF954800665B12 /* ContentController.swift */,
 				62D343AB27F8D00F003CD06F /* CommentController.swift */,
+				62776266280C58F4001F1078 /* MakerController.swift */,
+				62776269280C5C53001F1078 /* BookMakerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,8 +242,16 @@
 			isa = PBXGroup;
 			children = (
 				624D228127F0B872003879FC /* CommentClient.swift */,
+				6277625E280C50D9001F1078 /* UserClient.swift */,
 			);
 			path = Clients;
+			sourceTree = "<group>";
+		};
+		62776268280C5A2D001F1078 /* CustomSegue */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomSegue;
 			sourceTree = "<group>";
 		};
 		88EACD59E8D4FA5C0CF7753D /* Frameworks */ = {
@@ -363,6 +389,7 @@
 				35FA6E6C258D0D240086AE62 /* Assets.xcassets in Resources */,
 				35FA6E67258D0D210086AE62 /* Main.storyboard in Resources */,
 				62D343B027FA40CF003CD06F /* CommentTableViewCell.xib in Resources */,
+				62776263280C51D3001F1078 /* CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +520,7 @@
 				35FA6E64258D0D210086AE62 /* ViewController.swift in Sources */,
 				624D227D27EF8CD1003879FC /* ModalContentSegue.swift in Sources */,
 				624D228A27F0F677003879FC /* CommentTableView.swift in Sources */,
+				6277626A280C5C53001F1078 /* BookMakerController.swift in Sources */,
 				6227B66227CF954800665B12 /* ContentController.swift in Sources */,
 				35FA6E60258D0D210086AE62 /* AppDelegate.swift in Sources */,
 				625694C127666AD0007DDC26 /* PageViewCell.swift in Sources */,
@@ -503,9 +531,13 @@
 				62390BEB2695C630008DD0B5 /* SignUpController.swift in Sources */,
 				62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */,
 				6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */,
+				6277625F280C50D9001F1078 /* UserClient.swift in Sources */,
+				62776265280C576E001F1078 /* Book.swift in Sources */,
+				62776267280C58F4001F1078 /* MakerController.swift in Sources */,
 				6227B66027CF925600665B12 /* Comment.swift in Sources */,
 				62390BDF2680EEE9008DD0B5 /* Page.swift in Sources */,
 				627296F127C19E8400624C96 /* CommentTableViewCell.swift in Sources */,
+				62776261280C51C2001F1078 /* CollectionViewCell.swift in Sources */,
 				62D343AC27F8D00F003CD06F /* CommentController.swift in Sources */,
 				62390BE7269494A3008DD0B5 /* GlobalVars.swift in Sources */,
 				62390BE5268602F3008DD0B5 /* User.swift in Sources */,

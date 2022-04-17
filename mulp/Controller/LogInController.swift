@@ -43,7 +43,8 @@ class LogInController: UIViewController,UITextFieldDelegate{
             if (status == StatusCode.complete && err.isEmpty){
                 DispatchQueue.main.async {
         let profileCont = self.storyboard?.instantiateViewController(withIdentifier: "ProfileController") as! ProfileController
-            profileCont.currentUser = user
+            profileCont.user = user
+            
                     if let navCont = self.navigationController {
                         var stack = navCont.viewControllers
                         stack.remove(at: stack.count - 1)
