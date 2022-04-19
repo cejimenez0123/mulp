@@ -107,6 +107,18 @@ extension UIImage{
     func heightRatio()-> CGFloat{
         return CGFloat(self.size.height / self.size.width)
     }
+    func adjustSaturation(byVal: CGFloat) -> UIImage {
+        let ciimage = CIImage.init(cgImage: self.cgImage ?? self as! CGImage)
+        let filter = CIFilter.init(name: "CIColorControls")
+        filter?.setValue(ciimage, forKey: kCIInputImageKey)
+        filter?.setValue(byVal, forKey: kCIInputSaturationKey)
+        let result = filter?.value(forKey: kCIOutputImageKey) as! CIImage
+        let cgimage = CIContext.init(options: nil).createCGImage(result, from: result.extent)
+        let image = UIImage.init(cgImage: cgimage!)
+            return image
+        }
+
+
 }
 extension MainViewController{
    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

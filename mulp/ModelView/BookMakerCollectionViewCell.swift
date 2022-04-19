@@ -14,27 +14,51 @@ class BookMakerCollectionViewCell:UICollectionViewCell{
             imageView.downloaded(from: page.path)
         }
     }
+    override var isSelected: Bool {
+        didSet{if (self.isSelected){
+          let img =  imageView.image?.adjustSaturation(byVal: -50)
+            imageView.image? = img ?? imageView.image!
+            
+        }}
+    }
+    @IBOutlet weak var checkmark: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     override init(frame: CGRect) {
         super.init(frame: frame)
-        imageView.downloaded(from: page.path)
+//     let tap =   UITapGestureRecognizer(target: self, action: #selector(forSelection))
+        imageView.isUserInteractionEnabled = false
+//        tap.cancelsTouchesInView = false
+//        self.addGestureRecognizer(tap)
+        self.isUserInteractionEnabled = true
+//  let img = UIImage(systemName: "checkmark.rectangle.fill")
+//        checkmark.setImage(img, for: .selected)
+//        checkmark.addTarget(self, action: #selector(selection), for: .touchDown)
     }
-    
+    @objc func forSelection(){
+        
+        
+    }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    override var isSelected: Bool {
-        didSet {
-            if (self.isSelected==true){
-                
-            }else{
-                
-                
-            }
-        }
+    
+//    override var isSelected: Bool {
+//        didSet {
+//            if (self.isSelected==true){
+//                checkmark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .selected)
+//               let img = imageView.image?.adjustSaturation(byVal: -10)
+//                imageView.image = img
+//                
+//            }else{
+//               let img = imageView.image?.adjustSaturation(byVal: 0)
+//                imageView.image = img
+//                checkmark.setImage(UIImage(systemName: "checkmark.rectangle.fill"), for: .selected)
+//                
+//            }
+//        }
         
         
-    }
+//    }
     
 }
 
