@@ -43,12 +43,14 @@ class LogInController: UIViewController,UITextFieldDelegate{
             if (status == StatusCode.complete && err.isEmpty){
                 DispatchQueue.main.async {
         let profileCont = self.storyboard?.instantiateViewController(withIdentifier: "ProfileController") as! ProfileController
-            profileCont.user = user
+            
+                    profileCont.user = user
             
                     if let navCont = self.navigationController {
                         var stack = navCont.viewControllers
                         stack.remove(at: stack.count - 1)
                         stack.insert(profileCont, at: stack.count) // add the new one
+                        
                         navCont.setViewControllers(stack, animated: true) 
                     }
 //        self.navigationController?.performSegue(withIdentifier: "ProfileController", sender: self)

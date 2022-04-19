@@ -80,9 +80,6 @@
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="VEF-ka-5Jy" kind="presentation" id="b76-xq-CWD"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sol Emilio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T16-fn-M4H">
                                 <rect key="frame" x="20" y="196" width="140" height="44"/>
@@ -109,9 +106,9 @@
         <!--Maker Controller-->
         <scene sceneID="MNv-PK-YEr">
             <objects>
-                <viewController storyboardIdentifier="MakeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VEF-ka-5Jy" customClass="MakerController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MakerController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VEF-ka-5Jy" customClass="MakerController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LyI-ci-VMe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Thf-a8-vLJ">
@@ -142,6 +139,11 @@
                         <viewLayoutGuide key="safeArea" id="G5P-t5-ra1"/>
                         <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                     </view>
+                    <connections>
+                        <outlet property="bookButton" destination="hmp-92-iPd" id="XfC-TX-btl"/>
+                        <outlet property="libraryButton" destination="Thf-a8-vLJ" id="nxP-Wh-emw"/>
+                        <outlet property="pageButton" destination="WHc-yt-Tg4" id="84y-j1-KI0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE8-d2-V67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -150,7 +152,7 @@
         <!--Book Maker Controller-->
         <scene sceneID="Y11-DC-9Ym">
             <objects>
-                <tableViewController id="z2A-iU-m40" customClass="BookMakerController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BookMakerController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z2A-iU-m40" customClass="BookMakerController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cNR-dd-9b5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

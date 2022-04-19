@@ -28,7 +28,7 @@ class ProfileController:UIViewController{
 //
     
     @IBOutlet weak var LitSegmentedControl: UISegmentedControl!
-
+let pageClient = PageClient()
     @IBOutlet weak var addButton: UIButton!
     var user = User(id: "0", email: "0", username: "0",name:"0")
     @IBOutlet weak var NameLabel: UILabel!
@@ -41,8 +41,16 @@ class ProfileController:UIViewController{
         ProfilePic.clipsToBounds = true
         ProfilePic.sizeThatFits(CGSize(width: 100, height: 100))
         addButton.addTarget(self, action: #selector(showCreatingView), for: .touchUpInside)
+        pageClient.getPagesOfUser(id: user.id, handler: {pages in
+            
+            
+        })
     }
     @objc func showCreatingView(){
+        var macon = storyboard?.instantiateViewController(withIdentifier: "MakerController") as! MakerController
+        self.navigationController?.showDetailViewController(macon, sender: self)
+        
+        
         
         
     }
