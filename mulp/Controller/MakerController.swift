@@ -28,11 +28,14 @@ class MakerController:UIViewController{
     }
     @objc func showPageMaker(){}
     @objc func showBookMaker(){
-        
-//        var bmCon = self.storyboard?.instantiateViewController(withIdentifier: "BookMakerController") as! BookMakerController
-//        
-//        self.navigationController?.show(bmCon, sender: nil)
-        
+     
+        DispatchQueue.main.async {
+            let bmCon = self.storyboard?.instantiateViewController(withIdentifier: "BookMakerController") as! BookMakerController
+            print("@+#%#")
+            bmCon.pages = self.pages
+            self.navigationController?.show(bmCon, sender: self)
+       
+        }
     }
     @objc func showLibraryMaker(){}
     

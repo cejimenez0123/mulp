@@ -9,15 +9,32 @@ import Foundation
 import UIKit
 
 
-class BookMakerController: UICollectionViewController{
+class BookMakerController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource{
     var pages = [Page]()
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+       
     }
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookMakerControllerViewCell", for: indexPath) as! BookMakerCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.pages.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let nib = UINib(nibName: "BookMakerCollectionViewCell", bundle: Bundle(for: BookMakerCollectionViewCell.self))
+        collectionView.register(nib, forCellWithReuseIdentifier: "BookMakerCollectionViewCell")
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "BookMakerCollectionViewCell", for: indexPath) as! BookMakerCollectionViewCell
         
-         
-        return cell
+                cell.page = self.pages[indexPath.section]
+        
+        
+                return cell
+        
+    }
+//
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 75, height: 75)
     }
 }

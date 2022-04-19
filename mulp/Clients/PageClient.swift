@@ -25,14 +25,14 @@ class PageClient{
             if data != nil {
             let json = JSON(data!)
                 
-               for pagej in json["data"] {
+               for ( _,pagej) in json["data"] {
                 let att =  pagej["attributes"]
                 
                    
                    
-                  var page = Page(id: att["id"], path: att["data"], type: "")
+                   var page = Page(id: att["id"].stringValue, path: att["data"].stringValue, type: "")
                    let user  = att["user"]
-                  let u =  User(id: user["id"], email: user["email"], username: user["username"], name: user["name"])
+                  let u =  User(id: user["id"].stringValue, email: user["email"].stringValue, username: user["username"].stringValue, name: user["name"].stringValue)
                    page.user = u
                    
                    pages.append(page)

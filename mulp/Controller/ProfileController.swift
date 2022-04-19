@@ -43,12 +43,13 @@ let pageClient = PageClient()
         addButton.addTarget(self, action: #selector(showCreatingView), for: .touchUpInside)
         pageClient.getPagesOfUser(id: user.id, handler: {pages in
             
-            
+            self.pages = pages
         })
     }
     @objc func showCreatingView(){
-        var macon = storyboard?.instantiateViewController(withIdentifier: "MakerController") as! MakerController
-        self.navigationController?.showDetailViewController(macon, sender: self)
+        let maker = storyboard?.instantiateViewController(withIdentifier: "MakerController") as! MakerController
+        maker.pages = self.pages
+        self.navigationController?.show(maker, sender: self)
         
         
         

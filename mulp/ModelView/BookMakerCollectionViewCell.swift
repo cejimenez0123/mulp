@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 class BookMakerCollectionViewCell:UICollectionViewCell{
-    var page = Page(id: "", path: "", type: "")
+    var page = Page(id: "", path: "", type: ""){
+        didSet {
+            imageView.downloaded(from: page.path)
+        }
+    }
     @IBOutlet weak var imageView: UIImageView!
     override init(frame: CGRect) {
         super.init(frame: frame)
