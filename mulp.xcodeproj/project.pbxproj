@@ -38,6 +38,7 @@
 		6277626E280C67A2001F1078 /* BookMakerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6277626D280C67A2001F1078 /* BookMakerCollectionViewCell.xib */; };
 		6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297A38226A5F81B00E06960 /* ProfileController.swift */; };
 		62A90209280EEBF000615BBE /* PageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A90208280EEBF000615BBE /* PageClient.swift */; };
+		62A9020B280F7EEB00615BBE /* BookClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9020A280F7EEB00615BBE /* BookClient.swift */; };
 		62D343AC27F8D00F003CD06F /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D343AB27F8D00F003CD06F /* CommentController.swift */; };
 		62D343B027FA40CF003CD06F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D343AF27FA40CF003CD06F /* CommentTableViewCell.xib */; };
 		62F31492273064F800B73E0F /* Pods_mulp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFDCF60A3567DDAC228767 /* Pods_mulp.framework */; };
@@ -105,6 +106,7 @@
 		6277626D280C67A2001F1078 /* BookMakerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookMakerCollectionViewCell.xib; sourceTree = "<group>"; };
 		6297A38226A5F81B00E06960 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		62A90208280EEBF000615BBE /* PageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageClient.swift; sourceTree = "<group>"; };
+		62A9020A280F7EEB00615BBE /* BookClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookClient.swift; sourceTree = "<group>"; };
 		62D343AB27F8D00F003CD06F /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		62D343AF27FA40CF003CD06F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		8123DF63B473547EF4684CA1 /* Pods-mulp-mulpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp-mulpUITests.release.xcconfig"; path = "Target Support Files/Pods-mulp-mulpUITests/Pods-mulp-mulpUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				624D228127F0B872003879FC /* CommentClient.swift */,
 				6277625E280C50D9001F1078 /* UserClient.swift */,
 				62A90208280EEBF000615BBE /* PageClient.swift */,
+				62A9020A280F7EEB00615BBE /* BookClient.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				624D228227F0B872003879FC /* CommentClient.swift in Sources */,
 				62390BEB2695C630008DD0B5 /* SignUpController.swift in Sources */,
 				62390BE32680FFF6008DD0B5 /* PageTableViewCell.swift in Sources */,
+				62A9020B280F7EEB00615BBE /* BookClient.swift in Sources */,
 				6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */,
 				6277625F280C50D9001F1078 /* UserClient.swift in Sources */,
 				62776265280C576E001F1078 /* Book.swift in Sources */,

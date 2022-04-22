@@ -12,13 +12,18 @@ class BookMakerCollectionViewCell:UICollectionViewCell{
     var page = Page(id: "", path: "", type: ""){
         didSet {
             imageView.downloaded(from: page.path)
+            image = imageView.image ?? UIImage(named: "TheNerves")!
         }
     }
+    var image:UIImage=UIImage()
     override var isSelected: Bool {
         didSet{if (self.isSelected){
-          let img =  imageView.image?.adjustSaturation(byVal: -50)
+          let img =  imageView.image?.adjustExposure(byVal: 3)
             imageView.image? = img ?? imageView.image!
             
+        }else{
+            if image.size.width != 0 {
+                imageView.image = image}
         }}
     }
     @IBOutlet weak var checkmark: UIButton!

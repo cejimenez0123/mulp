@@ -107,11 +107,12 @@ extension UIImage{
     func heightRatio()-> CGFloat{
         return CGFloat(self.size.height / self.size.width)
     }
-    func adjustSaturation(byVal: CGFloat) -> UIImage {
+    func adjustExposure(byVal: CGFloat) -> UIImage {
         let ciimage = CIImage.init(cgImage: self.cgImage ?? self as! CGImage)
-        let filter = CIFilter.init(name: "CIColorControls")
+        let filter = CIFilter.init(name: "CIExposureAdjust")
         filter?.setValue(ciimage, forKey: kCIInputImageKey)
-        filter?.setValue(byVal, forKey: kCIInputSaturationKey)
+       
+        filter?.setValue(byVal, forKey: kCIInputEVKey)
         let result = filter?.value(forKey: kCIOutputImageKey) as! CIImage
         let cgimage = CIContext.init(options: nil).createCGImage(result, from: result.extent)
         let image = UIImage.init(cgImage: cgimage!)

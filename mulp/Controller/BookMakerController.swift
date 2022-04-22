@@ -11,6 +11,7 @@ import UIKit
 
 class BookMakerController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource{
     var pages = [Page]()
+    var selectedPages = [Page]()
     var flowLayout: UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
 
