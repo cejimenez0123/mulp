@@ -43,13 +43,26 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
         }
         let act = UIAlertAction(title: "Save", style: .default, handler: { [self] _ in
             pag.name = ac.textFields?[0].text ?? ""
-    
+            miscClient.uploadImage(fileName: pag.name, image: image, handler: {code, page in 
             self.pageClient.uploadPage(userId: user.id, bookId: "", type: "page", status: "published", path: "", handler: { stat,page in
+            
+                if let navCont = self.navigationController {
+                    let conCon = ContentController()
+                    let mainCon = MainViewController(pages: [])
+                    var stack = navCont.viewControllers
+                    conCon.page = page
+                    DispatchQueue.main.async {
+                    
+                    stack.remove(at: stack.count - 1)
+                    stack.insert(mainCon, at: stack.count - 1)
+                    stack.insert(conCon, at: stack.count)
+                    navCont.setViewControllers(stack, animated: true)
+                        
+                    }
+                }
                 
                 
-                
-                
-            })
+            })})
         })
         ac.addAction(act)
         present(ac, animated: true, completion: {})
@@ -57,7 +70,36 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
     @objc func showPageMaker(){
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
-        present(imagePicker,animated: true)
+        let ac = UIAlertController(title: "Would you like to?", message: "Upload image or use link", preferredStyle: .alert)
+    
+        let act1 = UIAlertAction(title: "Upload", style: .default, handler: { [self] _ in
+            self.present(self.imagePicker,animated: true)
+        })
+        let act2 = UIAlertAction(title: "Link", style: .default, handler: {[self] _ in
+            ac.dismiss(animated: true, completion: {
+        let ac2 = UIAlertController(title: "Add Link", message: "", preferredStyle: .alert)
+            ac2.addTextField(configurationHandler:{_ in })
+            let act21 = UIAlertAction(title: "Save", style: .default, handler: { _ in
+                //Save Link
+                
+            })
+            let act22 = UIAlertAction(title: "Back", style: .default, handler: {
+                _ in
+                //Go back to prev vc
+                ac2.dismiss(animated: true, completion: { self.present(ac,animated: true)
+                
+                
+            })
+            })
+            ac2.addAction(act21)
+            ac2.addAction(act22)
+            self.present(ac2,animated: true)
+        })})
+
+        ac.addAction(act1)
+        ac.addAction(act2)
+        present(ac,animated: true)
+        
     }
     @objc func showBookMaker(){
      

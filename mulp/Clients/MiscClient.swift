@@ -6,8 +6,9 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 class MiscClient{
+    
     func uploadImage(fileName:String,image: UIImage?,handler:@escaping ((StatusCode,String)->())){
 
         
