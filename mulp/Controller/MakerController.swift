@@ -125,9 +125,10 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
     @objc func showBookMaker(){
      
         DispatchQueue.main.async {
-            let bmCon = self.storyboard?.instantiateViewController(withIdentifier: "BookMakerController") as! BookMakerController
-            bmCon.pages = self.pages
-            self.navigationController?.show(bmCon, sender: self)
+            let pcCon = self.storyboard?.instantiateViewController(withIdentifier: "PageCollectionController") as! PageCollectionController
+            pcCon.pages = self.pages
+            
+            self.navigationController?.show(pcCon, sender: self)
        
         }
     }

@@ -150,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="2681.1594202898555" y="-579.24107142857144"/>
         </scene>
-        <!--Book Maker Controller-->
+        <!--Page Collection Controller-->
         <scene sceneID="tvk-wn-A55">
             <objects>
-                <viewController storyboardIdentifier="BookMakerController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="axO-Fl-o8G" customClass="BookMakerController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageCollectionController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="axO-Fl-o8G" customClass="PageCollectionController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wfV-tY-UjM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKv-lt-MLB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3328.985507246377" y="-497.54464285714283"/>
+            <point key="canvasLocation" x="3541" y="-373"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="0b5-36-hX1">
@@ -275,6 +275,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94y-w6-KAx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2000" y="-1235"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="UMn-Ws-kHV">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="him-PK-2vT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="BookMakerController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="x0p-ST-oxY" customClass="BookMakerController" customModule="mulp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="HIv-z6-UYC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Z0o-Eo-KZy">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z0o-Eo-KZy" id="wiN-Ii-gOD">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="x0p-ST-oxY" id="ViZ-9H-BH4"/>
+                            <outlet property="delegate" destination="x0p-ST-oxY" id="9AC-iL-NA0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="WSI-Vi-x3j"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="3516" y="-1029"/>
         </scene>
         <!--Comment Controller-->
         <scene sceneID="XWd-9t-Nua">

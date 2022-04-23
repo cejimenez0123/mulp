@@ -2,87 +2,45 @@
 //  BookMakerController.swift
 //  mulp
 //
-//  Created by Christian Jimenez on 4/17/22.
+//  Created by Christian Jimenez on 4/23/22.
 //
 
 import Foundation
 import UIKit
 
-
-class BookMakerController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource{
+class BookMakerController:UITableViewController{
+    var footerView = UIView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
     var pages = [Page]()
-    
-    var selectedPages = [Page]()
-    var flowLayout: UICollectionViewFlowLayout {
-        let flowLayout = UICollectionViewFlowLayout()
-
-        // edit properties here
-        let r = CGFloat(297/420)
-        let w = (UIScreen.main.bounds.width - 40) / 2
-        let h = w / r
-        flowLayout.itemSize = CGSize(width: 169, height: 239)
-        flowLayout.sectionInset = UIEdgeInsets(top: 7, left: 5, bottom: 7, right: 5)
-        flowLayout.scrollDirection = UICollectionView.ScrollDirection.vertical
-        flowLayout.minimumInteritemSpacing = 0.0
-        // edit properties here
-
-        return flowLayout
-    }
-  
-    @IBOutlet weak var collectionView: UICollectionView!
+    var books = [Book]()
+    var createButton = UIButton()
+    let user:User = globalVars.currentUser
+    let bookClient = BookClient()
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.allowsMultipleSelection = true
-        collectionView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-
-        self.collectionView.addGestureRecognizer(tap)
-
-        self.collectionView.isUserInteractionEnabled = true
-    
     }
-    
-
-
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-       if let indexPath = self.collectionView?.indexPathForItem(at: sender.location(in: self.collectionView)) {
-    //Do your stuff here
-        let cell = collectionView.cellForItem(at: indexPath) as! BookMakerCollectionViewCell
-           if cell.isSelected {
-               cell.isSelected = false
-           }else {
-               selectedPages.append(cell.page)
-               cell.isSelected = true}
-    }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = self.collectionView(collectionView, cellForItemAt: indexPath) as! BookMakerCollectionViewCell
+    required init?(coder aDecoder: NSCoder) {
         
-        
-    }
-    
-    override func viewWillLayoutSubviews() {
-        self.collectionView.collectionViewLayout = flowLayout
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.pages.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let nib = UINib(nibName: "BookMakerCollectionViewCell", bundle: Bundle(for: BookMakerCollectionViewCell.self))
-        collectionView.register(nib, forCellWithReuseIdentifier: "BookMakerCollectionViewCell")
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "BookMakerCollectionViewCell", for: indexPath) as! BookMakerCollectionViewCell
-        
-                cell.page = self.pages[indexPath.section]
+        super.init(coder: aDecoder)
       
+    }
+      
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-                return cell
+        createButton.frame = CGRect(x: UIScreen.main.bounds.midX, y: 20, width: 100, height: 40)
+        createButton.setTitle("Create new Book", for: .normal)
+        createButton.addTarget(self, action: #selector(createBook), for: .touchUpInside)
+        footerView.addSubview(createButton)
+        
+        return footerView
+    }
+    @objc func createBook(){
+        
+        
         
     }
-  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
-
 }
