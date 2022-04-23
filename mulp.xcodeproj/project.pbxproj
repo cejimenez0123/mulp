@@ -39,6 +39,7 @@
 		6297A38326A5F81B00E06960 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297A38226A5F81B00E06960 /* ProfileController.swift */; };
 		62A90209280EEBF000615BBE /* PageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A90208280EEBF000615BBE /* PageClient.swift */; };
 		62A9020B280F7EEB00615BBE /* BookClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9020A280F7EEB00615BBE /* BookClient.swift */; };
+		62A9020D28144C9200615BBE /* MiscClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A9020C28144C9200615BBE /* MiscClient.swift */; };
 		62D343AC27F8D00F003CD06F /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D343AB27F8D00F003CD06F /* CommentController.swift */; };
 		62D343B027FA40CF003CD06F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D343AF27FA40CF003CD06F /* CommentTableViewCell.xib */; };
 		62F31492273064F800B73E0F /* Pods_mulp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBFDCF60A3567DDAC228767 /* Pods_mulp.framework */; };
@@ -107,6 +108,7 @@
 		6297A38226A5F81B00E06960 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		62A90208280EEBF000615BBE /* PageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageClient.swift; sourceTree = "<group>"; };
 		62A9020A280F7EEB00615BBE /* BookClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookClient.swift; sourceTree = "<group>"; };
+		62A9020C28144C9200615BBE /* MiscClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscClient.swift; sourceTree = "<group>"; };
 		62D343AB27F8D00F003CD06F /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		62D343AF27FA40CF003CD06F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		8123DF63B473547EF4684CA1 /* Pods-mulp-mulpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mulp-mulpUITests.release.xcconfig"; path = "Target Support Files/Pods-mulp-mulpUITests/Pods-mulp-mulpUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				6277625E280C50D9001F1078 /* UserClient.swift */,
 				62A90208280EEBF000615BBE /* PageClient.swift */,
 				62A9020A280F7EEB00615BBE /* BookClient.swift */,
+				62A9020C28144C9200615BBE /* MiscClient.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				35FA6E64258D0D210086AE62 /* ViewController.swift in Sources */,
 				62A90209280EEBF000615BBE /* PageClient.swift in Sources */,
 				624D227D27EF8CD1003879FC /* ModalContentSegue.swift in Sources */,
+				62A9020D28144C9200615BBE /* MiscClient.swift in Sources */,
 				6277626A280C5C53001F1078 /* BookMakerController.swift in Sources */,
 				6227B66227CF954800665B12 /* ContentController.swift in Sources */,
 				35FA6E60258D0D210086AE62 /* AppDelegate.swift in Sources */,

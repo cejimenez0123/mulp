@@ -21,42 +21,10 @@ class GlobalVars{
     var currentUser:User = User(id: "048c2f7f6e45", email: "reta.vonrueden@goyette-kassulke.biz", username: "werner", name:"Blue Beetle")
     
 }
-let globalVars = GlobalVars()
 let router = Router()
-
+let globalVars = GlobalVars()
 class Router {
-    func uploadPage(userId:String,bookId:String,type:String, status:String,path:String, handler: @escaping (StatusCode,Page)->()){
-        let page = Page(id: "0",path: path,type: type)
-        guard let url = URL(string: "\(globalVars.path)/pages") else {
-            return
-        }
-        let session = URLSession.shared
-         var request = URLRequest(url: url)
-        let param:NSDictionary = ["data": path, "userId": userId,"bookId":bookId,"status":status,"type":type]
-        request.httpMethod = "POST"
-        let body = try! JSONSerialization.data(withJSONObject:param, options: .prettyPrinted)
-        request.httpBody = body
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-        session.dataTask(with: request){(data, response, error) in
-            
-            if error != nil {
-                print(error!)
-            }
-            guard let data = data else {return}
-           let json = JSON(data)
-           let atr = json["data"]["attributes"]
-            
-            page.id = json["data"]["id"].stringValue
-            page.path = atr["data"].stringValue
-            let user =  User(id:atr["user"]["id"].stringValue,email: atr["user"]["email"].stringValue, username: atr["user"]["username"].stringValue, name: atr["user"]["name"].stringValue)
-            page.user.id = user.id
-            page.user = user
-            handler(StatusCode.complete,page)
-        }.resume()
-
-        }
+    
    
     func logon(email:String,password: String, handler: @escaping ((StatusCode,User, String)->())){
            
@@ -136,71 +104,38 @@ class Router {
           }.resume()
 
      }
-    func getAllPages(handler:@escaping (StatusCode, [Page])->()){
-        guard let url = URL(string: "\(globalVars.path)/pages") else { return }
-       let request = URLRequest(url: url)
-        let session = URLSession.shared
-        
-        session.dataTask(with: request){(data,resp,err) in
-            
-            
-            if err != nil {
-                print(err! as Error)
-            }else {
-                let json = JSON(data!)
-                let  ps = json["data"].arrayValue
-                
-                    if ps.count > 0 {
-                        let pages =   ps.map { pdata -> Page in
-                            let attr = pdata["attributes"]
-                            let user = User(id: attr["user"]["id"].stringValue, email: attr["user"]["email"].stringValue, username: attr["user"]["username"].stringValue, name: attr["user"]["name"].stringValue)
-                            
-                            let id = attr["id"].stringValue
-                            let path = attr["data"].stringValue
-                            let type = attr["media"].stringValue
-                            let page = Page(id: id, path: path,type:type)
-                            page.user = user
-                            return page
-            }
-            
-            handler(StatusCode.complete, pages )
-        }}
-            
-        }.resume()
-        
-        
-    }
-    func uploadImage(fileName:String,image: UIImage?,handler:@escaping ((StatusCode,String)->())){
-
-        
-      
-        if let image = image {                  
-        let boundary = UUID().uuidString
-        guard let url = URL(string: "\(globalVars.path)/image/upload") else {return }
-            let session = URLSession.shared
-            let jpegRep = image.jpegData(compressionQuality:1)
-//            let base64Image = jpegRep!.base64EncodedData()
-            if jpegRep == nil {return}
-//            let boundary = UUID().uuidString
-            let param = ["username": globalVars.currentUser.username]
-//            let url = URL(string: "\(globalVars.path)/image/upload")!
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-            request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey:jpegRep!, boundary: boundary, imgKey: "Attempt") as Data
-           
-            session.dataTask(with: request, completionHandler: { data, response, error in
-                if error == nil {
-                    print(error ?? "NO ERROR")
-                }
-                guard let data = data else { return }
-                let json = JSON(data)
-                    let path = json["link"].stringValue
-                           handler(StatusCode.complete,path)
-            }).resume()
-         
-        }
-    }
+   
+//    func uploadImage(fileName:String,image: UIImage?,handler:@escaping ((StatusCode,String)->())){
+//
+//        
+//      
+//        if let image = image {                  
+//        let boundary = UUID().uuidString
+//        guard let url = URL(string: "\(globalVars.path)/image/upload") else {return }
+//            let session = URLSession.shared
+//            let jpegRep = image.jpegData(compressionQuality:1)
+////            let base64Image = jpegRep!.base64EncodedData()
+//            if jpegRep == nil {return}
+////            let boundary = UUID().uuidString
+//            let param = ["username": globalVars.currentUser.username]
+////            let url = URL(string: "\(globalVars.path)/image/upload")!
+//            var request = URLRequest(url: url)
+//            request.httpMethod = "POST"
+//            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+//            request.httpBody = createBodyWithParameters(parameters: param, filePathKey: "file", imageDataKey:jpegRep!, boundary: boundary, imgKey: "Attempt") as Data
+//           
+//            session.dataTask(with: request, completionHandler: { data, response, error in
+//                if error == nil {
+//                    print(error ?? "NO ERROR")
+//                }
+//                guard let data = data else { return }
+//                let json = JSON(data)
+//                    let path = json["link"].stringValue
+//                           handler(StatusCode.complete,path)
+//            }).resume()
+//         
+//        }
+//    }
     
 }
        

@@ -9,7 +9,8 @@ import UIKit
 import Combine
 
 class MainViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    let miscClient = MiscClient()
+    let pageClient = PageClient()
     var pages = [Page]()
     init(pages: [Page]){
         super.init( style: UITableView.Style.plain)
@@ -20,7 +21,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     }
     override func viewDidLoad() {
         self.tableView.register(PageTableViewCell.self, forCellReuseIdentifier: "Page/Users/cejim/Development/mulp/mulp/Controller/LogInController.swiftTableViewCell")
-        router.getAllPages(handler:{ [self] status,ps in
+        pageClient.getAllPages(handler:{ [self] status,ps in
           
             
             
@@ -95,7 +96,28 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
     override func numberOfSections(in tableView: UITableView) -> Int {
         return pages.count
     }
-   
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+     
+        miscClient.uploadImage(fileName: "Image", image: image, handler: { status,path  in
+            
+            pageClient.uploadPage(userId: globalVars.currentUser.id, bookId: "0", type:"image", status:"published", path: path, handler: {status,page in
+                 self.pages.insert(page,at:0)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+             })
+         
+     })
+
+     
+     
+    
+            picker.dismiss(animated: true, completion: nil)
+        
+
+
+    }
         
 }
 extension UIImage{
@@ -122,28 +144,8 @@ extension UIImage{
 
 }
 extension MainViewController{
-   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-       let image = info[.originalImage] as? UIImage
     
-       router.uploadImage(fileName: "Image", image: image, handler: { status,path  in
-           
-           router.uploadPage(userId: globalVars.currentUser.id, bookId: "0", type:"image", status:"published", path: path, handler: {status,page in
-                self.pages.insert(page,at:0)
-               DispatchQueue.main.async {
-                   self.tableView.reloadData()
-               }
-            })
-        
-    })
-
-    
-    
-   
-           picker.dismiss(animated: true, completion: nil)
-       
-
-
-   }
+ 
 
 //extension UIViewController{
 //    private func createBody(with parameters: [String: String]?,file:UIImage filePathKey: String, urls: [URL], boundary: String) throws -> Data {

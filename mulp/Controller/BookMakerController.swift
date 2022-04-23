@@ -11,6 +11,7 @@ import UIKit
 
 class BookMakerController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource{
     var pages = [Page]()
+    
     var selectedPages = [Page]()
     var flowLayout: UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
@@ -40,6 +41,7 @@ class BookMakerController: UIViewController,UICollectionViewDelegateFlowLayout,U
         self.collectionView.addGestureRecognizer(tap)
 
         self.collectionView.isUserInteractionEnabled = true
+    
     }
     
 
@@ -51,6 +53,7 @@ class BookMakerController: UIViewController,UICollectionViewDelegateFlowLayout,U
            if cell.isSelected {
                cell.isSelected = false
            }else {
+               selectedPages.append(cell.page)
                cell.isSelected = true}
     }
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class Page {
     var id:String = ""
-   
+    var name:String = ""
     var path:String = "" 
     var approvalScore = 0
     var pic:UIImage = UIImage(named: "TheNerves")!

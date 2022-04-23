@@ -11,7 +11,8 @@ import UIKit
 class BookMakerCollectionViewCell:UICollectionViewCell{
     var page = Page(id: "", path: "", type: ""){
         didSet {
-            imageView.downloaded(from: page.path)
+       imageView.downloaded(from: page.path)
+            page.pic = imageView.image ?? UIImage(named: "TheNerves")!
             image = imageView.image ?? UIImage(named: "TheNerves")!
         }
     }
