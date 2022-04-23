@@ -74,6 +74,7 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
         let ac = UIAlertController(title: "Would you like to?", message: "Upload image or use link", preferredStyle: .alert)
     
         let act1 = UIAlertAction(title: "Upload", style: .default, handler: { [self] _ in
+            ac.dismiss(animated: true, completion: {})
             self.present(self.imagePicker,animated: true)
         })
         let act2 = UIAlertAction(title: "Link", style: .default, handler: {[self] _ in
@@ -82,15 +83,24 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
             ac2.addTextField(configurationHandler:{_ in })
             let act21 = UIAlertAction(title: "Save", style: .default, handler: { _ in
                 //Save Link
+                let p = Page(id:"",path: ac2.textFields?[0].text ?? "", type:"Link")
                 ac2.dismiss(animated: true, completion: {
-                let p = Page(id:"",path: ac.textFields?[0].text ?? "", type:"Link")
+               
                 pageClient.uploadPage(userId: user.id, bookId: "", type: p.type, published: true,privacy: false, path: p.path, handler: { code,page in
+                    DispatchQueue.main.async {
                     
                      let comCon = CommentController()
-                    comCon.page = page
-                    self.navigationController?.show(comCon, sender: self)
+                        comCon.page = page
+                        if let navCon = self.navigationController {
+                        var stack = navCon.viewControllers
+                        stack.remove(at: stack.count -   1)
+                        stack.insert(comCon, at: stack.count)
+                        navCon.setViewControllers(stack, animated: true)
+                     }
+                    }
+                    })
                     
-                })})
+                })
                 
             })
             let act22 = UIAlertAction(title: "Back", style: .default, handler: {
@@ -99,14 +109,16 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
                 ac2.dismiss(animated: true, completion: { self.present(ac,animated: true)
                 })
             })
-            ac2.addAction(act21)
             ac2.addAction(act22)
+            ac2.addAction(act21)
+            
             self.present(ac2,animated: true)
             })
         })
-
+        let act3 = UIAlertAction(title: "Cancel", style: .default, handler: {_ in ac.dismiss(animated: true, completion: {})})
         ac.addAction(act1)
         ac.addAction(act2)
+        ac.addAction(act3)
         present(ac,animated: true)
         
     }
