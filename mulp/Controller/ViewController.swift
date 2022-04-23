@@ -101,7 +101,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
      
         miscClient.uploadImage(fileName: "Image", image: image, handler: { status,path  in
             
-            self.pageClient.uploadPage(userId: globalVars.currentUser.id, bookId: "0", type:"image", status:"published", path: path, handler: {status,page in
+            self.pageClient.uploadPage(userId: globalVars.currentUser.id, bookId: "0", type:"image", published: true,privacy: false, path: path, handler: {status,page in
                  self.pages.insert(page,at:0)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

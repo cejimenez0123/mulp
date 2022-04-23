@@ -16,6 +16,8 @@ class Page {
     var pic:UIImage = UIImage(named: "TheNerves")!
     var user = User(id: "", email: "", username: "",name:"")
     var type:String = ""
+    var published: Bool = true
+    var privacy: Bool = false
     
     init(id: String,path:String,type:String) {
         self.id = id

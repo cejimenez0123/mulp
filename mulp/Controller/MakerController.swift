@@ -43,19 +43,20 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
         }
         let act = UIAlertAction(title: "Save", style: .default, handler: { [self] _ in
             pag.name = ac.textFields?[0].text ?? ""
-            miscClient.uploadImage(fileName: pag.name, image: image, handler: {code, page in 
-            self.pageClient.uploadPage(userId: user.id, bookId: "", type: "page", status: "published", path: "", handler: { stat,page in
+            miscClient.uploadImage(fileName: pag.name, image: image, handler: {code, path in
+                
+                self.pageClient.uploadPage(userId: user.id, bookId: "", type: "page", published: true,privacy: false, path: path, handler: { stat,page in
             
                 if let navCont = self.navigationController {
-                    let conCon = ContentController()
+                    let comCon = CommentController()
                     let mainCon = MainViewController(pages: [])
                     var stack = navCont.viewControllers
-                    conCon.page = page
+                    comCon.page = page
                     DispatchQueue.main.async {
                     
                     stack.remove(at: stack.count - 1)
                     stack.insert(mainCon, at: stack.count - 1)
-                    stack.insert(conCon, at: stack.count)
+                    stack.insert(comCon, at: stack.count)
                     navCont.setViewControllers(stack, animated: true)
                         
                     }
@@ -81,20 +82,28 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
             ac2.addTextField(configurationHandler:{_ in })
             let act21 = UIAlertAction(title: "Save", style: .default, handler: { _ in
                 //Save Link
+                ac2.dismiss(animated: true, completion: {
+                let p = Page(id:"",path: ac.textFields?[0].text ?? "", type:"Link")
+                pageClient.uploadPage(userId: user.id, bookId: "", type: p.type, published: true,privacy: false, path: p.path, handler: { code,page in
+                    
+                     let comCon = CommentController()
+                    comCon.page = page
+                    self.navigationController?.show(comCon, sender: self)
+                    
+                })})
                 
             })
             let act22 = UIAlertAction(title: "Back", style: .default, handler: {
                 _ in
                 //Go back to prev vc
                 ac2.dismiss(animated: true, completion: { self.present(ac,animated: true)
-                
-                
-            })
+                })
             })
             ac2.addAction(act21)
             ac2.addAction(act22)
             self.present(ac2,animated: true)
-        })})
+            })
+        })
 
         ac.addAction(act1)
         ac.addAction(act2)
@@ -105,7 +114,6 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
      
         DispatchQueue.main.async {
             let bmCon = self.storyboard?.instantiateViewController(withIdentifier: "BookMakerController") as! BookMakerController
-            print("@+#%#")
             bmCon.pages = self.pages
             self.navigationController?.show(bmCon, sender: self)
        

@@ -9,14 +9,14 @@ import Foundation
 import SwiftyJSON
 class PageClient{
     let path = globalVars.path
-    func uploadPage(userId:String,bookId:String,type:String, status:String,path:String, handler: @escaping (StatusCode,Page)->()){
+    func uploadPage(userId:String,bookId:String,type:String, published:Bool,privacy:Bool,path:String, handler: @escaping (StatusCode,Page)->()){
         let page = Page(id: "0",path: path,type: type)
         guard let url = URL(string: "\(globalVars.path)/pages") else {
             return
         }
         let session = URLSession.shared
          var request = URLRequest(url: url)
-        let param:NSDictionary = ["data": path, "userId": userId,"bookId":bookId,"status":status,"type":type]
+        let param:NSDictionary = ["data": path, "userId": userId,"bookId":bookId,"status":published,"privacy":privacy,"type":type]
         request.httpMethod = "POST"
         let body = try! JSONSerialization.data(withJSONObject:param, options: .prettyPrinted)
         request.httpBody = body
@@ -58,12 +58,15 @@ class PageClient{
                     if ps.count > 0 {
                         let pages =   ps.map { pdata -> Page in
                             let attr = pdata["attributes"]
-                            let user = User(id: attr["user"]["id"].stringValue, email: attr["user"]["email"].stringValue, username: attr["user"]["username"].stringValue, name: attr["user"]["name"].stringValue)
+                        
+                            let user = User(id: attr["user"]["id"].stringValue,
+                            email: attr["user"]["email"].stringValue, username: attr["user"]["username"].stringValue, name: attr["user"]["name"].stringValue)
                             
                             let id = attr["id"].stringValue
                             let path = attr["data"].stringValue
                             let type = attr["media"].stringValue
                             let page = Page(id: id, path: path,type:type)
+                            page.published = attr["published"].rawValue as! Bool
                             page.user = user
                             return page
             }
