@@ -6,25 +6,43 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 
 class BookClient{
     let path = globalVars.path
     
-    func getBooksOfUser(user_id:String){
+    func getBooksOfUser(user_id:String, handler: @escaping (([Book])->Void)){
         let url = URL(string: "\(path)/users/\(user_id)/books")!
         var request = URLRequest(url: url)
     
         request.httpMethod = "GET"
         
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
        
-        
         URLSession.shared.dataTask(with: request, completionHandler: {data,resp,err in
-            
-            
+            var books = [Book]()
+            if let dat = data{
+                do{
+                let json = try JSON(data: dat)
+                    let bookArr = json["data"]
+                    for (_,b) in bookArr{
+                      let attr = b["attributes"]
+                        let user = User(id: "", email: "", username: "", name: "")
+                        user.id = attr["user"]["id"].stringValue
+                        user.email = attr["user"]["email"].stringValue
+                        user.username = attr["user"]["username"].stringValue
+                        user.name = attr["user"]["name"].stringValue
+                        let book = Book(id: attr["id"].stringValue, title: attr["title"].stringValue, user: user)
+                        
+                        books.append(book)
+                    }
+                    handler(books)
+                } catch let error{
+                    print(error.localizedDescription)
+                }
+                
+            }
         }).resume()
+      
         
     }
     func createBook(user:User,title: String,pages: [Page]){
@@ -50,7 +68,14 @@ class BookClient{
             }
         
         URLSession.shared.dataTask(with: request, completionHandler: {data,resp,err in
-            
+            if let dat = data {
+            do{
+                let json = try JSON(data: dat)
+                
+            } catch let error{
+                print(error.localizedDescription)
+                
+            }}
             
         }).resume()
     }

@@ -16,6 +16,7 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
     var books = [Book]()
     let pageClient = PageClient()
     let miscClient = MiscClient()
+    let bookClient = BookClient()
     @IBOutlet weak var pageButton: UIButton!
     @IBOutlet weak var bookButton: UIButton!
     @IBOutlet weak var libraryButton: UIButton!
@@ -26,6 +27,11 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
         
         pageButton.addTarget(self, action: #selector(showPageMaker), for: .touchUpInside)
         bookButton.addTarget(self, action: #selector(showBookMaker), for: .touchUpInside)
+        if self.user.id.count > 0 {
+        self.bookClient.getBooksOfUser(user_id: self.user.id, handler: { booksArr in
+            
+          self.books = booksArr
+        })}
         
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -126,6 +132,7 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
      
         DispatchQueue.main.async {
             let pcCon = self.storyboard?.instantiateViewController(withIdentifier: "PageCollectionController") as! PageCollectionController
+            pcCon.books = self.books
             pcCon.pages = self.pages
             
             self.navigationController?.show(pcCon, sender: self)

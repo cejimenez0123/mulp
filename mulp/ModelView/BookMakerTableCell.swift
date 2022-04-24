@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class BookMakerTableCell: UITableViewCell{
-    var book:Book = Book()
+    var book:Book = Book(id: "", title: "", user: globalVars.currentUser)
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var button: UIButton!

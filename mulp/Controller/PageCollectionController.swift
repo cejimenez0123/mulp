@@ -18,9 +18,9 @@ class PageCollectionController: UIViewController,UICollectionViewDelegateFlowLay
         let flowLayout = UICollectionViewFlowLayout()
 
         // edit properties here
-        let r = CGFloat(297/420)
-        let w = (UIScreen.main.bounds.width - 40) / 2
-        let h = w / r
+//        let r = CGFloat(297/420)
+//        let w = (UIScreen.main.bounds.width - 40) / 2
+//        let h = w / r
         flowLayout.itemSize = CGSize(width: 169, height: 239)
         flowLayout.sectionInset = UIEdgeInsets(top: 7, left: 5, bottom: 7, right: 5)
         flowLayout.scrollDirection = UICollectionView.ScrollDirection.vertical
@@ -53,7 +53,7 @@ class PageCollectionController: UIViewController,UICollectionViewDelegateFlowLay
     }
     @objc func segueToBooks(){
         var bookMakerController  = self.storyboard?.instantiateViewController(withIdentifier: "BookMakerController") as! BookMakerController
-        bookMakerController.user = us
+        
         self.navigationController?.showDetailViewController(bookMakerController, sender: self)    }
     @objc func doDismiss(){
         self.dismiss(animated: true, completion: {})
