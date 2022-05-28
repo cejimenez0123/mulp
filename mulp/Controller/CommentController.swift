@@ -21,7 +21,7 @@ class CommentController:UITableViewController,  UITextFieldDelegate {
     var comments = [Comment](){didSet{
         tableView.reloadData()
     }}
-    let comClient = CommentClient()
+    let commentClient = CommentClient()
     var page = Page(id: "", path: "", type: ""){
         didSet{
             imageView.downloaded(from: page.path)
@@ -138,7 +138,7 @@ class CommentController:UITableViewController,  UITextFieldDelegate {
         btnView.isHidden = true
         footerView.isHidden = false
         comBtn.isHidden = false
-        comClient.postComment(text: text, page_id: page.id, user_id: globalVars.currentUser.id, handler: { [self]com in
+        commentClient.postComment(text: text, page_id: page.id, user_id: globalVars.currentUser.id, handler: { [self]com in
             self.comments.insert(com, at: 0)
             DispatchQueue.main.async {
                 self.tableView.reloadData()

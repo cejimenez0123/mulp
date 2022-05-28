@@ -41,7 +41,7 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
         let image = info[.originalImage] as? UIImage
         picker.dismiss(animated: true, completion: nil)
         let pag = Page(id: "", path: "", type: "")
-        pag.pic = image ?? UIImage(named: "TheNerves")!
+    
     let ac = UIAlertController(title: "Add Name for Page", message: "Please add a name ", preferredStyle: .alert)
         ac.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Page Name"
@@ -55,7 +55,8 @@ class MakerController:UIViewController,UIImagePickerControllerDelegate, UINaviga
             
                 if let navCont = self.navigationController {
                     let comCon = CommentController()
-                    let mainCon = MainViewController(pages: [])
+                    let mainCon = MainViewController()
+                    mainCon.pages = pages
                     var stack = navCont.viewControllers
                     comCon.page = page
                     DispatchQueue.main.async {

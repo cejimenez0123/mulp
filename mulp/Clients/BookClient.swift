@@ -33,6 +33,14 @@ class BookClient{
                         user.name = attr["user"]["name"].stringValue
                         let book = Book(id: attr["id"].stringValue, title: attr["title"].stringValue, user: user)
                         
+                        var pages = [Page]()
+                        for (_,page) in attr["pages"]{
+                         let pag = Page(id: page["id"].stringValue, path: page["data"].stringValue, type: "image")
+                            pag.user.id = page["user_id"].stringValue
+                            
+                            pages.append(pag)
+                        }
+                        book.pages = pages
                         books.append(book)
                     }
                     handler(books)
@@ -78,5 +86,35 @@ class BookClient{
             }}
             
         }).resume()
+    }
+    func addPagesToBook(pages:[Page],book_id: String,handler: @escaping (StatusCode)->Void){
+        
+        let url = URL(string: "\(path)/page_books")!
+        var request = URLRequest(url: url)
+        let params:NSDictionary = [pages:pages,book_id:book_id]
+        
+        request.httpMethod = "POST"
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        do {
+        request.httpBody =  try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        
+        URLSession.shared.dataTask(with: request, completionHandler: {data,resp,err in
+            if let d = data{
+            do{
+            let json = try JSON(data: d)
+                
+            } catch let error{
+                print(error.localizedDescription)
+            }
+            }
+        }).resume()
+        
+        
+        
     }
 }

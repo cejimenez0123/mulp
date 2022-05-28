@@ -12,8 +12,8 @@ import UIKit
 class PageCollectionController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource{
     var pages = [Page]()
     var books = [Book]()
-    var navBar = UINavigationBar()
     var selectedPages = [Page]()
+    var navBar = UINavigationBar()
     var flowLayout: UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
 
@@ -42,19 +42,27 @@ class PageCollectionController: UIViewController,UICollectionViewDelegateFlowLay
         self.collectionView.addGestureRecognizer(tap)
 
         self.collectionView.isUserInteractionEnabled = true
-        navBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
         let navItem = UINavigationItem(title: "Book Maker")
         let doneItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(doDismiss))
         let createBook = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(segueToBooks))
         navItem.rightBarButtonItem = doneItem
         navItem.leftBarButtonItem = createBook
-        navBar.setItems([navItem], animated: false)
-        self.view.addSubview(navBar)
+        self.navigationItem.rightBarButtonItem = createBook
+//        let barBtns = [createBook,doneItem]
+//        self.navigationController?.setToolbarItems(barBtns, animated: true)
+//        self.view.addSubview(navBar)
     }
     @objc func segueToBooks(){
-        var bookMakerController  = self.storyboard?.instantiateViewController(withIdentifier: "BookMakerController") as! BookMakerController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "BookMakerController") as! BookMakerController
+        vc.books = books
+        vc.pages = selectedPages
+        DispatchQueue.main.async {
         
-        self.navigationController?.showDetailViewController(bookMakerController, sender: self)    }
+        self.navigationController?.show(vc, sender: self)
+        }
+    }
     @objc func doDismiss(){
         self.dismiss(animated: true, completion: {})
     }
@@ -65,16 +73,11 @@ class PageCollectionController: UIViewController,UICollectionViewDelegateFlowLay
         let cell = collectionView.cellForItem(at: indexPath) as! BookMakerCollectionViewCell
            if cell.isSelected {
                cell.isSelected = false
+               
            }else {
                selectedPages.append(cell.page)
                cell.isSelected = true}
     }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = self.collectionView(collectionView, cellForItemAt: indexPath) as! BookMakerCollectionViewCell
-        
-        
     }
     
     override func viewWillLayoutSubviews() {

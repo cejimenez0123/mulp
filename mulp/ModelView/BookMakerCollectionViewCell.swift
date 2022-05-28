@@ -11,24 +11,29 @@ import UIKit
 class BookMakerCollectionViewCell:UICollectionViewCell{
     var page = Page(id: "", path: "", type: ""){
         didSet {
-       imageView.downloaded(from: page.path)
-            page.pic = imageView.image ?? UIImage(named: "TheNerves")!
+            imageView.downloaded(from: page.path)
+
             image = imageView.image ?? UIImage(named: "TheNerves")!
         }
+       
     }
     var image:UIImage=UIImage()
     override var isSelected: Bool {
         didSet{if (self.isSelected){
-          let img =  imageView.image?.adjustExposure(byVal: 3)
+            self.image = imageView.image!
+            let img =  imageView.image?.adjustExposure(byVal: 3)
             imageView.image? = img ?? imageView.image!
             
         }else{
             if image.size.width != 0 {
+    
                 imageView.image = image}
         }}
     }
     @IBOutlet weak var checkmark: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView! {didSet{
+        self.image = imageView.image!
+    }}
     override init(frame: CGRect) {
         super.init(frame: frame)
 //     let tap =   UITapGestureRecognizer(target: self, action: #selector(forSelection))
@@ -40,10 +45,7 @@ class BookMakerCollectionViewCell:UICollectionViewCell{
 //        checkmark.setImage(img, for: .selected)
 //        checkmark.addTarget(self, action: #selector(selection), for: .touchDown)
     }
-    @objc func forSelection(){
-        
-        
-    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }

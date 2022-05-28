@@ -6,6 +6,7 @@ target 'mulp' do
   use_frameworks!
 
   # Pods for mulp
+  pod 'SDWebImage', '~> 5.0',:modular_headers => true
     pod 'SwiftyJSON', '~> 4.0'
 	pod 'IQKeyboardManager'
   target 'mulpTests' do

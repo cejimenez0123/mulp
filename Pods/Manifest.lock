@@ -1,20 +1,26 @@
 PODS:
-  - IQKeyboardManager (6.5.9)
+  - IQKeyboardManager (6.5.10)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - IQKeyboardManager
+  - SDWebImage (~> 5.0)
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - IQKeyboardManager
+    - SDWebImage
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  IQKeyboardManager: 241cc94ccabc9deb8f8bd7d12f00d73288d13ecc
+  IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 14bf71e833c873404b4e6ce0d33676c7c4b54b5a
+PODFILE CHECKSUM: a66aeb519ce0aed1e7cbdf83f0211ecc241ef4bc
 
 COCOAPODS: 1.11.3

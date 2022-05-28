@@ -66,7 +66,7 @@ class PageClient{
                             let path = attr["data"].stringValue
                             let type = attr["media"].stringValue
                             let page = Page(id: id, path: path,type:type)
-                            page.published = attr["published"].rawValue as! Bool
+                            page.published = attr["published"].boolValue
                             page.user = user
                             return page
             }
@@ -98,7 +98,7 @@ class PageClient{
                 
                    
                    
-                   var page = Page(id: att["id"].stringValue, path: att["data"].stringValue, type: "")
+                   let page = Page(id: att["id"].stringValue, path: att["data"].stringValue, type: "")
                    let user  = att["user"]
                   let u =  User(id: user["id"].stringValue, email: user["email"].stringValue, username: user["username"].stringValue, name: user["name"].stringValue)
                    page.user = u

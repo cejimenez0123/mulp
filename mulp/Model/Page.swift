@@ -7,13 +7,31 @@
 
 
 import UIKit
+import SwiftyJSON
 
-class Page {
+class Page:Hashable{
+    static func == (lhs: Page, rhs: Page) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name && lhs.path == rhs.path && lhs.approvalScore == rhs.approvalScore && lhs.user == rhs.user && lhs.type == rhs.type && rhs.published == lhs.published && rhs.privacy == lhs.privacy
+    }
+    
+ 
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(name)
+        hasher.combine(path)
+        hasher.combine(approvalScore)
+        hasher.combine(user)
+        hasher.combine(type)
+        hasher.combine(published)
+        hasher.combine(privacy)
+    }
+   
+    
     var id:String = ""
     var name:String = ""
     var path:String = "" 
     var approvalScore = 0
-    var pic:UIImage = UIImage(named: "TheNerves")!
     var user = User(id: "", email: "", username: "",name:"")
     var type:String = ""
     var published: Bool = true
@@ -60,7 +78,7 @@ class Page {
     
 
 extension UIImageView {
-    func downloaded(from urlstr: String, contentMode mode: ContentMode = .scaleAspectFill) {
+    func downloaded(from urlstr: String, contentMode mode: ContentMode = .scaleAspectFill){
         let url = URL(string: urlstr)!
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -74,8 +92,11 @@ extension UIImageView {
                 else { return }
             DispatchQueue.main.async() { [weak self] in
                 self?.image = image
+                
+                
             }
         }.resume()
+        
     }
 //    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
 //        guard let url = URL(string: link) else { return }

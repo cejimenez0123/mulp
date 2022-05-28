@@ -17,6 +17,8 @@ class BookMakerController:UITableViewController{
     let bookClient = BookClient()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 70
     }
     required init?(coder aDecoder: NSCoder) {
         
@@ -35,12 +37,24 @@ class BookMakerController:UITableViewController{
     }
     @objc func createBook(){
         
-        
-        
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let nib = UINib(nibName: "BookMakerTableCell", bundle: Bundle(for: BookMakerTableCell.self))
+        tableView.register(nib, forCellReuseIdentifier: "BookMakerTableCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookMakerTableCell", for: indexPath) as! BookMakerTableCell
+        let book = books[indexPath.row]
+        cell.setCellData(book: book)
+        cell.selectedPages = pages
+         
+        return cell
+    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return books.count
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      
         
+        return 80
     }
     
 }
