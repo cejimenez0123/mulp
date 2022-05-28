@@ -86,7 +86,7 @@ class MainViewController: UITableViewController,UIImagePickerControllerDelegate,
             
         }
     }
-    
+   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell =  tableView.cellForRow(at: indexPath) as! PageTableViewCell
         cell.setCellHeight()

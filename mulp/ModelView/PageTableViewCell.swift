@@ -23,12 +23,12 @@ class PageTableViewCell: UITableViewCell{
     var approval = 0
     let commentClient = CommentClient()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-   
-        
+        actionbox.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([actionbox.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)])
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        actionbox.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        actionbox.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        
+    
     }
     func setCellData(page:Page){
         self.pic.downloaded(from: page.path)
@@ -36,7 +36,7 @@ class PageTableViewCell: UITableViewCell{
     }
     func setCellHeight(){
         let r = self.pic.image?.heightRatio() ?? 1.0
-        cellHeight =  (UIScreen.main.bounds.width / r) + 400
+        cellHeight =  (UIScreen.main.bounds.width / r) + 60
         
     }
     
